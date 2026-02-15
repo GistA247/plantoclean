@@ -1,0 +1,126 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactForm from "../components/ContactForm.tsx";
+---
+
+<BaseLayout title="Kontakt – Plantoclean | Jetzt unverbindlich anfragen">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 py-20 md:py-28">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary mb-6 tracking-tight">
+        Angebot anfordern
+      </h1>
+      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        Schildern Sie uns Ihr Anliegen. Wir erstellen Ihnen ein
+        maßgeschneidertes Angebot für Ihre Gartenpflege in ganz
+        Nordrhein-Westfalen.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="max-w-6xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <!-- Left Column: Form -->
+      <div class="lg:col-span-2">
+        <h2 class="text-2xl md:text-3xl font-bold text-primary mb-8">
+          Senden Sie uns eine Nachricht
+        </h2>
+        <ContactForm client:load />
+      </div>
+
+      <!-- Right Column: Contact Details -->
+      <div class="lg:col-span-1">
+        <!-- Contact Details Card -->
+        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-8">
+          <h3 class="text-xl font-bold text-primary mb-6">Kontaktdetails</h3>
+
+          <ul class="space-y-5">
+            <li>
+              <a
+                href="tel:+491234567890"
+                class="flex items-center gap-4 text-slate-700 hover:text-primary transition-colors group"
+              >
+                <span class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <span class="material-icons text-primary text-xl">phone</span>
+                </span>
+                <span class="text-sm leading-tight">+49 (0) 123 4567890</span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="mailto:info@plantoclean.de"
+                class="flex items-center gap-4 text-slate-700 hover:text-primary transition-colors group"
+              >
+                <span class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <span class="material-icons text-primary text-xl">email</span>
+                </span>
+                <span class="text-sm leading-tight">info@plantoclean.de</span>
+              </a>
+            </li>
+
+            <li class="flex items-center gap-4 text-slate-700">
+              <span class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                <span class="material-icons text-primary text-xl">location_on</span>
+              </span>
+              <span class="text-sm leading-tight">Gartenweg 10, 40210 Düsseldorf</span>
+            </li>
+
+            <li class="flex items-center gap-4 text-slate-700">
+              <span class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                <span class="material-icons text-primary text-xl">map</span>
+              </span>
+              <span class="text-sm leading-tight">Ganz Nordrhein-Westfalen (NRW)</span>
+            </li>
+          </ul>
+
+          <!-- Separator -->
+          <hr class="my-8 border-slate-100" />
+
+          <!-- WhatsApp Section -->
+          <div>
+            <h4 class="text-lg font-bold text-primary mb-3">Schnelle Antwort?</h4>
+            <p class="text-sm text-slate-500 mb-4">
+              Schreiben Sie uns direkt per WhatsApp für eine schnelle
+              Rückmeldung.
+            </p>
+            <a
+              href="https://wa.me/491234567890?text=Hallo%20Plantoclean%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Ihre%20Leistungen%20und%20h%C3%A4tte%20gerne%20ein%20Angebot."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full bg-[#25D366] text-white rounded-lg px-6 py-3 font-semibold hover:bg-[#25D366]/90 transition-all shadow-md flex items-center justify-center gap-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.06 3.961L0 16l4.121-1.08a7.844 7.844 0 0 0 3.873.836h.01c4.367 0 7.926-3.559 7.93-7.93a7.857 7.857 0 0 0-2.332-5.474zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"
+                ></path>
+              </svg>
+              WhatsApp schreiben
+            </a>
+          </div>
+
+          <!-- Separator -->
+          <hr class="my-8 border-slate-100" />
+
+          <!-- Info Box -->
+          <div class="bg-primary/5 border border-primary/10 rounded-xl p-6">
+            <div class="flex items-start gap-3">
+              <span class="material-icons text-primary text-xl mt-0.5 shrink-0">schedule</span>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Unser Ziel ist es, Ihnen innerhalb von 24 Stunden eine
+                Rückmeldung zu geben. Wir freuen uns auf Ihr Projekt!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

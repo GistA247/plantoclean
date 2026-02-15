@@ -1,0 +1,49 @@
+---
+const usps = [
+  {
+    icon: "verified",
+    title: "Erfahrung",
+    description: "Jahrelange Expertise in der anspruchsvollen Gartenpflege und Landschaftsgestaltung.",
+  },
+  {
+    icon: "event_available",
+    title: "Flexibilität",
+    description: "Individuelle Termingestaltung, die sich perfekt nach Ihrem persönlichen Zeitplan richtet.",
+  },
+  {
+    icon: "handshake",
+    title: "Unkompliziert",
+    description: "Effiziente Abwicklung ohne unnötige Bürokratie – von der Anfrage bis zur Fertigstellung.",
+  },
+  {
+    icon: "speed",
+    title: "Schnelle Ausführung",
+    description: "Zuverlässige und prompte Umsetzung Ihrer Gartenprojekte in ganz NRW.",
+  },
+];
+---
+
+<section class="py-24 px-6 bg-background-light">
+  <div class="max-w-6xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="text-accent uppercase tracking-widest text-sm font-semibold">Warum wir?</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-anthracite mt-3">
+        Qualität bis ins kleinste Detail
+      </h2>
+    </div>
+
+    <!-- USP Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {usps.map((usp) => (
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-primary/5 hover:border-primary/20 hover:-translate-y-1 transition">
+          <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+            <span class="material-icons text-primary text-3xl">{usp.icon}</span>
+          </div>
+          <h3 class="text-xl font-semibold text-anthracite mb-3">{usp.title}</h3>
+          <p class="text-anthracite/70 leading-relaxed">{usp.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

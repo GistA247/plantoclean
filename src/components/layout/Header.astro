@@ -1,0 +1,102 @@
+---
+const navLinks = [
+  { href: "/", label: "Startseite" },
+  { href: "/leistungen", label: "Leistungen" },
+  { href: "/kontakt", label: "Kontakt" },
+];
+---
+
+<nav
+  class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/10"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <a href="/" class="flex items-center gap-2">
+        <div
+          class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center"
+        >
+          <span class="material-icons text-white">eco</span>
+        </div>
+        <span class="text-2xl font-bold tracking-tight text-primary uppercase"
+          >Plantoclean</span
+        >
+      </a>
+
+      <div class="hidden md:flex items-center space-x-8">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="font-medium hover:text-accent transition-colors text-primary"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+        <a
+          href="/kontakt"
+          class="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-primary/90 transition-all shadow-md"
+        >
+          Anfrage senden
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2"
+        aria-label="Menü öffnen"
+      >
+        <span class="material-icons text-primary text-3xl">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden fixed inset-0 top-20 bg-white/95 backdrop-blur-md z-40"
+  >
+    <div class="flex flex-col items-center gap-8 pt-12">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-xl font-medium text-primary hover:text-accent transition-colors"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href="/kontakt"
+        class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all shadow-md text-lg"
+      >
+        Anfrage senden
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer for fixed nav -->
+<div class="h-20"></div>
+
+<script>
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  if (btn && menu) {
+    btn.addEventListener("click", () => {
+      const isOpen = !menu.classList.contains("hidden");
+      menu.classList.toggle("hidden");
+      const icon = btn.querySelector(".material-icons");
+      if (icon) icon.textContent = isOpen ? "menu" : "close";
+    });
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menu.classList.add("hidden");
+        const icon = btn.querySelector(".material-icons");
+        if (icon) icon.textContent = "menu";
+      });
+    });
+  }
+</script>

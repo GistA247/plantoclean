@@ -1,0 +1,69 @@
+---
+const testimonials = [
+  {
+    quote: "Herausragender Service und sehr zuverlässig. Unser Garten sah noch nie so gepflegt aus.",
+    name: "M. Schneider",
+    role: "Privatkunde",
+    icon: "person",
+  },
+  {
+    quote: "Als Immobilienverwaltung schätzen wir die unkomplizierte Kommunikation und die schnelle Umsetzung bei unseren gewerblichen Objekten in ganz NRW.",
+    name: "T. Weber",
+    role: "Gewerbekunde",
+    icon: "business",
+  },
+  {
+    quote: "Von der ersten Planung bis zur fertigen Neuanlage unseres Gartens hat alles reibungslos funktioniert. Plantoclean ist absolut empfehlenswert!",
+    name: "S. Fischer",
+    role: "Privatkunde",
+    icon: "person",
+  },
+];
+---
+
+<section class="py-24 px-6 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="text-accent uppercase tracking-widest text-sm font-semibold">Kundenstimmen</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-anthracite mt-3">
+        Was unsere Kunden sagen
+      </h2>
+    </div>
+
+    <!-- Testimonial Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonials.map((testimonial) => (
+        <div class="bg-background-light p-8 rounded-2xl border border-primary/5">
+          <!-- Star Rating -->
+          <div class="flex gap-1 mb-4">
+            {[...Array(5)].map(() => (
+              <span class="material-icons text-primary text-xl">star</span>
+            ))}
+          </div>
+
+          <!-- Quote -->
+          <p class="text-anthracite/80 italic leading-relaxed mb-6">
+            &ldquo;{testimonial.quote}&rdquo;
+          </p>
+
+          <!-- Author -->
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+              <span class="material-icons text-primary">{testimonial.icon}</span>
+            </div>
+            <div>
+              <p class="font-semibold text-anthracite">{testimonial.name}</p>
+              <p class="text-sm text-anthracite/60">{testimonial.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Placeholder Note -->
+    <p class="text-center text-primary/40 italic text-sm mt-10">
+      Wird durch echte Kundenstimmen ersetzt
+    </p>
+  </div>
+</section>

@@ -1,0 +1,273 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BeforeAfterSlider from "../components/BeforeAfterSlider.tsx";
+import CTABanner from "../components/sections/CTABanner.astro";
+---
+
+<BaseLayout
+  title="Unsere Leistungen – Grünschnitt, Rückschnitt & mehr | Plantoclean"
+  description="Professionelle Garten- und Landschaftspflege in NRW: Grünschnitt, Jahrespflege, Rückschnitt und Beischnitt. Jetzt unverbindlich anfragen."
+>
+  <!-- Intro Section -->
+  <section class="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-anthracite mb-6">
+        Unsere Leistungen
+      </h1>
+      <p class="text-lg md:text-xl text-anthracite/70 max-w-3xl mx-auto leading-relaxed">
+        Professionelle Garten- und Landschaftspflege in Nordrhein-Westfalen. Wir verwandeln verwilderte Grünflächen in gepflegte Oasen – mit Präzision, Leidenschaft und modernster Technik.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Sections -->
+  <div class="max-w-7xl mx-auto px-6 pb-24 space-y-32">
+
+    <!-- Service 1: Grünschnitt (text left, image right) -->
+    <section id="gruenschnitt" class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center scroll-mt-24">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-icons text-primary text-xl">grass</span>
+          <span class="text-primary text-sm font-semibold uppercase tracking-wider">Grünschnitt & Rasenpflege</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-anthracite mb-6">
+          Perfekter Rasen für jede Fläche
+        </h2>
+        <p class="text-anthracite/70 leading-relaxed mb-8">
+          Ein gepflegter Rasen ist die Visitenkarte jedes Grundstücks. Ob private Gärten, gewerbliche Grünflächen oder öffentliche Anlagen – wir sorgen mit professioneller Technik und geschultem Auge für ein gleichmäßiges, sattes Grün. Von der regelmäßigen Mahd bis zur Bodenverbesserung bieten wir Ihnen den Rundum-Service.
+        </p>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Regelmäßiger Rasenmähschnitt & Kantenpflege</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Vertikutieren und Nachsaat zur Bodenverbesserung</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Fachgerechte Entsorgung von Grünabfällen</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <BeforeAfterSlider
+          client:visible
+          afterImage="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&q=80"
+          beforeImage="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80"
+          afterAlt="Gepflegter Rasen nach dem Grünschnitt"
+          beforeAlt="Verwilderte Grünfläche vor dem Grünschnitt"
+        />
+      </div>
+    </section>
+
+    <!-- Service 2: Jahrespflege (image left, text right) -->
+    <section id="jahrespflege" class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center scroll-mt-24">
+      <div class="order-2 lg:order-1">
+        <BeforeAfterSlider
+          client:visible
+          afterImage="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80"
+          beforeImage="https://images.unsplash.com/photo-1509813685-e7144e4ded09?w=800&q=80"
+          afterAlt="Garten nach professioneller Jahrespflege"
+          beforeAlt="Ungepflegter Garten vor der Jahrespflege"
+        />
+      </div>
+      <div class="order-1 lg:order-2">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-icons text-primary text-xl">calendar_today</span>
+          <span class="text-primary text-sm font-semibold uppercase tracking-wider">Rundum-Jahrespflege</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-anthracite mb-6">
+          Sorgenfrei durch alle Jahreszeiten
+        </h2>
+        <p class="text-anthracite/70 leading-relaxed mb-8">
+          Mit unserer Jahrespflege müssen Sie sich um nichts kümmern. Wir erstellen einen individuellen Pflegeplan, der alle saisonalen Arbeiten abdeckt – von der Frühjahrskur bis zum Winterschutz. So bleibt Ihr Außenbereich das ganze Jahr über in Bestform.
+        </p>
+
+        <!-- Season Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-icons text-accent text-lg">wb_sunny</span>
+              <h3 class="font-semibold text-anthracite text-sm">Frühjahr / Sommer</h3>
+            </div>
+            <p class="text-anthracite/60 text-sm leading-relaxed">
+              Rasenpflege, Beetarbeit, Hecken- und Strauchschnitt, Bewässerung und Düngung.
+            </p>
+          </div>
+          <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-icons text-accent text-lg">ac_unit</span>
+              <h3 class="font-semibold text-anthracite text-sm">Herbst / Winter</h3>
+            </div>
+            <p class="text-anthracite/60 text-sm leading-relaxed">
+              Laubbeseitigung, Rückschnitte, Winterschutz für empfindliche Pflanzen und Frostvorsorge.
+            </p>
+          </div>
+        </div>
+
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Fest kalkulierbare monatliche Pauschalen</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Automatische Terminplanung ohne Aufwand</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Service 3: Rückschnitt (text left, image right) -->
+    <section id="rueckschnitt" class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center scroll-mt-24">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-icons text-primary text-xl">content_cut</span>
+          <span class="text-primary text-sm font-semibold uppercase tracking-wider">Gehölz- & Rückschnitt</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-anthracite mb-6">
+          Gesundes Wachstum durch Fachkenntnis
+        </h2>
+        <p class="text-anthracite/70 leading-relaxed mb-8">
+          Ein fachgerechter Rückschnitt fördert die Vitalität Ihrer Bäume und Sträucher und schützt vor unkontrolliertem Wuchs. Unsere geschulten Mitarbeiter kennen die optimalen Schnittzeitpunkte und -techniken für jede Gehölzart – für gesundes Wachstum und eine ansprechende Form.
+        </p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Obstbaumschnitt für ertragreiche Ernten</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Sicherheitsschnitte bei Bruchgefahr</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Entfernung von Totholz und Krankheitsherden</span>
+          </li>
+        </ul>
+        <a
+          href="/kontakt"
+          class="inline-flex items-center gap-2 bg-primary text-white font-semibold px-8 py-4 rounded-full hover:bg-primary-light transition-colors"
+        >
+          Termin vereinbaren
+          <span class="material-icons text-xl">arrow_forward</span>
+        </a>
+      </div>
+      <div>
+        <BeforeAfterSlider
+          client:visible
+          afterImage="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=800&q=80"
+          beforeImage="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&q=80"
+          afterAlt="Bäume nach dem fachgerechten Rückschnitt"
+          beforeAlt="Überwucherte Bäume vor dem Rückschnitt"
+        />
+      </div>
+    </section>
+
+    <!-- Service 4: Beischnitt (image left, text right) -->
+    <section id="beischnitt" class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center scroll-mt-24">
+      <div class="order-2 lg:order-1">
+        <BeforeAfterSlider
+          client:visible
+          afterImage="https://images.unsplash.com/photo-1598902108854-d1446397a0ef?w=800&q=80"
+          beforeImage="https://images.unsplash.com/photo-1590502593747-42a996133562?w=800&q=80"
+          afterAlt="Hecke nach dem präzisen Formschnitt"
+          beforeAlt="Ungeschnittene Hecke vor dem Beischnitt"
+        />
+      </div>
+      <div class="order-1 lg:order-2">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-icons text-primary text-xl">architecture</span>
+          <span class="text-primary text-sm font-semibold uppercase tracking-wider">Formschnitt & Beischnitt</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-anthracite mb-6">
+          Ästhetik in grüner Form
+        </h2>
+        <p class="text-anthracite/70 leading-relaxed mb-8">
+          Formschnitte verleihen Ihrem Garten Struktur und einen gepflegten Charakter. Ob klassisch geschnittene Hecken, architektonische Buchsbaumformen oder natürliche Konturen – wir setzen Ihre Vorstellungen mit höchster Präzision um und fördern gleichzeitig den dichten, gesunden Wuchs.
+        </p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Präziser Hecken- und Buchsbaumschnitt</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Gestaltungsschnitt nach architektonischen Vorgaben</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Förderung des dichten Wuchses durch Korrekturschnitt</span>
+          </li>
+        </ul>
+        <div class="inline-flex items-center gap-2 bg-accent/10 text-accent px-5 py-3 rounded-full border border-accent/20">
+          <span class="material-icons text-lg">workspace_premium</span>
+          <span class="text-sm font-semibold">100% Zufriedenheitsgarantie für alle NRW-Kunden</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FAQ Section -->
+  <section class="py-20 px-6 bg-neutral-green">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-anthracite">
+          Häufig gestellte Fragen
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <details class="group bg-white border border-slate-200 rounded-xl">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-anthracite">
+            <span>In welchen Gebieten von NRW sind Sie tätig?</span>
+            <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="px-6 pb-5 text-anthracite/70 leading-relaxed">
+            Wir sind in ganz Nordrhein-Westfalen im Einsatz – vom Ruhrgebiet über das Rheinland bis ins Bergische Land. Egal ob Düsseldorf, Köln, Essen, Dortmund oder ländliche Regionen: Wir kommen zu Ihnen und sorgen für gepflegte Grünflächen. Kontaktieren Sie uns einfach, um zu prüfen, ob wir auch in Ihrer Region verfügbar sind.
+          </div>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="group bg-white border border-slate-200 rounded-xl">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-anthracite">
+            <span>Wann ist der ideale Zeitpunkt für den Heckenschnitt?</span>
+            <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="px-6 pb-5 text-anthracite/70 leading-relaxed">
+            Formschnitte an Hecken empfehlen wir idealerweise zwischen Juni und August, wenn die Pflanzen im vollen Wachstum stehen. Stärkere Rückschnitte sollten zwischen Oktober und Februar durchgeführt werden, da in dieser Zeit keine Vögel in den Hecken brüten und die Pflanzen in der Ruhephase sind. Wir beraten Sie gerne zum optimalen Zeitpunkt für Ihre spezifischen Gehölze.
+          </div>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="group bg-white border border-slate-200 rounded-xl">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-anthracite">
+            <span>Kümmern Sie sich auch um die Entsorgung der Grünabfälle?</span>
+            <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="px-6 pb-5 text-anthracite/70 leading-relaxed">
+            Ja, selbstverständlich! Die fachgerechte und ökologische Entsorgung aller anfallenden Grünabfälle ist bei uns im Service inbegriffen. Wir arbeiten mit zertifizierten Entsorgungsbetrieben zusammen und sorgen dafür, dass Ihr Grundstück nach getaner Arbeit sauber und aufgeräumt hinterlassen wird.
+          </div>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="group bg-white border border-slate-200 rounded-xl">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-anthracite">
+            <span>Bieten Sie langfristige Wartungsverträge für die Jahrespflege an?</span>
+            <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="px-6 pb-5 text-anthracite/70 leading-relaxed">
+            Ja, wir bieten individuell zugeschnittene Wartungsverträge an, die genau auf die Bedürfnisse Ihres Grundstücks abgestimmt sind. Sie profitieren von fest kalkulierbaren monatlichen Kosten, automatischer Terminplanung und der Gewissheit, dass Ihr Außenbereich das ganze Jahr über professionell gepflegt wird. Sprechen Sie uns an – wir erstellen Ihnen gerne ein maßgeschneidertes Angebot.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner />
+</BaseLayout>

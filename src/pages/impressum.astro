@@ -1,0 +1,182 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Impressum – Plantoclean"
+  description="Impressum der Plantoclean – Angaben gemäß § 5 TMG."
+>
+  <!-- Hero Header -->
+  <section
+    class="py-12 md:py-20 bg-white border-b border-gray-100"
+  >
+    <div class="max-w-3xl mx-auto px-6">
+      <nav
+        class="flex mb-4 text-sm text-slate-500 no-print"
+      >
+        <a class="hover:text-primary transition-colors" href="/">Home</a>
+        <span class="mx-2">/</span>
+        <span class="text-primary font-medium">Impressum</span>
+      </nav>
+      <h1
+        class="text-4xl md:text-5xl font-extrabold text-anthracite leading-tight"
+      >
+        Impressum
+      </h1>
+      <p class="mt-4 text-lg text-slate-600 max-w-2xl">
+        Gesetzliche Anbieterkennung und rechtliche Hinweise für das Angebot von
+        Plantoclean Garten- und Landschaftspflege.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-12 md:py-16">
+    <article class="max-w-3xl mx-auto px-6">
+      <!-- Angaben gemäß § 5 TMG -->
+      <div class="mb-12">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="h-1 w-10 bg-primary rounded"></div>
+          <h2
+            class="text-xl font-bold text-anthracite uppercase tracking-wider"
+          >
+            Angaben gemäß § 5 TMG
+          </h2>
+        </div>
+        <div
+          class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm"
+        >
+          <p class="text-lg font-semibold mb-2">
+            Plantoclean Garten- und Landschaftspflege
+          </p>
+          <p class="text-slate-600 leading-relaxed">
+            Inhaber: [Name Platzhalter]<br />
+            [Straße Platzhalter] [Nr.]<br />
+            [PLZ] [Stadt]<br />
+            Nordrhein-Westfalen, Deutschland
+          </p>
+        </div>
+      </div>
+
+      <!-- Vertreten durch -->
+      <div class="mb-12">
+        <h2 class="text-xl font-bold text-anthracite mb-6">
+          Vertreten durch
+        </h2>
+        <p class="text-slate-600 pl-4 border-l-2 border-primary/30">
+          [Name Platzhalter] (Geschäftsführung)
+        </p>
+      </div>
+
+      <!-- Kontakt -->
+      <div class="mb-12">
+        <h2 class="text-xl font-bold text-anthracite mb-6">Kontakt</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div
+            class="flex items-start gap-4 p-4 rounded-lg bg-primary/5 border border-primary/10"
+          >
+            <span class="material-icons text-primary mt-1">phone</span>
+            <div>
+              <p class="text-xs uppercase text-slate-500 font-bold mb-1">
+                Telefon
+              </p>
+              <p class="text-anthracite font-medium">
+                <a href="tel:+491234567890">+49 (0) 123 4567890</a>
+              </p>
+            </div>
+          </div>
+          <div
+            class="flex items-start gap-4 p-4 rounded-lg bg-primary/5 border border-primary/10"
+          >
+            <span class="material-icons text-primary mt-1">mail</span>
+            <div>
+              <p class="text-xs uppercase text-slate-500 font-bold mb-1">
+                E-Mail
+              </p>
+              <p class="text-anthracite font-medium">
+                <a href="mailto:info@plantoclean.de">info@plantoclean.de</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Umsatzsteuer-ID -->
+      <div class="mb-12">
+        <h2 class="text-xl font-bold text-anthracite mb-6">
+          Umsatzsteuer-ID
+        </h2>
+        <p class="text-slate-600">
+          Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:<br
+          />
+          <span class="font-mono text-anthracite"
+            >DE [Platzhalter]</span
+          >
+        </p>
+      </div>
+
+      <!-- Redaktionell verantwortlich -->
+      <div class="mb-12">
+        <h2 class="text-xl font-bold text-anthracite mb-6">
+          Redaktionell verantwortlich
+        </h2>
+        <p class="text-slate-600">
+          [Name Platzhalter]<br />
+          [Straße Platzhalter] [Nr.]<br />
+          [PLZ] [Stadt]
+        </p>
+      </div>
+
+      <!-- Streitschlichtung -->
+      <div class="mb-12">
+        <h2 class="text-xl font-bold text-anthracite mb-6">
+          Streitschlichtung
+        </h2>
+        <div class="text-slate-600 leading-relaxed space-y-4">
+          <p>
+            Die Europäische Kommission stellt eine Plattform zur
+            Online-Streitbeilegung (OS) bereit:
+            <a
+              class="text-primary hover:underline font-medium"
+              href="https://ec.europa.eu/consumers/odr"
+              target="_blank"
+              rel="noopener noreferrer"
+              >https://ec.europa.eu/consumers/odr</a
+            >. Unsere E-Mail-Adresse finden Sie oben im Impressum.
+          </p>
+          <p>
+            Wir sind nicht bereit oder verpflichtet, an
+            Streitbeilegungsverfahren vor einer
+            Verbraucherschlichtungsstelle teilzunehmen.
+          </p>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="h-px w-full bg-gray-200 my-16"></div>
+
+      <!-- Footer actions -->
+      <div
+        class="flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-slate-500 no-print pb-8"
+      >
+        <p>&copy; 2026 Plantoclean. Alle Rechte vorbehalten.</p>
+        <div class="flex gap-6">
+          <a
+            class="hover:text-primary transition-colors"
+            href="/datenschutz">Datenschutz</a
+          >
+          <a
+            class="hover:text-primary transition-colors"
+            href="/haftungsausschluss">Haftungsausschluss</a
+          >
+          <button
+            class="flex items-center gap-1 hover:text-primary transition-colors"
+            onclick="window.print()"
+          >
+            <span class="material-icons text-base">print</span> Seite drucken
+          </button>
+        </div>
+      </div>
+    </article>
+  </section>
+</BaseLayout>

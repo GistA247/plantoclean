@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://plantoclean.de/sitemap-index.xml

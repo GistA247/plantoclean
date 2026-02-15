@@ -1,0 +1,64 @@
+---
+const services = [
+  {
+    title: "Gartenpflege",
+    subtitle: "Rasenpflege, Heckenschnitt & Beete",
+    image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80",
+  },
+  {
+    title: "Gewerbeservice",
+    subtitle: "Regelmäßige Instandhaltung für Firmen",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+  },
+  {
+    title: "Gartenplanung",
+    subtitle: "Neugestaltung & Konzepte",
+    image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80",
+  },
+];
+---
+
+<section class="py-24 px-6 bg-background-light">
+  <div class="max-w-6xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-anthracite mb-4">
+        Professionelle Lösungen für Ihr Grün
+      </h2>
+      <p class="text-anthracite/70 max-w-2xl mx-auto leading-relaxed mb-6">
+        Ob privater Hausgarten oder gewerbliche Grünanlagen – wir sorgen dafür, dass Ihr Außenbereich stets den besten Eindruck hinterlässt.
+      </p>
+      <a
+        href="/leistungen"
+        class="inline-flex items-center gap-1 text-primary font-semibold hover:text-primary-light transition-colors"
+      >
+        Alle Leistungen ansehen
+        <span class="material-icons text-lg">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Service Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {services.map((service) => (
+        <div class="group relative overflow-hidden rounded-2xl h-80">
+          <!-- Image -->
+          <img
+            src={service.image}
+            alt={service.title}
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            loading="lazy"
+          />
+
+          <!-- Gradient Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent"></div>
+
+          <!-- Text Content -->
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <h3 class="text-2xl font-bold mb-1">{service.title}</h3>
+            <p class="text-white/80">{service.subtitle}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
