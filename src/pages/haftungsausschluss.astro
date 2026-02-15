@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <BaseLayout
@@ -13,7 +14,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <nav
         class="no-print flex items-center gap-2 text-sm text-slate-500 mb-8"
       >
-        <a class="hover:text-primary transition-colors" href="/">Home</a>
+        <a class="hover:text-primary transition-colors" href={`${base}/`}>Home</a>
         <span class="material-icons text-xs">chevron_right</span>
         <span>Rechtliches</span>
         <span class="material-icons text-xs">chevron_right</span>

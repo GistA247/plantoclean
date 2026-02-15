@@ -9,7 +9,7 @@ interface FormData {
   privacy: boolean;
 }
 
-export default function ContactForm() {
+export default function ContactForm({ base = "" }: { base?: string }) {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -146,7 +146,7 @@ export default function ContactForm() {
           Rückfragen gespeichert werden. Weitere Informationen finden Sie in
           der{" "}
           <a
-            href="/datenschutz"
+            href={`${base}/datenschutz`}
             className="text-primary underline hover:text-primary/80 transition-colors"
           >
             Datenschutzerklärung

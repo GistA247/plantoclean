@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BeforeAfterSlider from "../components/BeforeAfterSlider.tsx";
 import CTABanner from "../components/sections/CTABanner.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <BaseLayout
@@ -148,7 +149,7 @@ import CTABanner from "../components/sections/CTABanner.astro";
           </li>
         </ul>
         <a
-          href="/kontakt"
+          href={`${base}/kontakt`}
           class="inline-flex items-center gap-2 bg-primary text-white font-semibold px-8 py-4 rounded-full hover:bg-primary-light transition-colors"
         >
           Termin vereinbaren

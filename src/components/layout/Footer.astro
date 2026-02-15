@@ -1,5 +1,5 @@
 ---
-
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <footer class="bg-primary text-white py-20">
@@ -51,19 +51,19 @@
           <li>
             <a
               class="hover:text-white transition-colors"
-              href="/impressum">Impressum</a
+              href={`${base}/impressum`}>Impressum</a
             >
           </li>
           <li>
             <a
               class="hover:text-white transition-colors"
-              href="/datenschutz">Datenschutz</a
+              href={`${base}/datenschutz`}>Datenschutz</a
             >
           </li>
           <li>
             <a
               class="hover:text-white transition-colors"
-              href="/haftungsausschluss">Haftungsausschluss</a
+              href={`${base}/haftungsausschluss`}>Haftungsausschluss</a
             >
           </li>
         </ul>
@@ -74,22 +74,22 @@
         <h6 class="font-bold mb-6 text-lg">Leistungen</h6>
         <ul class="space-y-4 text-white/70">
           <li>
-            <a class="hover:text-white transition-colors" href="/leistungen#gruenschnitt"
+            <a class="hover:text-white transition-colors" href={`${base}/leistungen#gruenschnitt`}
               >Grünschnitt</a
             >
           </li>
           <li>
-            <a class="hover:text-white transition-colors" href="/leistungen#jahrespflege"
+            <a class="hover:text-white transition-colors" href={`${base}/leistungen#jahrespflege`}
               >Jahrespflege</a
             >
           </li>
           <li>
-            <a class="hover:text-white transition-colors" href="/leistungen#rueckschnitt"
+            <a class="hover:text-white transition-colors" href={`${base}/leistungen#rueckschnitt`}
               >Rückschnitt</a
             >
           </li>
           <li>
-            <a class="hover:text-white transition-colors" href="/leistungen#beischnitt"
+            <a class="hover:text-white transition-colors" href={`${base}/leistungen#beischnitt`}
               >Beischnitt</a
             >
           </li>

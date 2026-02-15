@@ -1,5 +1,5 @@
 ---
-
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <section class="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden">
@@ -26,7 +26,7 @@
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
       <a
-        href="/kontakt"
+        href={`${base}/kontakt`}
         class="inline-flex items-center gap-2 bg-white text-primary font-semibold px-8 py-4 rounded-full hover:bg-white/90 transition-colors"
       >
         Jetzt Anfrage senden
@@ -34,7 +34,7 @@
       </a>
 
       <a
-        href="/leistungen"
+        href={`${base}/leistungen`}
         class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/30 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/20 transition-colors"
       >
         Unsere Leistungen
