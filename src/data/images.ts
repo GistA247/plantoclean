@@ -97,7 +97,28 @@ export const serviceImages: Record<ServiceKey, ServiceImages> = {
         },
       },
     },
-    gallery: [],
+    gallery: [
+      {
+        before: {
+          url: "https://images.unsplash.com/photo-1703432043433-3bb86c844968?w=800&q=80",
+          alt: { de: "Ungepflegter Rasen – Beispiel 2", en: "Unmaintained lawn – Example 2" },
+        },
+        after: {
+          url: "https://images.unsplash.com/photo-1756428785435-c3a6b74147d7?w=800&q=80",
+          alt: { de: "Gepflegter Rasen – Beispiel 2", en: "Maintained lawn – Example 2" },
+        },
+      },
+      {
+        before: {
+          url: "https://images.unsplash.com/photo-1703432043433-3bb86c844968?w=800&q=80",
+          alt: { de: "Ungepflegter Rasen – Beispiel 3", en: "Unmaintained lawn – Example 3" },
+        },
+        after: {
+          url: "https://images.unsplash.com/photo-1756428785435-c3a6b74147d7?w=800&q=80",
+          alt: { de: "Gepflegter Rasen – Beispiel 3", en: "Maintained lawn – Example 3" },
+        },
+      },
+    ],
   },
 
   jahrespflege: {
