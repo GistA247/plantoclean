@@ -1,5 +1,11 @@
 ---
+import { type Locale, t } from "../i18n";
 
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "de" } = Astro.props;
 ---
 
 <a
@@ -7,7 +13,7 @@
   target="_blank"
   rel="noopener noreferrer"
   class="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group"
-  aria-label="Per WhatsApp kontaktieren"
+  aria-label={t(locale, "whatsapp.ariaLabel")}
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +29,6 @@
   <span
     class="absolute right-full mr-4 bg-white text-primary px-4 py-2 rounded-lg text-sm font-bold shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
   >
-    Haben Sie Fragen?
+    {t(locale, "whatsapp.tooltip")}
   </span>
 </a>

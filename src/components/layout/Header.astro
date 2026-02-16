@@ -1,10 +1,21 @@
 ---
+import { type Locale, t } from "../../i18n";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "de" } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 const navLinks = [
-  { href: `${base}/`, label: "Startseite" },
-  { href: `${base}/leistungen`, label: "Leistungen" },
-  { href: `${base}/kontakt`, label: "Kontakt" },
+  { href: `${base}${locale === "en" ? "/en/" : "/"}`, label: t(locale, "nav.home") },
+  { href: `${base}${locale === "en" ? "/en/services" : "/leistungen"}`, label: t(locale, "nav.services") },
+  { href: `${base}${locale === "en" ? "/en/contact" : "/kontakt"}`, label: t(locale, "nav.contact") },
 ];
+
+const ctaHref = `${base}${locale === "en" ? "/en/contact" : "/kontakt"}`;
 ---
 
 <nav
@@ -12,7 +23,7 @@ const navLinks = [
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
-      <a href={`${base}/`} class="flex items-center gap-2">
+      <a href={navLinks[0].href} class="flex items-center gap-2">
         <div
           class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center"
         >
@@ -35,18 +46,19 @@ const navLinks = [
           ))
         }
         <a
-          href={`${base}/kontakt`}
+          href={ctaHref}
           class="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-primary/90 transition-all shadow-md"
         >
-          Anfrage senden
+          {t(locale, "nav.cta")}
         </a>
+        <LanguageSwitcher locale={locale} />
       </div>
 
       <!-- Mobile Menu Button -->
       <button
         id="mobile-menu-btn"
         class="md:hidden p-2"
-        aria-label="Menü öffnen"
+        aria-label={t(locale, "nav.menuOpen")}
       >
         <span class="material-icons text-primary text-3xl">menu</span>
       </button>
@@ -71,11 +83,12 @@ const navLinks = [
         ))
       }
       <a
-        href={`${base}/kontakt`}
+        href={ctaHref}
         class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all shadow-md text-lg"
       >
-        Anfrage senden
+        {t(locale, "nav.cta")}
       </a>
+      <LanguageSwitcher locale={locale} />
     </div>
   </div>
 </nav>

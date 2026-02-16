@@ -1,19 +1,28 @@
 ---
+import { type Locale, t } from "../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "de" } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const servicesHref = `${base}${locale === "en" ? "/en/services" : "/leistungen"}`;
+
 const services = [
   {
-    title: "Gartenpflege",
-    subtitle: "Rasenpflege, Heckenschnitt & Beete",
+    title: t(locale, "services.card1.title"),
+    subtitle: t(locale, "services.card1.subtitle"),
     image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80",
   },
   {
-    title: "Gewerbeservice",
-    subtitle: "Regelmäßige Instandhaltung für Firmen",
+    title: t(locale, "services.card2.title"),
+    subtitle: t(locale, "services.card2.subtitle"),
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
   },
   {
-    title: "Gartenplanung",
-    subtitle: "Neugestaltung & Konzepte",
+    title: t(locale, "services.card3.title"),
+    subtitle: t(locale, "services.card3.subtitle"),
     image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80",
   },
 ];
@@ -24,16 +33,16 @@ const services = [
     <!-- Section Header -->
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold text-anthracite mb-4">
-        Professionelle Lösungen für Ihr Grün
+        {t(locale, "services.headline")}
       </h2>
       <p class="text-anthracite/70 max-w-2xl mx-auto leading-relaxed mb-6">
-        Ob privater Hausgarten oder gewerbliche Grünanlagen – wir sorgen dafür, dass Ihr Außenbereich stets den besten Eindruck hinterlässt.
+        {t(locale, "services.subtitle")}
       </p>
       <a
-        href={`${base}/leistungen`}
+        href={servicesHref}
         class="inline-flex items-center gap-1 text-primary font-semibold hover:text-primary-light transition-colors"
       >
-        Alle Leistungen ansehen
+        {t(locale, "services.linkText")}
         <span class="material-icons text-lg">arrow_forward</span>
       </a>
     </div>

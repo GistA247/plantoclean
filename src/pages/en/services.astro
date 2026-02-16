@@ -1,0 +1,284 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BeforeAfterSlider from "../../components/BeforeAfterSlider.tsx";
+import CTABanner from "../../components/sections/CTABanner.astro";
+const locale = "en";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<BaseLayout
+  title="Our Services – Mowing, Pruning & More | Plantoclean"
+  description="Professional garden and landscape care in NRW: mowing, year-round maintenance, pruning and trimming."
+  locale={locale}
+>
+  <!-- Intro Section -->
+  <section class="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-anthracite mb-6">
+        Our Services
+      </h1>
+      <p class="text-lg md:text-xl text-anthracite/70 max-w-3xl mx-auto leading-relaxed">
+        Professional garden and landscape care in North Rhine-Westphalia. We transform overgrown green spaces into well-maintained oases – with precision, passion and modern technology.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Sections -->
+  <div class="max-w-7xl mx-auto px-6 pb-24 space-y-32">
+
+    <!-- Service 1: Mowing & Lawn Care (text left, image right) -->
+    <section id="gruenschnitt" class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center scroll-mt-24">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-icons text-primary text-xl">grass</span>
+          <span class="text-primary text-sm font-semibold uppercase tracking-wider">Mowing & Lawn Care</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-anthracite mb-6">
+          Perfect Lawns for Every Area
+        </h2>
+        <p class="text-anthracite/70 leading-relaxed mb-8">
+          A well-maintained lawn is the calling card of any property. Whether private gardens, commercial green spaces or public facilities – we ensure an even, lush green with professional equipment and a trained eye. From regular mowing to soil improvement, we offer you the complete service.
+        </p>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Regular lawn mowing & edge maintenance</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Scarifying and overseeding for soil improvement</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Professional disposal of green waste</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <BeforeAfterSlider
+          client:visible
+          afterImage="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&q=80"
+          beforeImage="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80"
+          afterAlt="Well-maintained lawn after mowing"
+          beforeAlt="Overgrown area before mowing"
+          beforeLabel="Before"
+          afterLabel="After"
+        />
+      </div>
+    </section>
+
+    <!-- Service 2: Year-Round Care (image left, text right) -->
+    <section id="jahrespflege" class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center scroll-mt-24">
+      <div class="order-2 lg:order-1">
+        <BeforeAfterSlider
+          client:visible
+          afterImage="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80"
+          beforeImage="https://images.unsplash.com/photo-1509813685-e7144e4ded09?w=800&q=80"
+          afterAlt="Garden after professional year-round care"
+          beforeAlt="Neglected garden before year-round care"
+          beforeLabel="Before"
+          afterLabel="After"
+        />
+      </div>
+      <div class="order-1 lg:order-2">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-icons text-primary text-xl">calendar_today</span>
+          <span class="text-primary text-sm font-semibold uppercase tracking-wider">Year-Round Care</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-anthracite mb-6">
+          Carefree Through All Seasons
+        </h2>
+        <p class="text-anthracite/70 leading-relaxed mb-8">
+          With our year-round care, you don't have to worry about anything. We create an individual care plan that covers all seasonal work – from spring preparation to winter protection. This way, your outdoor area stays in top form all year round.
+        </p>
+
+        <!-- Season Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-icons text-accent text-lg">wb_sunny</span>
+              <h3 class="font-semibold text-anthracite text-sm">Spring / Summer</h3>
+            </div>
+            <p class="text-anthracite/60 text-sm leading-relaxed">
+              Lawn care, bed work, hedge and shrub trimming, irrigation and fertilization.
+            </p>
+          </div>
+          <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-icons text-accent text-lg">ac_unit</span>
+              <h3 class="font-semibold text-anthracite text-sm">Autumn / Winter</h3>
+            </div>
+            <p class="text-anthracite/60 text-sm leading-relaxed">
+              Leaf removal, pruning, winter protection for sensitive plants and frost prevention.
+            </p>
+          </div>
+        </div>
+
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Fixed calculable monthly flat rates</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Automatic scheduling without effort</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Service 3: Pruning (text left, image right) -->
+    <section id="rueckschnitt" class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center scroll-mt-24">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-icons text-primary text-xl">content_cut</span>
+          <span class="text-primary text-sm font-semibold uppercase tracking-wider">Tree & Shrub Pruning</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-anthracite mb-6">
+          Healthy Growth Through Expertise
+        </h2>
+        <p class="text-anthracite/70 leading-relaxed mb-8">
+          Professional pruning promotes the vitality of your trees and shrubs and protects against uncontrolled growth. Our trained staff know the optimal pruning times and techniques for every type of woody plant – for healthy growth and an attractive shape.
+        </p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Fruit tree pruning for productive harvests</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Safety cuts when there is a risk of breakage</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Removal of deadwood and disease sources</span>
+          </li>
+        </ul>
+        <a
+          href={`${base}/en/contact`}
+          class="inline-flex items-center gap-2 bg-primary text-white font-semibold px-8 py-4 rounded-full hover:bg-primary-light transition-colors"
+        >
+          Schedule an Appointment
+          <span class="material-icons text-xl">arrow_forward</span>
+        </a>
+      </div>
+      <div>
+        <BeforeAfterSlider
+          client:visible
+          afterImage="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=800&q=80"
+          beforeImage="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&q=80"
+          afterAlt="Trees after professional pruning"
+          beforeAlt="Overgrown trees before pruning"
+          beforeLabel="Before"
+          afterLabel="After"
+        />
+      </div>
+    </section>
+
+    <!-- Service 4: Trimming (image left, text right) -->
+    <section id="beischnitt" class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center scroll-mt-24">
+      <div class="order-2 lg:order-1">
+        <BeforeAfterSlider
+          client:visible
+          afterImage="https://images.unsplash.com/photo-1598902108854-d1446397a0ef?w=800&q=80"
+          beforeImage="https://images.unsplash.com/photo-1590502593747-42a996133562?w=800&q=80"
+          afterAlt="Hedge after precise topiary trimming"
+          beforeAlt="Untrimmed hedge before trimming"
+          beforeLabel="Before"
+          afterLabel="After"
+        />
+      </div>
+      <div class="order-1 lg:order-2">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-icons text-primary text-xl">architecture</span>
+          <span class="text-primary text-sm font-semibold uppercase tracking-wider">Topiary & Trimming</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-anthracite mb-6">
+          Aesthetics in Green Form
+        </h2>
+        <p class="text-anthracite/70 leading-relaxed mb-8">
+          Topiary gives your garden structure and a well-maintained character. Whether classically trimmed hedges, architectural boxwood shapes or natural contours – we implement your ideas with the highest precision and simultaneously promote dense, healthy growth.
+        </p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Precise hedge and boxwood trimming</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Design cuts according to architectural specifications</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-icons text-primary text-xl mt-0.5">check_circle</span>
+            <span class="text-anthracite/80">Promoting dense growth through corrective pruning</span>
+          </li>
+        </ul>
+        <div class="inline-flex items-center gap-2 bg-accent/10 text-accent px-5 py-3 rounded-full border border-accent/20">
+          <span class="material-icons text-lg">workspace_premium</span>
+          <span class="text-sm font-semibold">100% Satisfaction Guarantee for all NRW clients</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FAQ Section -->
+  <section class="py-20 px-6 bg-neutral-green">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-anthracite">
+          Frequently Asked Questions
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <details class="group bg-white border border-slate-200 rounded-xl">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-anthracite">
+            <span>In which areas of NRW do we operate?</span>
+            <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="px-6 pb-5 text-anthracite/70 leading-relaxed">
+            We operate throughout North Rhine-Westphalia – from the Ruhr area through the Rhineland to the Bergisches Land region. Whether Düsseldorf, Cologne, Essen, Dortmund or rural areas: we come to you and ensure well-maintained green spaces. Simply contact us to check if we are also available in your region.
+          </div>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="group bg-white border border-slate-200 rounded-xl">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-anthracite">
+            <span>When is the ideal time for hedge trimming?</span>
+            <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="px-6 pb-5 text-anthracite/70 leading-relaxed">
+            We recommend topiary trimming of hedges ideally between June and August, when plants are in full growth. More significant pruning should be carried out between October and February, as during this time no birds are nesting in the hedges and the plants are in their dormant phase. We are happy to advise you on the optimal timing for your specific woody plants.
+          </div>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="group bg-white border border-slate-200 rounded-xl">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-anthracite">
+            <span>Do we also handle the disposal of green waste?</span>
+            <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="px-6 pb-5 text-anthracite/70 leading-relaxed">
+            Yes, of course! The professional and ecological disposal of all green waste is included in our service. We work with certified disposal companies and ensure that your property is left clean and tidy after the work is done.
+          </div>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="group bg-white border border-slate-200 rounded-xl">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-anthracite">
+            <span>Do we offer long-term maintenance contracts for year-round care?</span>
+            <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="px-6 pb-5 text-anthracite/70 leading-relaxed">
+            Yes, we offer individually tailored maintenance contracts that are precisely aligned to the needs of your property. You benefit from fixed calculable monthly costs, automatic scheduling and the assurance that your outdoor area is professionally maintained all year round. Contact us – we will be happy to create a customized offer for you.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner locale={locale} />
+</BaseLayout>

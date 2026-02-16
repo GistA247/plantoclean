@@ -9,7 +9,12 @@ interface FormData {
   privacy: boolean;
 }
 
-export default function ContactForm({ base = "" }: { base?: string }) {
+interface ContactFormProps {
+  base?: string;
+  labels?: Record<string, string>;
+}
+
+export default function ContactForm({ base = "", labels = {} }: ContactFormProps) {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -18,6 +23,8 @@ export default function ContactForm({ base = "" }: { base?: string }) {
     message: "",
     privacy: false,
   });
+
+  const l = (key: string, fallback: string) => labels[key] || fallback;
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -39,13 +46,15 @@ export default function ContactForm({ base = "" }: { base?: string }) {
   const inputClasses =
     "w-full border border-slate-200 rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition text-base bg-white";
 
+  const privacyHref = `${base}${labels["_privacyPath"] || "/datenschutz"}`;
+
   return (
     <form action="#" method="POST" onSubmit={handleSubmit} className="space-y-6">
       {/* Row 1: Name + Email */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="name" className="text-sm font-medium text-slate-700 mb-2 block">
-            Vollständiger Name
+            {l("form.name.label", "Vollständiger Name")}
           </label>
           <input
             type="text"
@@ -55,12 +64,12 @@ export default function ContactForm({ base = "" }: { base?: string }) {
             value={formData.name}
             onChange={handleChange}
             className={inputClasses}
-            placeholder="Max Mustermann"
+            placeholder={l("form.name.placeholder", "Max Mustermann")}
           />
         </div>
         <div>
           <label htmlFor="email" className="text-sm font-medium text-slate-700 mb-2 block">
-            E-Mail Adresse
+            {l("form.email.label", "E-Mail Adresse")}
           </label>
           <input
             type="email"
@@ -70,7 +79,7 @@ export default function ContactForm({ base = "" }: { base?: string }) {
             value={formData.email}
             onChange={handleChange}
             className={inputClasses}
-            placeholder="max@beispiel.de"
+            placeholder={l("form.email.placeholder", "max@beispiel.de")}
           />
         </div>
       </div>
@@ -79,7 +88,7 @@ export default function ContactForm({ base = "" }: { base?: string }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="phone" className="text-sm font-medium text-slate-700 mb-2 block">
-            Telefonnummer (optional)
+            {l("form.phone.label", "Telefonnummer (optional)")}
           </label>
           <input
             type="tel"
@@ -88,12 +97,12 @@ export default function ContactForm({ base = "" }: { base?: string }) {
             value={formData.phone}
             onChange={handleChange}
             className={inputClasses}
-            placeholder="+49 123 456 789"
+            placeholder={l("form.phone.placeholder", "+49 123 456 789")}
           />
         </div>
         <div>
           <label htmlFor="subject" className="text-sm font-medium text-slate-700 mb-2 block">
-            Betreff / Leistung
+            {l("form.subject.label", "Betreff / Leistung")}
           </label>
           <select
             id="subject"
@@ -103,12 +112,12 @@ export default function ContactForm({ base = "" }: { base?: string }) {
             onChange={handleChange}
             className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2364748b%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-[length:1.25rem] bg-[right_0.75rem_center] bg-no-repeat pr-10`}
           >
-            <option value="">Bitte auswählen...</option>
-            <option value="gruenschnitt">Grünschnitt</option>
-            <option value="jahrespflege">Jahrespflege</option>
-            <option value="rueckschnitt">Rückschnitt</option>
-            <option value="beischnitt">Beischnitt</option>
-            <option value="sonstiges">Sonstiges</option>
+            <option value="">{l("form.subject.placeholder", "Bitte auswählen...")}</option>
+            <option value="gruenschnitt">{l("form.subject.gruenschnitt", "Grünschnitt")}</option>
+            <option value="jahrespflege">{l("form.subject.jahrespflege", "Jahrespflege")}</option>
+            <option value="rueckschnitt">{l("form.subject.rueckschnitt", "Rückschnitt")}</option>
+            <option value="beischnitt">{l("form.subject.beischnitt", "Beischnitt")}</option>
+            <option value="sonstiges">{l("form.subject.other", "Sonstiges")}</option>
           </select>
         </div>
       </div>
@@ -116,7 +125,7 @@ export default function ContactForm({ base = "" }: { base?: string }) {
       {/* Row 3: Message */}
       <div>
         <label htmlFor="message" className="text-sm font-medium text-slate-700 mb-2 block">
-          Ihre Nachricht
+          {l("form.message.label", "Ihre Nachricht")}
         </label>
         <textarea
           id="message"
@@ -126,7 +135,7 @@ export default function ContactForm({ base = "" }: { base?: string }) {
           value={formData.message}
           onChange={handleChange}
           className={`${inputClasses} resize-vertical`}
-          placeholder="Beschreiben Sie kurz Ihr Projekt oder Ihre Wünsche..."
+          placeholder={l("form.message.placeholder", "Beschreiben Sie kurz Ihr Projekt oder Ihre Wünsche...")}
         />
       </div>
 
@@ -142,14 +151,12 @@ export default function ContactForm({ base = "" }: { base?: string }) {
           className="mt-1 h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/20 accent-[#2d5016] shrink-0"
         />
         <label htmlFor="privacy" className="text-sm text-slate-600 leading-relaxed">
-          Ich stimme zu, dass meine Angaben zur Kontaktaufnahme und für
-          Rückfragen gespeichert werden. Weitere Informationen finden Sie in
-          der{" "}
+          {l("form.privacy.text", "Ich stimme zu, dass meine Angaben zur Kontaktaufnahme und für Rückfragen gespeichert werden. Weitere Informationen finden Sie in der")}{" "}
           <a
-            href={`${base}/datenschutz`}
+            href={privacyHref}
             className="text-primary underline hover:text-primary/80 transition-colors"
           >
-            Datenschutzerklärung
+            {l("form.privacy.link", "Datenschutzerklärung")}
           </a>
           .
         </label>
@@ -162,7 +169,7 @@ export default function ContactForm({ base = "" }: { base?: string }) {
           className="w-full sm:w-auto bg-primary text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-primary/90 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 text-base cursor-pointer"
         >
           <span className="material-icons text-[20px]">send</span>
-          Anfrage absenden
+          {l("form.submit", "Anfrage absenden")}
         </button>
       </div>
     </form>

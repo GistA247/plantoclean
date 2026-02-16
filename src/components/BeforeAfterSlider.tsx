@@ -5,6 +5,8 @@ interface BeforeAfterSliderProps {
   afterImage: string;
   beforeAlt: string;
   afterAlt: string;
+  beforeLabel?: string;
+  afterLabel?: string;
 }
 
 export default function BeforeAfterSlider({
@@ -12,6 +14,8 @@ export default function BeforeAfterSlider({
   afterImage,
   beforeAlt,
   afterAlt,
+  beforeLabel = "Vorher",
+  afterLabel = "Nachher",
 }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -125,14 +129,14 @@ export default function BeforeAfterSlider({
         </div>
       </div>
 
-      {/* Vorher Label (top-left) */}
+      {/* Before Label (top-left) */}
       <span className="absolute top-4 left-4 z-10 bg-black/50 text-white text-xs px-3 py-1 rounded-full uppercase tracking-widest">
-        Vorher
+        {beforeLabel}
       </span>
 
-      {/* Nachher Label (top-right) */}
+      {/* After Label (top-right) */}
       <span className="absolute top-4 right-4 z-10 bg-[#2d5016]/80 text-white text-xs px-3 py-1 rounded-full uppercase tracking-widest">
-        Nachher
+        {afterLabel}
       </span>
     </div>
   );

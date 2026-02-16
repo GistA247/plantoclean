@@ -1,21 +1,29 @@
 ---
+import { type Locale, t } from "../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "de" } = Astro.props;
+
 const testimonials = [
   {
-    quote: "Herausragender Service und sehr zuverlässig. Unser Garten sah noch nie so gepflegt aus.",
-    name: "M. Schneider",
-    role: "Privatkunde",
+    quote: t(locale, "testimonials.1.quote"),
+    name: t(locale, "testimonials.1.name"),
+    role: t(locale, "testimonials.1.role"),
     icon: "person",
   },
   {
-    quote: "Als Immobilienverwaltung schätzen wir die unkomplizierte Kommunikation und die schnelle Umsetzung bei unseren gewerblichen Objekten in ganz NRW.",
-    name: "T. Weber",
-    role: "Gewerbekunde",
+    quote: t(locale, "testimonials.2.quote"),
+    name: t(locale, "testimonials.2.name"),
+    role: t(locale, "testimonials.2.role"),
     icon: "business",
   },
   {
-    quote: "Von der ersten Planung bis zur fertigen Neuanlage unseres Gartens hat alles reibungslos funktioniert. Plantoclean ist absolut empfehlenswert!",
-    name: "S. Fischer",
-    role: "Privatkunde",
+    quote: t(locale, "testimonials.3.quote"),
+    name: t(locale, "testimonials.3.name"),
+    role: t(locale, "testimonials.3.role"),
     icon: "person",
   },
 ];
@@ -25,9 +33,9 @@ const testimonials = [
   <div class="max-w-6xl mx-auto">
     <!-- Section Header -->
     <div class="text-center mb-16">
-      <span class="text-accent uppercase tracking-widest text-sm font-semibold">Kundenstimmen</span>
+      <span class="text-accent uppercase tracking-widest text-sm font-semibold">{t(locale, "testimonials.label")}</span>
       <h2 class="text-3xl md:text-4xl font-bold text-anthracite mt-3">
-        Was unsere Kunden sagen
+        {t(locale, "testimonials.headline")}
       </h2>
     </div>
 
@@ -63,7 +71,7 @@ const testimonials = [
 
     <!-- Placeholder Note -->
     <p class="text-center text-primary/40 italic text-sm mt-10">
-      Wird durch echte Kundenstimmen ersetzt
+      {t(locale, "testimonials.placeholder")}
     </p>
   </div>
 </section>

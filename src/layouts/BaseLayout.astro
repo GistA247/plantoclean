@@ -3,25 +3,35 @@ import "../styles/global.css";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
+import { type Locale, getLocaleFromUrl, getLocalizedPath } from "../i18n";
 
 interface Props {
   title: string;
   description?: string;
   noindex?: boolean;
   showWhatsApp?: boolean;
+  locale?: Locale;
 }
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const detectedLocale = getLocaleFromUrl(Astro.url);
+
 const {
   title,
   description = "Plantoclean bietet professionellen Grünschnitt, Jahrespflege, Rückschnitt und Beischnitt in NRW. Flexibel, erfahren und unkompliziert.",
   noindex = false,
   showWhatsApp = true,
+  locale = detectedLocale,
 } = Astro.props;
+
+const currentPath = Astro.url.pathname.replace(base, "") || "/";
+const dePath = `${base}${getLocalizedPath(currentPath, "de")}`;
+const enPath = `${base}${getLocalizedPath(currentPath, "en")}`;
+const site = "https://gista247.github.io";
 ---
 
 <!doctype html>
-<html lang="de" class="scroll-smooth">
+<html lang={locale === "en" ? "en" : "de"} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,17 +43,20 @@ const {
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
+    <link rel="alternate" hreflang="de" href={`${site}${dePath}`} />
+    <link rel="alternate" hreflang="en" href={`${site}${enPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${site}${dePath}`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale" content={locale === "en" ? "en_US" : "de_DE"} />
   </head>
   <body class="font-[Inter] bg-background-light text-anthracite antialiased">
-    <Header />
+    <Header locale={locale} />
     <main>
       <slot />
     </main>
-    <Footer />
-    {showWhatsApp && <WhatsAppButton />}
+    <Footer locale={locale} />
+    {showWhatsApp && <WhatsAppButton locale={locale} />}
   </body>
 </html>

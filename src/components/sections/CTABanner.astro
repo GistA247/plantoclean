@@ -1,9 +1,18 @@
 ---
+import { type Locale, t } from "../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "de" } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const contactHref = `${base}${locale === "en" ? "/en/contact" : "/kontakt"}`;
+
 const trustBadges = [
-  { icon: "verified", label: "Zertifizierter Betrieb" },
-  { icon: "map", label: "Einsatzgebiet ganz NRW" },
-  { icon: "recycling", label: "Nachhaltige Entsorgung" },
+  { icon: "verified", label: t(locale, "cta.badge1") },
+  { icon: "map", label: t(locale, "cta.badge2") },
+  { icon: "recycling", label: t(locale, "cta.badge3") },
 ];
 ---
 
@@ -14,30 +23,30 @@ const trustBadges = [
   <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
     <!-- Title -->
     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-      Bereit für einen Neuanfang in Ihrem Garten?
+      {t(locale, "cta.headline")}
     </h2>
 
     <!-- Subtitle -->
     <p class="text-white/80 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-      Kontaktieren Sie uns für ein kostenloses Erstgespräch und ein unverbindliches Angebot.
+      {t(locale, "cta.subtitle")}
     </p>
 
     <!-- CTA Buttons -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
       <a
-        href={`${base}/kontakt`}
+        href={contactHref}
         class="inline-flex items-center gap-2 bg-white text-primary font-semibold px-8 py-4 rounded-full hover:bg-white/90 transition-colors"
       >
-        Jetzt Angebot anfordern
+        {t(locale, "cta.primary")}
         <span class="material-icons text-xl">arrow_forward</span>
       </a>
 
       <a
-        href={`${base}/kontakt`}
+        href={contactHref}
         class="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-colors"
       >
         <span class="material-icons text-xl">phone</span>
-        Rückruf vereinbaren
+        {t(locale, "cta.secondary")}
       </a>
     </div>
 

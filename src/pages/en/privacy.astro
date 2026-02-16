@@ -1,0 +1,274 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const locale = "en";
+---
+
+<BaseLayout
+  title="Privacy Policy – Plantoclean"
+  description="Privacy policy for Plantoclean in accordance with the GDPR."
+  locale={locale}
+>
+  <!-- Page Title Section -->
+  <section class="bg-white py-12 border-b border-primary/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <nav class="flex mb-4 text-sm text-slate-500 space-x-2">
+            <a class="hover:text-primary transition-colors" href={`${base}/en/`}>Home</a>
+            <span>/</span>
+            <span class="text-primary font-medium">Privacy Policy</span>
+          </nav>
+          <h1 class="text-4xl md:text-5xl font-extrabold text-anthracite tracking-tight">
+            Privacy Policy
+          </h1>
+          <p class="mt-4 text-lg text-slate-600 max-w-2xl leading-relaxed">
+            We take the protection of your personal data very seriously. Here
+            you will learn how we handle your data and what rights you have
+            under the GDPR.
+          </p>
+        </div>
+        <div class="text-sm text-slate-500 bg-neutral-green px-4 py-2 rounded-lg">
+          Last updated: February 15, 2026
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col lg:flex-row gap-12">
+      <!-- Sidebar Navigation -->
+      <aside class="lg:w-1/4 no-print">
+        <div class="sticky top-32 space-y-1">
+          <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4 px-4">
+            Table of Contents
+          </h3>
+          <a class="block px-4 py-2.5 rounded-r-lg hover:bg-primary/5 transition-all text-sm font-medium border-l-2 border-transparent hover:border-primary" href="#controller">1. Data Controller</a>
+          <a class="block px-4 py-2.5 rounded-r-lg hover:bg-primary/5 transition-all text-sm font-medium border-l-2 border-transparent hover:border-primary" href="#general">2. General Information</a>
+          <a class="block px-4 py-2.5 rounded-r-lg hover:bg-primary/5 transition-all text-sm font-medium border-l-2 border-transparent hover:border-primary" href="#hosting">3. Hosting</a>
+          <a class="block px-4 py-2.5 rounded-r-lg hover:bg-primary/5 transition-all text-sm font-medium border-l-2 border-transparent hover:border-primary" href="#contact">4. Contact Form &amp; WhatsApp</a>
+          <a class="block px-4 py-2.5 rounded-r-lg hover:bg-primary/5 transition-all text-sm font-medium border-l-2 border-transparent hover:border-primary" href="#tools">5. Plugins &amp; Tools</a>
+          <a class="block px-4 py-2.5 rounded-r-lg hover:bg-primary/5 transition-all text-sm font-medium border-l-2 border-transparent hover:border-primary" href="#rights">6. Your Rights</a>
+
+          <div class="mt-8 p-6 bg-primary/10 rounded-xl border border-primary/20">
+            <span class="material-icons text-primary mb-2">security</span>
+            <h4 class="font-bold text-anthracite mb-2">Secure Data Transfer</h4>
+            <p class="text-xs leading-relaxed text-slate-600">
+              This website uses SSL/TLS encryption for security purposes.
+            </p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Legal Text Sections -->
+      <div class="lg:w-3/4 space-y-16">
+        <!-- 1. Data Controller -->
+        <section class="scroll-mt-32" id="controller">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+            <span class="w-8 h-8 flex items-center justify-center bg-primary text-white text-sm rounded-full">1</span>
+            Data Controller
+          </h2>
+          <div class="bg-white p-8 rounded-xl border-l-4 border-primary shadow-sm">
+            <h3 class="font-bold text-lg mb-4">
+              Plantoclean Garden &amp; Landscape Care
+            </h3>
+            <div class="grid md:grid-cols-2 gap-8 text-slate-700">
+              <div>
+                <p class="font-semibold text-xs uppercase text-slate-400 mb-1">Address</p>
+                <p>Werther Straße 30</p>
+                <p>41540 Dormagen</p>
+                <p>Germany</p>
+              </div>
+              <div>
+                <p class="font-semibold text-xs uppercase text-slate-400 mb-1">Contact</p>
+                <p>Phone: 02133-215181</p>
+                <p>Email: info@plantoclean.de</p>
+                <p>Web: www.plantoclean.de</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. General Information -->
+        <section class="scroll-mt-32" id="general">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+            <span class="w-8 h-8 flex items-center justify-center bg-primary text-white text-sm rounded-full">2</span>
+            General Information &amp; Mandatory Disclosures
+          </h2>
+          <div class="space-y-4 text-slate-700 leading-relaxed">
+            <p>
+              The operators of this website take the protection of your personal
+              data very seriously. We treat your personal data confidentially
+              and in accordance with data protection legislation and this
+              privacy policy.
+            </p>
+            <p>
+              When you use this website, various personal data is collected.
+              Personal data is data that can be used to personally identify you.
+              This privacy policy explains what data we collect and what we use
+              it for. It also explains how and for what purpose this is done.
+            </p>
+            <p>
+              We would like to point out that data transmission over the
+              Internet (e.g. when communicating by email) may have security
+              vulnerabilities. Complete protection of data against access by
+              third parties is not possible.
+            </p>
+          </div>
+        </section>
+
+        <!-- 3. Hosting -->
+        <section class="scroll-mt-32" id="hosting">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+            <span class="w-8 h-8 flex items-center justify-center bg-primary text-white text-sm rounded-full">3</span>
+            Hosting
+          </h2>
+          <div class="space-y-4 text-slate-700">
+            <p>We host the content of our website with the following provider:</p>
+            <div class="bg-neutral-green p-6 rounded-lg">
+              <h4 class="font-bold mb-2">External Hosting</h4>
+              <p class="text-sm">
+                This website is hosted externally. The personal data collected
+                on this website is stored on the servers of the host. This may
+                include, but is not limited to, IP addresses, contact requests,
+                meta and communication data, website access data, and other
+                data generated through a website.
+              </p>
+            </div>
+            <p class="text-sm italic">
+              Legal basis: External hosting is carried out for the purpose of
+              fulfilling contracts with our potential and existing customers
+              (Art. 6 para. 1 lit. b GDPR) and in the interest of a secure,
+              fast, and efficient provision of our online services by a
+              professional provider (Art. 6 para. 1 lit. f GDPR).
+            </p>
+          </div>
+        </section>
+
+        <!-- 4. Contact Form & WhatsApp -->
+        <section class="scroll-mt-32" id="contact">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+            <span class="w-8 h-8 flex items-center justify-center bg-primary text-white text-sm rounded-full">4</span>
+            Contact Form &amp; WhatsApp Communication
+          </h2>
+          <div class="space-y-6">
+            <div class="border border-primary/10 rounded-xl p-6">
+              <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+                <span class="material-icons text-primary">mail</span>
+                Contact Form
+              </h3>
+              <p class="text-slate-700 text-sm leading-relaxed">
+                If you send us inquiries via the contact form, your details
+                from the inquiry form, including the contact data you provided
+                there, will be stored by us for the purpose of processing the
+                inquiry and in case of follow-up questions. We will not share
+                this data without your consent.
+              </p>
+            </div>
+            <div class="border border-primary/10 rounded-xl p-6">
+              <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+                <span class="material-icons text-green-500">chat</span>
+                WhatsApp Business
+              </h3>
+              <p class="text-slate-700 text-sm leading-relaxed mb-4">
+                For communication with our customers and prospective clients, we
+                use the instant messaging service WhatsApp, among others. The
+                provider is WhatsApp Ireland Limited, 4 Grand Canal Square,
+                Grand Canal Harbour, Dublin 2, Ireland.
+              </p>
+              <div class="bg-yellow-50 p-4 border-l-4 border-yellow-400 text-xs">
+                <strong>Note:</strong> Communication is end-to-end encrypted.
+                However, WhatsApp indicates that metadata (e.g. who
+                communicated with whom and when) may be collected.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Plugins & Tools -->
+        <section class="scroll-mt-32" id="tools">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+            <span class="w-8 h-8 flex items-center justify-center bg-primary text-white text-sm rounded-full">5</span>
+            Plugins and Tools
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="p-6 bg-white rounded-xl shadow-sm">
+              <h4 class="font-bold mb-2">Google Web Fonts</h4>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                This website uses locally hosted web fonts for consistent
+                display of typefaces. When a page is loaded, the font files are
+                loaded directly from our server. No connection to Google servers
+                is established.
+              </p>
+            </div>
+            <div class="p-6 bg-white rounded-xl shadow-sm">
+              <h4 class="font-bold mb-2">Material Icons</h4>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                We use Google Material Icons for icon display. When loading the
+                page, a connection to Google servers is established to load the
+                icon font.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. Your Rights -->
+        <section class="scroll-mt-32 pb-24" id="rights">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+            <span class="w-8 h-8 flex items-center justify-center bg-primary text-white text-sm rounded-full">6</span>
+            Your Rights (Data Subject Rights)
+          </h2>
+          <p class="mb-6 text-slate-700">
+            Under the applicable legal provisions, you have the following rights
+            at any time:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3 p-4 bg-primary/5 rounded-lg">
+              <span class="material-icons text-primary">info</span>
+              <div>
+                <h5 class="font-bold text-sm">Access</h5>
+                <p class="text-xs text-slate-500">
+                  Right to information about your stored data.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-4 bg-primary/5 rounded-lg">
+              <span class="material-icons text-primary">edit</span>
+              <div>
+                <h5 class="font-bold text-sm">Rectification</h5>
+                <p class="text-xs text-slate-500">
+                  Correction of inaccurate personal data.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-4 bg-primary/5 rounded-lg">
+              <span class="material-icons text-primary">delete</span>
+              <div>
+                <h5 class="font-bold text-sm">Erasure</h5>
+                <p class="text-xs text-slate-500">
+                  Right to be "forgotten" – deletion of your data.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-4 bg-primary/5 rounded-lg">
+              <span class="material-icons text-primary">block</span>
+              <div>
+                <h5 class="font-bold text-sm">Objection</h5>
+                <p class="text-xs text-slate-500">
+                  Right to object to data processing.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 text-sm text-slate-500">
+            <p>
+              Supervisory authority: State Commissioner for Data Protection and
+              Freedom of Information North Rhine-Westphalia (LDI NRW)
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,164 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const locale = "en";
+---
+
+<BaseLayout
+  title="Disclaimer – Plantoclean"
+  description="Disclaimer and legal notices for Plantoclean."
+  locale={locale}
+>
+  <!-- Main Content -->
+  <section class="min-h-screen py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <!-- Breadcrumbs -->
+      <nav class="no-print flex items-center gap-2 text-sm text-slate-500 mb-8">
+        <a class="hover:text-primary transition-colors" href={`${base}/en/`}>Home</a>
+        <span class="material-icons text-xs">chevron_right</span>
+        <span>Legal</span>
+        <span class="material-icons text-xs">chevron_right</span>
+        <span class="text-primary font-medium">Disclaimer</span>
+      </nav>
+
+      <!-- Title Section -->
+      <header class="mb-12 border-b border-slate-200 pb-8">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-anthracite mb-4">
+          Disclaimer
+        </h1>
+        <p class="text-lg text-slate-600">
+          Legal notices regarding the use of our website and services by Plantoclean.
+        </p>
+      </header>
+
+      <!-- Legal Content -->
+      <div class="space-y-12 text-slate-700 leading-relaxed">
+        <!-- Liability for Content -->
+        <section>
+          <h2 class="text-2xl font-bold text-anthracite mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-primary rounded-full"></span>
+            Liability for Content
+          </h2>
+          <p class="mb-4">
+            As a service provider, we are responsible for our own content on
+            these pages in accordance with general legislation pursuant to
+            § 7 para. 1 TMG (German Telemedia Act). However, according to
+            §§ 8 to 10 TMG, we as a service provider are not obligated to
+            monitor transmitted or stored third-party information, or to
+            investigate circumstances that indicate illegal activity.
+          </p>
+          <p>
+            Obligations to remove or block the use of information under general
+            law remain unaffected. However, liability in this regard is only
+            possible from the point in time at which a concrete infringement
+            becomes known. If we become aware of any such infringements, we
+            will remove this content immediately.
+          </p>
+        </section>
+
+        <!-- Liability for Links -->
+        <section>
+          <h2 class="text-2xl font-bold text-anthracite mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-primary rounded-full"></span>
+            Liability for Links
+          </h2>
+          <p class="mb-4">
+            Our website contains links to external websites of third parties
+            over whose content we have no influence. Therefore, we cannot
+            accept any liability for this third-party content. The respective
+            provider or operator of the pages is always responsible for the
+            content of the linked pages. The linked pages were checked for
+            possible legal violations at the time of linking. Illegal content
+            was not recognizable at the time of linking.
+          </p>
+          <p>
+            However, permanent monitoring of the content of the linked pages
+            is not reasonable without concrete evidence of a violation of law.
+            If we become aware of any infringements, we will remove such links
+            immediately.
+          </p>
+        </section>
+
+        <!-- Copyright -->
+        <section>
+          <h2 class="text-2xl font-bold text-anthracite mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-primary rounded-full"></span>
+            Copyright
+          </h2>
+          <p class="mb-4">
+            The content and works created by the site operators on these pages
+            are subject to German copyright law. Duplication, processing,
+            distribution, or any form of commercialisation of such material
+            beyond the scope of the copyright law requires the prior written
+            consent of its respective author or creator. Downloads and copies
+            of this site are only permitted for private, non-commercial use.
+          </p>
+          <p>
+            Insofar as the content on this site was not created by the
+            operator, the copyrights of third parties are respected. In
+            particular, third-party content is identified as such. Should you
+            nevertheless become aware of a copyright infringement, please
+            inform us accordingly. If we become aware of any infringements, we
+            will remove such content immediately.
+          </p>
+        </section>
+
+        <!-- Image Credits -->
+        <section class="bg-primary/5 p-8 rounded-xl border border-primary/10">
+          <h2 class="text-2xl font-bold text-anthracite mb-6 flex items-center gap-2">
+            <span class="material-icons">photo_camera</span>
+            Image Credits
+          </h2>
+          <div class="overflow-hidden">
+            <table class="w-full text-left text-sm">
+              <thead>
+                <tr class="border-b border-primary/20">
+                  <th class="py-3 font-semibold text-anthracite">Source / Author</th>
+                  <th class="py-3 font-semibold text-anthracite">Usage</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-primary/10">
+                <tr>
+                  <td class="py-4">Unsplash / Various Photographers</td>
+                  <td class="py-4">Placeholder images (Hero, Services)</td>
+                </tr>
+                <tr>
+                  <td class="py-4">Plantoclean / Own Photos</td>
+                  <td class="py-4">Project gallery, Team photos</td>
+                </tr>
+                <tr>
+                  <td class="py-4">Google / Material Icons</td>
+                  <td class="py-4">Icons and symbols</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- Legal Inquiry Banner -->
+      <div class="mt-16 p-6 border-l-4 border-primary bg-white shadow-sm rounded-r-xl">
+        <p class="text-sm font-medium text-primary uppercase tracking-wider mb-2">
+          Contact for Legal Questions
+        </p>
+        <p class="text-slate-700">
+          Do you have questions about our disclaimer or legal notices?
+          Contact us directly at
+          <a
+            class="text-primary font-bold hover:underline"
+            href="mailto:info@plantoclean.de">info@plantoclean.de</a>.
+        </p>
+      </div>
+
+      <div class="mt-12 text-center no-print">
+        <button
+          class="inline-flex items-center gap-2 px-6 py-3 border border-slate-200 rounded-full text-slate-600 hover:bg-primary hover:text-white hover:border-primary transition-all font-medium"
+          onclick="window.print()"
+        >
+          <span class="material-icons text-sm">print</span>
+          Print page
+        </button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

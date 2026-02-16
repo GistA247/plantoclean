@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/sections/Hero.astro";
+import USPGrid from "../../components/sections/USPGrid.astro";
+import ServicesPreview from "../../components/sections/ServicesPreview.astro";
+import Testimonials from "../../components/sections/Testimonials.astro";
+import CTABanner from "../../components/sections/CTABanner.astro";
+
+const locale = "en";
+---
+
+<BaseLayout
+  title="Plantoclean – Garden & Landscape Care in NRW | All Clean?!"
+  description="Plantoclean provides professional garden and landscape care in NRW: mowing, year-round care, pruning and trimming. Years of experience, high flexibility."
+  locale={locale}
+>
+  <Hero locale={locale} />
+  <USPGrid locale={locale} />
+  <ServicesPreview locale={locale} />
+  <Testimonials locale={locale} />
+  <CTABanner locale={locale} />
+</BaseLayout>

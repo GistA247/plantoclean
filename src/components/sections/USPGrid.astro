@@ -1,24 +1,32 @@
 ---
+import { type Locale, t } from "../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "de" } = Astro.props;
+
 const usps = [
   {
     icon: "verified",
-    title: "Erfahrung",
-    description: "Jahrelange Expertise in der anspruchsvollen Gartenpflege und Landschaftsgestaltung.",
+    title: t(locale, "usp.experience.title"),
+    description: t(locale, "usp.experience.desc"),
   },
   {
     icon: "event_available",
-    title: "Flexibilität",
-    description: "Individuelle Termingestaltung, die sich perfekt nach Ihrem persönlichen Zeitplan richtet.",
+    title: t(locale, "usp.flexibility.title"),
+    description: t(locale, "usp.flexibility.desc"),
   },
   {
     icon: "handshake",
-    title: "Unkompliziert",
-    description: "Effiziente Abwicklung ohne unnötige Bürokratie – von der Anfrage bis zur Fertigstellung.",
+    title: t(locale, "usp.uncomplicated.title"),
+    description: t(locale, "usp.uncomplicated.desc"),
   },
   {
     icon: "speed",
-    title: "Schnelle Ausführung",
-    description: "Zuverlässige und prompte Umsetzung Ihrer Gartenprojekte in ganz NRW.",
+    title: t(locale, "usp.fast.title"),
+    description: t(locale, "usp.fast.desc"),
   },
 ];
 ---
@@ -27,9 +35,9 @@ const usps = [
   <div class="max-w-6xl mx-auto">
     <!-- Section Header -->
     <div class="text-center mb-16">
-      <span class="text-accent uppercase tracking-widest text-sm font-semibold">Warum wir?</span>
+      <span class="text-accent uppercase tracking-widest text-sm font-semibold">{t(locale, "usp.label")}</span>
       <h2 class="text-3xl md:text-4xl font-bold text-anthracite mt-3">
-        Qualität bis ins kleinste Detail
+        {t(locale, "usp.headline")}
       </h2>
     </div>
 
