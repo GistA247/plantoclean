@@ -1,0 +1,45 @@
+---
+import { type Locale, t } from "../../i18n";
+import type { BeforeAfterPair } from "../../data/images";
+import BeforeAfterSlider from "../BeforeAfterSlider.tsx";
+
+interface Props {
+  locale: Locale;
+  pairs: BeforeAfterPair[];
+}
+
+const { locale, pairs } = Astro.props;
+
+if (pairs.length === 0) return;
+
+const beforeLabel = t(locale, "slider.before");
+const afterLabel = t(locale, "slider.after");
+---
+
+<div class="mt-8">
+  <details class="group">
+    <summary
+      class="flex items-center justify-center gap-2 cursor-pointer text-primary font-semibold hover:text-primary-light transition-colors py-3 list-none [&::-webkit-details-marker]:hidden"
+    >
+      <span class="group-open:hidden">{t(locale, "gallery.showMore")}</span>
+      <span class="hidden group-open:inline">{t(locale, "gallery.showLess")}</span>
+      <span class="material-icons text-xl transition-transform duration-300 group-open:rotate-180">
+        expand_more
+      </span>
+    </summary>
+
+    <div class="gallery-content grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
+      {pairs.map((pair) => (
+        <BeforeAfterSlider
+          client:visible
+          beforeImage={pair.before.url}
+          afterImage={pair.after.url}
+          beforeAlt={pair.before.alt[locale]}
+          afterAlt={pair.after.alt[locale]}
+          beforeLabel={beforeLabel}
+          afterLabel={afterLabel}
+        />
+      ))}
+    </div>
+  </details>
+</div>

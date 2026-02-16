@@ -1,5 +1,6 @@
 ---
 import { type Locale, t } from "../../i18n";
+import { servicePreviewCards } from "../../data/images";
 
 interface Props {
   locale?: Locale;
@@ -9,23 +10,12 @@ const { locale = "de" } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const servicesHref = `${base}${locale === "en" ? "/en/services" : "/leistungen"}`;
 
-const services = [
-  {
-    title: t(locale, "services.card1.title"),
-    subtitle: t(locale, "services.card1.subtitle"),
-    image: "https://images.unsplash.com/photo-1756428785435-c3a6b74147d7?w=800&q=80",
-  },
-  {
-    title: t(locale, "services.card2.title"),
-    subtitle: t(locale, "services.card2.subtitle"),
-    image: "https://images.unsplash.com/photo-1766289082911-40e9eecec21d?w=800&q=80",
-  },
-  {
-    title: t(locale, "services.card3.title"),
-    subtitle: t(locale, "services.card3.subtitle"),
-    image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80",
-  },
-];
+const services = servicePreviewCards.map((card) => ({
+  title: t(locale, `services.${card.key}.title`),
+  subtitle: t(locale, `services.${card.key}.subtitle`),
+  image: card.image.url,
+  imageAlt: card.image.alt[locale],
+}));
 ---
 
 <section class="py-24 px-6 bg-background-light">
@@ -54,7 +44,7 @@ const services = [
           <!-- Image -->
           <img
             src={service.image}
-            alt={service.title}
+            alt={service.imageAlt}
             class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             loading="lazy"
           />

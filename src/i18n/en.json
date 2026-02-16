@@ -91,5 +91,8 @@
   "form.message.placeholder": "Briefly describe your project or wishes...",
   "form.privacy.text": "I agree that my information will be stored for contact purposes and follow-up questions. More information can be found in the",
   "form.privacy.link": "Privacy Policy",
-  "form.submit": "Send Inquiry"
+  "form.submit": "Send Inquiry",
+
+  "gallery.showMore": "Show More Results",
+  "gallery.showLess": "Show Less"
 }

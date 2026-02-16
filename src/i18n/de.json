@@ -91,5 +91,8 @@
   "form.message.placeholder": "Beschreiben Sie kurz Ihr Projekt oder Ihre Wünsche...",
   "form.privacy.text": "Ich stimme zu, dass meine Angaben zur Kontaktaufnahme und für Rückfragen gespeichert werden. Weitere Informationen finden Sie in der",
   "form.privacy.link": "Datenschutzerklärung",
-  "form.submit": "Anfrage absenden"
+  "form.submit": "Anfrage absenden",
+
+  "gallery.showMore": "Mehr Ergebnisse anzeigen",
+  "gallery.showLess": "Weniger anzeigen"
 }

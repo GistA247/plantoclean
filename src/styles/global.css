@@ -33,6 +33,15 @@ html {
   scroll-behavior: smooth;
 }
 
+details[open] > .gallery-content {
+  animation: gallery-expand 300ms ease-out;
+}
+
+@keyframes gallery-expand {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media print {
   .no-print {
     display: none !important;

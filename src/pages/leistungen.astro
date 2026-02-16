@@ -1,8 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BeforeAfterSlider from "../components/BeforeAfterSlider.tsx";
+import BeforeAfterGallery from "../components/sections/BeforeAfterGallery.astro";
 import CTABanner from "../components/sections/CTABanner.astro";
+import { serviceImages } from "../data/images";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const locale = "de";
 ---
 
 <BaseLayout
@@ -55,11 +58,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <div>
         <BeforeAfterSlider
           client:visible
-          afterImage="https://images.unsplash.com/photo-1756428785435-c3a6b74147d7?w=800&q=80"
-          beforeImage="https://images.unsplash.com/photo-1703432043433-3bb86c844968?w=800&q=80"
-          afterAlt="Gepflegter Rasen nach dem Grünschnitt"
-          beforeAlt="Verwilderte Grünfläche vor dem Grünschnitt"
+          beforeImage={serviceImages.gruenschnitt.hero.before.url}
+          afterImage={serviceImages.gruenschnitt.hero.after.url}
+          beforeAlt={serviceImages.gruenschnitt.hero.before.alt[locale]}
+          afterAlt={serviceImages.gruenschnitt.hero.after.alt[locale]}
         />
+        <BeforeAfterGallery locale={locale} pairs={serviceImages.gruenschnitt.gallery} />
       </div>
     </section>
 
@@ -68,11 +72,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <div class="order-2 lg:order-1">
         <BeforeAfterSlider
           client:visible
-          afterImage="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80"
-          beforeImage="https://images.unsplash.com/photo-1759090901556-726bcc677252?w=800&q=80"
-          afterAlt="Garten nach professioneller Jahrespflege"
-          beforeAlt="Ungepflegter Garten vor der Jahrespflege"
+          beforeImage={serviceImages.jahrespflege.hero.before.url}
+          afterImage={serviceImages.jahrespflege.hero.after.url}
+          beforeAlt={serviceImages.jahrespflege.hero.before.alt[locale]}
+          afterAlt={serviceImages.jahrespflege.hero.after.alt[locale]}
         />
+        <BeforeAfterGallery locale={locale} pairs={serviceImages.jahrespflege.gallery} />
       </div>
       <div class="order-1 lg:order-2">
         <div class="flex items-center gap-2 mb-4">
@@ -159,11 +164,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <div>
         <BeforeAfterSlider
           client:visible
-          afterImage="https://images.unsplash.com/photo-1758877482768-d67e469f8f50?w=800&q=80"
-          beforeImage="https://images.unsplash.com/photo-1767341634320-a4e88929a376?w=800&q=80"
-          afterAlt="Bäume nach dem fachgerechten Rückschnitt"
-          beforeAlt="Überwucherte Bäume vor dem Rückschnitt"
+          beforeImage={serviceImages.rueckschnitt.hero.before.url}
+          afterImage={serviceImages.rueckschnitt.hero.after.url}
+          beforeAlt={serviceImages.rueckschnitt.hero.before.alt[locale]}
+          afterAlt={serviceImages.rueckschnitt.hero.after.alt[locale]}
         />
+        <BeforeAfterGallery locale={locale} pairs={serviceImages.rueckschnitt.gallery} />
       </div>
     </section>
 
@@ -172,11 +178,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <div class="order-2 lg:order-1">
         <BeforeAfterSlider
           client:visible
-          afterImage="https://images.unsplash.com/photo-1766483084888-51ff4f677115?w=800&q=80"
-          beforeImage="https://images.unsplash.com/photo-1766228271529-7aac76cca4c9?w=800&q=80"
-          afterAlt="Hecke nach dem präzisen Formschnitt"
-          beforeAlt="Ungeschnittene Hecke vor dem Beischnitt"
+          beforeImage={serviceImages.beischnitt.hero.before.url}
+          afterImage={serviceImages.beischnitt.hero.after.url}
+          beforeAlt={serviceImages.beischnitt.hero.before.alt[locale]}
+          afterAlt={serviceImages.beischnitt.hero.after.alt[locale]}
         />
+        <BeforeAfterGallery locale={locale} pairs={serviceImages.beischnitt.gallery} />
       </div>
       <div class="order-1 lg:order-2">
         <div class="flex items-center gap-2 mb-4">
