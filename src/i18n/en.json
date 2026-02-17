@@ -95,5 +95,16 @@
   "form.submit": "Send Inquiry",
 
   "gallery.showMore": "Show More Results",
-  "gallery.showLess": "Show Less"
+  "gallery.showLess": "Show Less",
+
+  "scrollTop.ariaLabel": "Scroll to top",
+
+  "cookie.text": "We use cookies to provide you with the best experience on our website.",
+  "cookie.accept": "Accept",
+  "cookie.privacyLink": "Learn more",
+
+  "map.headline": "Our Service Area",
+  "map.subtitle": "We serve all of North Rhine-Westphalia – reliable and flexible.",
+
+  "seasonal.linkLabel": "View Care Calendar"
 }

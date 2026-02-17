@@ -1,0 +1,49 @@
+---
+import { type Locale, t } from "../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "de" } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const privacyHref = `${base}${locale === "en" ? "/en/privacy" : "/datenschutz"}`;
+---
+
+<div
+  id="cookie-banner"
+  class="fixed bottom-0 left-0 right-0 z-[9998] hidden"
+>
+  <div class="bg-white/95 backdrop-blur-md border-t border-primary/10 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center gap-4">
+      <p class="text-sm text-anthracite/80 flex-1 text-center sm:text-left">
+        {t(locale, "cookie.text")}{" "}
+        <a href={privacyHref} class="underline hover:text-primary transition-colors">
+          {t(locale, "cookie.privacyLink")}
+        </a>
+      </p>
+      <button
+        id="cookie-accept"
+        class="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-primary/90 transition-all shadow-md text-sm whitespace-nowrap cursor-pointer"
+      >
+        {t(locale, "cookie.accept")}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById("cookie-banner");
+  const acceptBtn = document.getElementById("cookie-accept");
+
+  if (banner && acceptBtn) {
+    if (!localStorage.getItem("cookie-consent")) {
+      banner.classList.remove("hidden");
+    }
+
+    acceptBtn.addEventListener("click", () => {
+      localStorage.setItem("cookie-consent", "true");
+      banner.classList.add("hidden");
+    });
+  }
+</script>

@@ -1,0 +1,123 @@
+---
+import { type Locale, t } from "../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "de" } = Astro.props;
+---
+
+<section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-neutral-green">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Text -->
+      <div class="text-center md:text-left">
+        <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-4">
+          {t(locale, "map.headline")}
+        </h2>
+        <p class="text-lg text-anthracite/70 mb-8 max-w-lg mx-auto md:mx-0">
+          {t(locale, "map.subtitle")}
+        </p>
+        <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+          <span class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+            <span class="material-icons text-base">check_circle</span>
+            {locale === "en" ? "All of NRW" : "Ganz NRW"}
+          </span>
+          <span class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+            <span class="material-icons text-base">schedule</span>
+            {locale === "en" ? "Flexible scheduling" : "Flexible Terminplanung"}
+          </span>
+          <span class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+            <span class="material-icons text-base">local_shipping</span>
+            {locale === "en" ? "On-site service" : "Vor-Ort-Service"}
+          </span>
+        </div>
+      </div>
+
+      <!-- NRW Map SVG -->
+      <div class="flex justify-center">
+        <svg
+          viewBox="0 0 500 520"
+          class="w-full max-w-sm sm:max-w-md"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label={locale === "en" ? "Map of North Rhine-Westphalia showing our service area" : "Karte von Nordrhein-Westfalen mit unserem Einsatzgebiet"}
+        >
+          <!-- NRW outline - simplified shape -->
+          <defs>
+            <linearGradient id="nrw-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#4a7c29;stop-opacity:0.2" />
+              <stop offset="100%" style="stop-color:#2d5016;stop-opacity:0.35" />
+            </linearGradient>
+            <filter id="nrw-shadow">
+              <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.1" />
+            </filter>
+          </defs>
+
+          <!-- Main NRW shape -->
+          <path
+            d="M168,18 L195,12 L228,8 L258,14 L285,10 L318,16 L345,28 L368,22 L395,35 L418,52 L435,78 L448,108 L458,142 L462,178 L455,215 L445,248 L438,278 L442,310 L448,338 L440,368 L425,395 L405,418 L378,438 L348,452 L315,462 L282,468 L248,472 L215,475 L182,468 L152,455 L125,438 L102,415 L82,388 L65,358 L52,325 L42,290 L38,255 L40,218 L48,185 L58,152 L72,122 L88,95 L108,72 L132,48 L152,32 Z"
+            fill="url(#nrw-fill)"
+            stroke="#2d5016"
+            stroke-width="2.5"
+            filter="url(#nrw-shadow)"
+            class="transition-all duration-300"
+          />
+
+          <!-- Regierungsbezirke approximation lines -->
+          <!-- Düsseldorf / Köln divider -->
+          <path d="M65,358 Q180,320 250,280 Q320,240 380,270" stroke="#2d5016" stroke-width="0.8" stroke-dasharray="4,4" fill="none" opacity="0.3" />
+          <!-- Münster / Detmold divider -->
+          <path d="M195,12 Q220,160 285,200 Q350,240 445,248" stroke="#2d5016" stroke-width="0.8" stroke-dasharray="4,4" fill="none" opacity="0.3" />
+          <!-- Arnsberg divider -->
+          <path d="M180,280 Q260,260 340,290 Q390,310 425,395" stroke="#2d5016" stroke-width="0.8" stroke-dasharray="4,4" fill="none" opacity="0.3" />
+
+          <!-- Region labels -->
+          <text x="135" y="170" class="fill-primary text-[13px] font-semibold" text-anchor="middle">Münster</text>
+          <text x="370" y="160" class="fill-primary text-[13px] font-semibold" text-anchor="middle">Detmold</text>
+          <text x="120" y="340" class="fill-primary text-[13px] font-semibold" text-anchor="middle">Düsseldorf</text>
+          <text x="180" y="430" class="fill-primary text-[13px] font-semibold" text-anchor="middle">Köln</text>
+          <text x="320" y="370" class="fill-primary text-[13px] font-semibold" text-anchor="middle">Arnsberg</text>
+
+          <!-- City markers -->
+          <!-- Düsseldorf -->
+          <circle cx="115" cy="310" r="5" fill="#2d5016" />
+          <circle cx="115" cy="310" r="8" fill="#2d5016" opacity="0.2" />
+          <!-- Köln -->
+          <circle cx="130" cy="395" r="5" fill="#2d5016" />
+          <circle cx="130" cy="395" r="8" fill="#2d5016" opacity="0.2" />
+          <!-- Dortmund -->
+          <circle cx="225" cy="268" r="5" fill="#2d5016" />
+          <circle cx="225" cy="268" r="8" fill="#2d5016" opacity="0.2" />
+          <!-- Essen -->
+          <circle cx="165" cy="278" r="5" fill="#2d5016" />
+          <circle cx="165" cy="278" r="8" fill="#2d5016" opacity="0.2" />
+          <!-- Münster -->
+          <circle cx="165" cy="148" r="5" fill="#2d5016" />
+          <circle cx="165" cy="148" r="8" fill="#2d5016" opacity="0.2" />
+          <!-- Bielefeld -->
+          <circle cx="320" cy="140" r="5" fill="#2d5016" />
+          <circle cx="320" cy="140" r="8" fill="#2d5016" opacity="0.2" />
+          <!-- Bonn -->
+          <circle cx="155" cy="445" r="5" fill="#2d5016" />
+          <circle cx="155" cy="445" r="8" fill="#2d5016" opacity="0.2" />
+
+          <!-- City labels -->
+          <text x="115" y="300" class="fill-anthracite text-[11px]" text-anchor="middle">Düsseldorf</text>
+          <text x="130" y="385" class="fill-anthracite text-[11px]" text-anchor="middle">Köln</text>
+          <text x="225" y="258" class="fill-anthracite text-[11px]" text-anchor="middle">Dortmund</text>
+          <text x="165" y="268" class="fill-anthracite text-[11px]" text-anchor="middle">Essen</text>
+          <text x="165" y="138" class="fill-anthracite text-[11px]" text-anchor="middle">Münster</text>
+          <text x="320" y="130" class="fill-anthracite text-[11px]" text-anchor="middle">Bielefeld</text>
+          <text x="155" y="460" class="fill-anthracite text-[11px]" text-anchor="middle">Bonn</text>
+
+          <!-- Plantoclean logo marker (center of NRW) -->
+          <circle cx="220" cy="320" r="14" fill="#2d5016" opacity="0.15" />
+          <circle cx="220" cy="320" r="9" fill="#2d5016" />
+          <text x="220" y="324" class="fill-white text-[10px] font-bold" text-anchor="middle">P</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>

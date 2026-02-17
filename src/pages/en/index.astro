@@ -2,8 +2,10 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/sections/Hero.astro";
 import USPGrid from "../../components/sections/USPGrid.astro";
+import ServiceAreaMap from "../../components/sections/ServiceAreaMap.astro";
 import ServicesPreview from "../../components/sections/ServicesPreview.astro";
 import Testimonials from "../../components/sections/Testimonials.astro";
+import SeasonalTip from "../../components/sections/SeasonalTip.astro";
 import CTABanner from "../../components/sections/CTABanner.astro";
 
 const locale = "en";
@@ -16,7 +18,9 @@ const locale = "en";
 >
   <Hero locale={locale} />
   <USPGrid locale={locale} />
+  <ServiceAreaMap locale={locale} />
   <ServicesPreview locale={locale} />
   <Testimonials locale={locale} />
+  <SeasonalTip locale={locale} />
   <CTABanner locale={locale} />
 </BaseLayout>

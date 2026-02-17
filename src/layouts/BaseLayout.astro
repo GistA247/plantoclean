@@ -3,6 +3,8 @@ import "../styles/global.css";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
+import ScrollToTop from "../components/ScrollToTop.astro";
+import CookieBanner from "../components/CookieBanner.astro";
 import { type Locale, getLocaleFromUrl, getLocalizedPath } from "../i18n";
 
 interface Props {
@@ -58,5 +60,7 @@ const site = "https://gista247.github.io";
     </main>
     <Footer locale={locale} />
     {showWhatsApp && <WhatsAppButton locale={locale} />}
+    <ScrollToTop locale={locale} />
+    <CookieBanner locale={locale} />
   </body>
 </html>
