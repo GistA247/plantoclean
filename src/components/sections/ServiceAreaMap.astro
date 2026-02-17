@@ -6,9 +6,6 @@ interface Props {
 }
 
 const { locale = "de" } = Astro.props;
-
-// NRW bounding box: ~5.87°E–9.46°E, ~50.32°N–52.53°N — centered on NRW with zoom 8
-const mapSrc = "https://www.openstreetmap.org/export/embed.html?bbox=5.6%2C50.1%2C9.7%2C52.6&layer=mapnik";
 ---
 
 <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-neutral-green">
@@ -38,20 +35,91 @@ const mapSrc = "https://www.openstreetmap.org/export/embed.html?bbox=5.6%2C50.1%
         </div>
       </div>
 
-      <!-- OpenStreetMap embed -->
+      <!-- Leaflet Map -->
       <div class="rounded-2xl overflow-hidden shadow-lg border border-primary/10">
-        <iframe
-          src={mapSrc}
-          width="100%"
-          height="400"
-          style="border: 0;"
-          loading="lazy"
-          title={locale === "en" ? "Map of North Rhine-Westphalia – our service area" : "Karte von Nordrhein-Westfalen – unser Einsatzgebiet"}
-        ></iframe>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <div
+          id="service-area-map"
+          style="height: 400px; width: 100%;"
+          role="img"
+          aria-label={locale === "en" ? "Map showing our service area around Dormagen with 80 km radius" : "Karte mit unserem Einsatzgebiet um Dormagen mit 80 km Radius"}
+        ></div>
         <div class="bg-white px-4 py-2 text-xs text-anthracite/50">
           &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">OpenStreetMap</a>
+          &amp; <a href="https://carto.com/attributions" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">CARTO</a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  const mapEl = document.getElementById("service-area-map");
+  if (mapEl) {
+    const script = document.createElement("script");
+    script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+    script.onload = () => {
+      // Dormagen: 51.0967°N, 6.8314°E
+      const lat = 51.0967;
+      const lng = 6.8314;
+
+      const map = L.map("service-area-map", {
+        center: [lat, lng],
+        zoom: 9,
+        scrollWheelZoom: false,
+        dragging: true,
+        zoomControl: true,
+      });
+
+      // CartoDB Positron – minimalist light tiles
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        attribution: "",
+        subdomains: "abcd",
+        maxZoom: 19,
+      }).addTo(map);
+
+      // 80 km radius circle
+      L.circle([lat, lng], {
+        radius: 80000,
+        color: "#2d5016",
+        weight: 2,
+        fillColor: "#2d5016",
+        fillOpacity: 0.1,
+        dashArray: "6, 4",
+      }).addTo(map);
+
+      // Center marker with Plantoclean label
+      L.circleMarker([lat, lng], {
+        radius: 7,
+        color: "#fff",
+        weight: 2,
+        fillColor: "#2d5016",
+        fillOpacity: 1,
+      })
+        .addTo(map)
+        .bindTooltip("Plantoclean · Dormagen", {
+          permanent: true,
+          direction: "top",
+          offset: [0, -10],
+          className: "plantoclean-tooltip",
+        });
+    };
+    document.head.appendChild(script);
+  }
+</script>
+
+<style is:global>
+  .plantoclean-tooltip {
+    background: #2d5016 !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 4px 12px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  }
+  .plantoclean-tooltip::before {
+    border-top-color: #2d5016 !important;
+  }
+</style>
