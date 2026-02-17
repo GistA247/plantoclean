@@ -63,7 +63,7 @@ const ctaHref = `${base}${locale === "en" ? "/en/contact" : "/kontakt"}`;
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden fixed inset-0 top-20 bg-white backdrop-blur-md z-40"
+    class="hidden md:hidden fixed inset-0 top-20 bg-white z-40"
   >
     <div class="flex flex-col items-center gap-8 pt-12">
       {
@@ -71,7 +71,6 @@ const ctaHref = `${base}${locale === "en" ? "/en/contact" : "/kontakt"}`;
           <a
             href={link.href}
             class="text-xl font-medium text-primary hover:text-accent transition-colors"
-            style="text-shadow: -1px -1px 0 rgba(255,255,255,0.5), 1px -1px 0 rgba(255,255,255,0.5), -1px 1px 0 rgba(255,255,255,0.5), 1px 1px 0 rgba(255,255,255,0.5);"
           >
             {link.label}
           </a>
