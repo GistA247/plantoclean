@@ -12,6 +12,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const navLinks = [
   { href: `${base}${locale === "en" ? "/en/" : "/"}`, label: t(locale, "nav.home") },
   { href: `${base}${locale === "en" ? "/en/services" : "/leistungen"}`, label: t(locale, "nav.services") },
+  { href: `${base}${locale === "en" ? "/en/care-calendar" : "/pflegekalender"}`, label: t(locale, "nav.calendar") },
   { href: `${base}${locale === "en" ? "/en/contact" : "/kontakt"}`, label: t(locale, "nav.contact") },
 ];
 

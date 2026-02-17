@@ -34,6 +34,8 @@ export const routeMap: Record<string, Record<Locale, string>> = {
   "/en/privacy": { de: "/datenschutz", en: "/en/privacy" },
   "/en/disclaimer": { de: "/haftungsausschluss", en: "/en/disclaimer" },
   "/en/message-sent": { de: "/nachricht-gesendet", en: "/en/message-sent" },
+  "/pflegekalender": { de: "/pflegekalender", en: "/en/care-calendar" },
+  "/en/care-calendar": { de: "/pflegekalender", en: "/en/care-calendar" },
 };
 
 export function getLocalizedPath(currentPath: string, targetLocale: Locale): string {

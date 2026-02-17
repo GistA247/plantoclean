@@ -1,0 +1,425 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTABanner from "../../components/sections/CTABanner.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const locale = "en";
+
+const months = [
+  {
+    name: "January",
+    icon: "ac_unit",
+    season: "winter",
+    tasks: [
+      { cat: "Trees & Shrubs", icon: "park", items: [
+        "Prune shrubs during dormancy – remove old, thick branches and keep young shoots",
+        "Cut butterfly bush back to approx. 40 cm",
+        "Cut back red-stemmed varieties (e.g. Cornus, Cotinus) hard every 2 years",
+        "Cut Perovskia, Caryopteris and Potentilla close to the ground",
+        "Free evergreens from snow load and water during dry spells",
+      ]},
+      { cat: "Roses", icon: "spa", items: [
+        "Prune roses above the buds",
+        "Remove thin shoots entirely, shape thicker ones for an even habit",
+      ]},
+      { cat: "Perennials & Flowers", icon: "local_florist", items: [
+        "Check and clean stored bulbs and tubers",
+        "Gladioli: Separate young corms from old ones",
+        "Plan planting for the new year",
+      ]},
+    ],
+  },
+  {
+    name: "February",
+    icon: "ac_unit",
+    season: "winter",
+    tasks: [
+      { cat: "Trees & Shrubs", icon: "park", items: [
+        "Thin out shrubs and remove dead branches",
+        "Treat tree wounds",
+        "Water evergreens during dry spells",
+      ]},
+      { cat: "Perennials & Flowers", icon: "local_florist", items: [
+        "Cut back grasses and winter-decorative perennials (10–20 cm above ground)",
+        "Cut back vigorously spreading perennials with a spade",
+        "Prune lavender to prevent woody growth",
+        "Start sowing perennials in seed trays or cold frames",
+      ]},
+      { cat: "Lawn", icon: "grass", items: [
+        "Apply lime in mild weather",
+        "Avoid walking on frozen lawns",
+      ]},
+    ],
+  },
+  {
+    name: "March",
+    icon: "eco",
+    season: "spring",
+    tasks: [
+      { cat: "Trees & Shrubs", icon: "park", items: [
+        "Plant trees, shrubs and roses",
+        "Remove winter protection",
+        "Prune shrubs that flower on one-year-old wood",
+        "Plant flowering shrubs",
+      ]},
+      { cat: "Roses", icon: "spa", items: [
+        "Uncover roses and apply first rose fertiliser",
+        "Fertilise roses and flowering shrubs",
+      ]},
+      { cat: "Perennials & Flowers", icon: "local_florist", items: [
+        "Fertilise at sprouting time – use slow-release compound fertilisers",
+        "Fertilise bulb plants (do not fertilise grasses!)",
+        "Sow frost-hardy flower seeds outdoors",
+        "Sow perennials in seed trays or cold frames",
+      ]},
+      { cat: "Lawn", icon: "grass", items: [
+        "Scarify and apply long-term fertiliser",
+        "Carry out moss control",
+      ]},
+    ],
+  },
+  {
+    name: "April",
+    icon: "eco",
+    season: "spring",
+    tasks: [
+      { cat: "Trees & Shrubs", icon: "park", items: [
+        "Best planting time for conifers and evergreens",
+        "Remove old flower heads from shrubs",
+      ]},
+      { cat: "Roses", icon: "spa", items: [
+        "Prune roses and remove wild shoots",
+      ]},
+      { cat: "Perennials & Flowers", icon: "local_florist", items: [
+        "Plant perennials and remove old flower heads",
+        "Plant gladiolus and anemone corms (every 14 days until end of April)",
+        "Plant begonia tubers in pots or window boxes",
+      ]},
+      { cat: "General", icon: "tips_and_updates", items: [
+        "Weed control – best done on moist soil, pull complete roots",
+        "Loosen compacted soil between plants with a small hoe",
+      ]},
+    ],
+  },
+  {
+    name: "May",
+    icon: "eco",
+    season: "spring",
+    tasks: [
+      { cat: "Trees & Shrubs", icon: "park", items: [
+        "Remove spent lilac and rhododendron flowers",
+        "Tie in climbing roses",
+      ]},
+      { cat: "Perennials & Flowers", icon: "local_florist", items: [
+        "Divide perennials that don't flower in spring",
+        "Stake tall-growing perennials",
+        "Sow summer flowers and plant out seedlings",
+        "Plant aquatic and bog plants",
+      ]},
+      { cat: "Lawn", icon: "grass", items: [
+        "Scarify again after the first mowing",
+        "Weed control against clover and dandelions",
+        "Overseeding and new seeding possible",
+        "Don't mow below 4 cm – protects soil life and reduces moss",
+      ]},
+      { cat: "General", icon: "tips_and_updates", items: [
+        "Watering: water in the morning or evening, preferably with rainwater",
+        "Water deeply once rather than lightly multiple times",
+      ]},
+    ],
+  },
+  {
+    name: "June",
+    icon: "wb_sunny",
+    season: "summer",
+    tasks: [
+      { cat: "Trees & Shrubs", icon: "park", items: [
+        "Tie in climbing shrubs",
+      ]},
+      { cat: "Roses", icon: "spa", items: [
+        "Apply second rose fertiliser",
+        "Remove wild shoots",
+        "Treat leaf diseases (rust, black spot, mildew)",
+      ]},
+      { cat: "Perennials & Flowers", icon: "local_florist", items: [
+        "Second fertilising – all plants except grasses",
+        "Clean up faded cushion perennials",
+        "Remove wilted flowers and flower heads",
+        "Sow biennials for next year (e.g. pansies, sweet william)",
+      ]},
+      { cat: "Hedges", icon: "fence", items: [
+        "Cut hedges towards the end of the month",
+      ]},
+    ],
+  },
+  {
+    name: "July",
+    icon: "wb_sunny",
+    season: "summer",
+    tasks: [
+      { cat: "Perennials & Flowers", icon: "local_florist", items: [
+        "Cut back after flowering for a second flush: delphinium, daisy, meadow sage",
+        "Cut plants approx. 10–20 cm above the ground",
+        "Continue removing wilted flowers and flower heads",
+        "Stake tall-growing perennials",
+      ]},
+      { cat: "Roses", icon: "spa", items: [
+        "Remove wilted flowers from repeat-blooming roses",
+        "Last fertilising for roses",
+      ]},
+      { cat: "Hedges", icon: "fence", items: [
+        "Cut hedges",
+      ]},
+      { cat: "Lawn", icon: "grass", items: [
+        "Second fertilising with long-term fertiliser",
+        "Check pH value, apply lime if needed",
+      ]},
+    ],
+  },
+  {
+    name: "August",
+    icon: "wb_sunny",
+    season: "summer",
+    tasks: [
+      { cat: "Perennials & Flowers", icon: "local_florist", items: [
+        "Cut out spent flower heads – extends blooming time",
+        "Exception: Leave perennials with decorative seed heads (e.g. stonecrop, yarrow)",
+        "Divide perennials",
+      ]},
+      { cat: "Roses", icon: "spa", items: [
+        "Stop fertilising roses from now on",
+      ]},
+      { cat: "Trees & Shrubs", icon: "park", items: [
+        "Plan new shrub and tree plantings for autumn",
+        "Cut back early-flowering shrubs",
+      ]},
+      { cat: "Container Plants", icon: "potted_plant", items: [
+        "Reduce fertilising to half the amount",
+        "Take cuttings",
+      ]},
+    ],
+  },
+  {
+    name: "September",
+    icon: "nest_eco_leaf",
+    season: "autumn",
+    tasks: [
+      { cat: "Perennials & Flowers", icon: "local_florist", items: [
+        "Stake perennials that may topple (delphinium, monkshood, grasses)",
+        "Plant spring-flowering bulbs (tulips, daffodils, crocuses, etc.)",
+        "Sow lupin, poppy and delphinium",
+      ]},
+      { cat: "Roses", icon: "spa", items: [
+        "Plant new roses now",
+      ]},
+      { cat: "Trees & Shrubs", icon: "park", items: [
+        "Best planting time for ornamental trees and shrubs",
+        "Plant woody plants",
+      ]},
+      { cat: "Lawn", icon: "grass", items: [
+        "Scarify and overseed",
+        "Apply autumn fertiliser",
+      ]},
+    ],
+  },
+  {
+    name: "October",
+    icon: "nest_eco_leaf",
+    season: "autumn",
+    tasks: [
+      { cat: "Perennials & Flowers", icon: "local_florist", items: [
+        "Cut back spent perennials – leave decorative seed heads for winter",
+        "Divide spring and summer-flowering perennials",
+        "Plant spring-flowering bulbs by now at the latest",
+        "Store non-hardy tubers in a cool, dark and airy place",
+      ]},
+      { cat: "Roses", icon: "spa", items: [
+        "Mound up roses",
+        "Lay down standard roses",
+      ]},
+      { cat: "Trees & Shrubs", icon: "park", items: [
+        "Plant spring-flowering perennials and shrubs",
+        "Renew mulch layer",
+      ]},
+      { cat: "Container Plants", icon: "potted_plant", items: [
+        "Move frost-tender container plants indoors",
+        "Don't store too wet",
+      ]},
+      { cat: "Lawn", icon: "grass", items: [
+        "Remove leaves regularly",
+      ]},
+    ],
+  },
+  {
+    name: "November",
+    icon: "nest_eco_leaf",
+    season: "autumn",
+    tasks: [
+      { cat: "Trees & Shrubs", icon: "park", items: [
+        "Transplant and plant ornamental shrubs and trees",
+        "Thin out or cut back hard",
+        "Water evergreens during dry spells",
+      ]},
+      { cat: "Perennials & Flowers", icon: "local_florist", items: [
+        "Cut back perennials – leave seed heads and grasses as winter decoration",
+        "Divide perennials and replant where needed",
+        "Remove ageing plants, divide and replace them",
+      ]},
+      { cat: "Roses", icon: "spa", items: [
+        "Last chance to plant new roses",
+        "Prune bedding roses and mound up",
+      ]},
+      { cat: "Container Plants", icon: "potted_plant", items: [
+        "Move remaining container plants indoors",
+        "Check for pests",
+      ]},
+    ],
+  },
+  {
+    name: "December",
+    icon: "ac_unit",
+    season: "winter",
+    tasks: [
+      { cat: "General", icon: "tips_and_updates", items: [
+        "Check winter protection – use brushwood cover for sensitive plants",
+        "Cut St. Barbara's branches on 4th December",
+        "Remove spent plants and dig over beds if needed",
+      ]},
+      { cat: "Trees & Shrubs", icon: "park", items: [
+        "Water evergreens during frost and sunshine – prevents drying out",
+        "Cut back late-flowering shrubs",
+      ]},
+      { cat: "Perennials & Flowers", icon: "local_florist", items: [
+        "Force hyacinths in water glasses or narcissi on pebble beds as indoor decoration",
+        "Prepare perennial plants for winter",
+      ]},
+    ],
+  },
+];
+
+const seasons = [
+  { key: "spring", label: "Spring", icon: "eco", color: "text-green-600", bg: "bg-green-50", border: "border-green-200", months: [2, 3, 4] },
+  { key: "summer", label: "Summer", icon: "wb_sunny", color: "text-amber-600", bg: "bg-amber-50", border: "border-amber-200", months: [5, 6, 7] },
+  { key: "autumn", label: "Autumn", icon: "nest_eco_leaf", color: "text-orange-600", bg: "bg-orange-50", border: "border-orange-200", months: [8, 9, 10] },
+  { key: "winter", label: "Winter", icon: "ac_unit", color: "text-sky-600", bg: "bg-sky-50", border: "border-sky-200", months: [11, 0, 1] },
+];
+---
+
+<BaseLayout
+  title="Care Calendar – Garden Tips for Every Season | Plantoclean"
+  description="Our garden calendar shows you the most important care tasks month by month for shrubs, perennials, lawns, roses and hedges."
+  locale="en"
+>
+  <!-- Intro Section -->
+  <section class="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <span class="material-icons text-primary text-xl">calendar_month</span>
+        <span class="text-primary text-sm font-semibold uppercase tracking-wider">Garden Tips</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-anthracite mb-6">
+        Care Calendar
+      </h1>
+      <p class="text-lg md:text-xl text-anthracite/70 max-w-3xl mx-auto leading-relaxed">
+        A beautiful garden needs proper care. With the right maintenance at the right time, you'll keep the effort low and get the most out of your green paradise.
+      </p>
+    </div>
+  </section>
+
+  <!-- Season Quick Navigation -->
+  <section class="max-w-5xl mx-auto px-6 -mt-6 mb-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {seasons.map((s) => (
+        <a
+          href={`#${s.key}`}
+          class={`flex flex-col items-center gap-2 py-5 rounded-2xl ${s.bg} ${s.border} border hover:shadow-md transition-shadow`}
+        >
+          <span class={`material-icons text-3xl ${s.color}`}>{s.icon}</span>
+          <span class={`font-semibold ${s.color}`}>{s.label}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Calendar Sections -->
+  <div class="max-w-5xl mx-auto px-6 pb-24 space-y-20">
+    {seasons.map((season) => (
+      <section id={season.key} class="scroll-mt-24">
+        <!-- Season Header -->
+        <div class="flex items-center gap-3 mb-8">
+          <div class={`w-12 h-12 rounded-xl ${season.bg} flex items-center justify-center`}>
+            <span class={`material-icons text-2xl ${season.color}`}>{season.icon}</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-anthracite">{season.label}</h2>
+        </div>
+
+        <!-- Month Cards -->
+        <div class="space-y-4">
+          {season.months.map((monthIdx) => {
+            const month = months[monthIdx];
+            return (
+              <details class="group rounded-2xl border border-primary/10 bg-white overflow-hidden">
+                <summary class="flex items-center gap-4 px-6 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-primary/5 transition-colors">
+                  <div class={`w-10 h-10 rounded-lg ${season.bg} flex items-center justify-center shrink-0`}>
+                    <span class={`material-icons ${season.color}`}>{month.icon}</span>
+                  </div>
+                  <span class="text-xl font-bold text-anthracite flex-grow">{month.name}</span>
+                  <span class="text-sm text-anthracite/50 hidden sm:inline">
+                    {month.tasks.reduce((sum, t) => sum + t.items.length, 0)} tasks
+                  </span>
+                  <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                </summary>
+
+                <div class="gallery-content px-6 pb-6">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                    {month.tasks.map((task) => (
+                      <div class="space-y-3">
+                        <div class="flex items-center gap-2">
+                          <span class="material-icons text-primary text-lg">{task.icon}</span>
+                          <h3 class="font-semibold text-anthracite">{task.cat}</h3>
+                        </div>
+                        <ul class="space-y-2 ml-7">
+                          {task.items.map((item) => (
+                            <li class="flex items-start gap-2 text-anthracite/80 text-sm leading-relaxed">
+                              <span class="material-icons text-primary/60 text-sm mt-0.5 shrink-0">chevron_right</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </details>
+            );
+          })}
+        </div>
+      </section>
+    ))}
+
+    <!-- Pro Tip Section -->
+    <section class="rounded-2xl bg-primary/5 border border-primary/10 p-8 md:p-10">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+          <span class="material-icons text-primary text-2xl">lightbulb</span>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-anthracite mb-4">Pro Tips</h2>
+          <div class="space-y-3 text-anthracite/80 leading-relaxed">
+            <p>
+              <strong>Pruning timing:</strong> Shrubs that flower on one-year-old wood (e.g. butterfly bush, panicle hydrangea) are pruned in late winter. Spring bloomers (e.g. forsythia, lilac) should only be pruned after flowering.
+            </p>
+            <p>
+              <strong>Winter decoration:</strong> Leave decorative seed heads of stonecrop, yarrow and grasses standing over winter. They provide shelter for insects and look stunning with hoar frost.
+            </p>
+            <p>
+              <strong>Fertilising:</strong> Don't fertilise grasses – they'll fall over! Only fertilise shrubs every 2–4 years. Never apply fertiliser directly to foliage, and always water after fertilising.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CTA Banner -->
+  <CTABanner />
+</BaseLayout>

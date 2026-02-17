@@ -1,0 +1,424 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTABanner from "../components/sections/CTABanner.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const locale = "de";
+
+const months = [
+  {
+    name: "Januar",
+    icon: "ac_unit",
+    season: "winter",
+    tasks: [
+      { cat: "Gehölze", icon: "park", items: [
+        "Sträucher in der Wachstumsruhe schneiden – alte, dicke Äste entfernen, junge Triebe erhalten",
+        "Schmetterlingsflieder auf ca. 40 cm Höhe zurückschneiden",
+        "Rotholzige Arten (z.\u00a0B. Cornus, Cotinus) alle 2 Jahre stärker zurückschneiden",
+        "Perovskia, Caryopteris und Potentilla dicht über dem Boden abschneiden",
+        "Immergrüne von Schneelast befreien und bei Trockenheit wässern",
+      ]},
+      { cat: "Rosen", icon: "spa", items: [
+        "Rosenschnitt oberhalb der Augen durchführen",
+        "Dünne Triebe ganz entfernen, dickere für gleichmäßigen Habitus ziehen",
+      ]},
+      { cat: "Stauden & Blumen", icon: "local_florist", items: [
+        "Knollen prüfen und reinigen",
+        "Gladiolen: Junge Knollen von alten trennen",
+        "Bepflanzung für das neue Jahr planen",
+      ]},
+    ],
+  },
+  {
+    name: "Februar",
+    icon: "ac_unit",
+    season: "winter",
+    tasks: [
+      { cat: "Gehölze", icon: "park", items: [
+        "Sträucher auslichten und tote Äste absägen",
+        "Baumwunden behandeln",
+        "Immergrüne bei Trockenheit wässern",
+      ]},
+      { cat: "Stauden & Blumen", icon: "local_florist", items: [
+        "Gräser und winterzierende Stauden zurückschneiden (10–20 cm über Boden)",
+        "Stark wuchernde Stauden mit dem Spaten abstechen",
+        "Lavendel zurückschneiden, um Verholzen zu vermeiden",
+        "Stauden in Anzuchtkästen oder Frühbeet aussäen",
+      ]},
+      { cat: "Rasen", icon: "grass", items: [
+        "Bei milder Witterung kalken",
+        "Bei Frost den Rasen nicht betreten",
+      ]},
+    ],
+  },
+  {
+    name: "März",
+    icon: "eco",
+    season: "spring",
+    tasks: [
+      { cat: "Gehölze", icon: "park", items: [
+        "Bäume, Sträucher und Rosen pflanzen",
+        "Winterschutz entfernen",
+        "Ziersträucher, die am einjährigen Holz blühen, jetzt zurückschneiden",
+        "Blütensträucher pflanzen",
+      ]},
+      { cat: "Rosen", icon: "spa", items: [
+        "Rosen abhäufeln und erste Rosendüngung durchführen",
+        "Rosen und Blütensträucher düngen",
+      ]},
+      { cat: "Stauden & Blumen", icon: "local_florist", items: [
+        "Düngung zum Austrieb – langsam fließende Mehrnährstoffdünger verwenden",
+        "Zwiebelpflanzen düngen (Gräser nicht düngen!)",
+        "Frostunempfindliche Blumensamen im Freiland aussäen",
+        "Stauden in Anzuchtkästen oder Frühbeet aussäen",
+      ]},
+      { cat: "Rasen", icon: "grass", items: [
+        "Vertikutieren und mit Langzeitdünger düngen",
+        "Moosbekämpfung durchführen",
+      ]},
+    ],
+  },
+  {
+    name: "April",
+    icon: "eco",
+    season: "spring",
+    tasks: [
+      { cat: "Gehölze", icon: "park", items: [
+        "Beste Pflanzzeit für Nadelbäume und Immergrüne",
+        "Alte Blütenstände an Sträuchern entfernen",
+      ]},
+      { cat: "Rosen", icon: "spa", items: [
+        "Rosen zurückschneiden und Wildtriebe entfernen",
+      ]},
+      { cat: "Stauden & Blumen", icon: "local_florist", items: [
+        "Stauden pflanzen und alte Blütenstände entfernen",
+        "Gladiolen- und Anemonenknollen legen (alle 14 Tage bis Ende April)",
+        "Begonien in Töpfe oder Balkonkästen setzen",
+      ]},
+      { cat: "Allgemein", icon: "tips_and_updates", items: [
+        "Unkrautbekämpfung – am besten auf feuchtem Boden, Wurzel komplett ziehen",
+        "Verdichteten Boden zwischen Pflanzen mit kleiner Hacke auflockern",
+      ]},
+    ],
+  },
+  {
+    name: "Mai",
+    icon: "eco",
+    season: "spring",
+    tasks: [
+      { cat: "Gehölze", icon: "park", items: [
+        "Verblühte Fliederdolden und Rhododendronblüten entfernen",
+        "Kletterrosen anbinden",
+      ]},
+      { cat: "Stauden & Blumen", icon: "local_florist", items: [
+        "Nicht im Frühjahr blühende Stauden teilen",
+        "Großwachsende Stauden an Stäbe anbinden",
+        "Sommerblumen aussäen und vorgezogene Pflanzen auspflanzen",
+        "Wasser- und Sumpfpflanzen setzen",
+      ]},
+      { cat: "Rasen", icon: "grass", items: [
+        "Nach dem ersten Schnitt nochmals vertikutieren",
+        "Unkrautbekämpfung gegen Klee und Löwenzahn",
+        "Nachsaat und Neueinsaat möglich",
+        "Nicht unter 4 cm mähen – schont Bodenaktivität und reduziert Moos",
+      ]},
+      { cat: "Allgemein", icon: "tips_and_updates", items: [
+        "Bewässerung: morgens oder abends gießen, am besten mit Regenwasser",
+        "Lieber einmal durchdringend gießen als öfter nur die Oberfläche benetzen",
+      ]},
+    ],
+  },
+  {
+    name: "Juni",
+    icon: "wb_sunny",
+    season: "summer",
+    tasks: [
+      { cat: "Gehölze", icon: "park", items: [
+        "Klettersträucher anbinden",
+      ]},
+      { cat: "Rosen", icon: "spa", items: [
+        "Zweite Rosendüngung durchführen",
+        "Wildtriebe entfernen",
+        "Blattkrankheiten (Rost, Sternrußtau, Mehltau) behandeln",
+      ]},
+      { cat: "Stauden & Blumen", icon: "local_florist", items: [
+        "Zweiter Düngungstermin – alle Pflanzen außer Gräser",
+        "Abgeblühte Polsterstauden säubern",
+        "Verwelkte Blüten und Blütenstände entfernen",
+        "Zweijährige für Folgejahr aussäen (z.\u00a0B. Stiefmütterchen, Bartnelken)",
+      ]},
+      { cat: "Hecken", icon: "fence", items: [
+        "Hecken zum Monatsende schneiden",
+      ]},
+    ],
+  },
+  {
+    name: "Juli",
+    icon: "wb_sunny",
+    season: "summer",
+    tasks: [
+      { cat: "Stauden & Blumen", icon: "local_florist", items: [
+        "Rückschnitt nach der Blüte für zweiten Flor: Rittersporn, Margerite, Steppensalbei",
+        "Pflanzen ca. 10–20 cm über dem Boden abschneiden",
+        "Verwelkte Blüten und Blütenstände weiterhin entfernen",
+        "Großwachsende Stauden an Stäbe anbinden",
+      ]},
+      { cat: "Rosen", icon: "spa", items: [
+        "Bei mehrfachblühenden Rosen verwelkte Blüten entfernen",
+        "Letzte Düngung der Rosen",
+      ]},
+      { cat: "Hecken", icon: "fence", items: [
+        "Hecken schneiden",
+      ]},
+      { cat: "Rasen", icon: "grass", items: [
+        "Zweite Düngung mit Langzeitdünger",
+        "pH-Wert prüfen, ggf. kalken",
+      ]},
+    ],
+  },
+  {
+    name: "August",
+    icon: "wb_sunny",
+    season: "summer",
+    tasks: [
+      { cat: "Stauden & Blumen", icon: "local_florist", items: [
+        "Verblühte Blütenstände herausschneiden – verlängert die Blütezeit",
+        "Ausnahme: Stauden mit zierenden Fruchtständen stehen lassen (z.\u00a0B. Fetthenne, Schafgarbe)",
+        "Stauden teilen",
+      ]},
+      { cat: "Rosen", icon: "spa", items: [
+        "Rosen ab jetzt nicht mehr düngen",
+      ]},
+      { cat: "Gehölze", icon: "park", items: [
+        "Gehölz-Neupflanzung für den Herbst planen",
+        "Rückschnitt der Frühblüher",
+      ]},
+      { cat: "Kübelpflanzen", icon: "potted_plant", items: [
+        "Düngung auf halbe Menge reduzieren",
+        "Stecklinge schneiden",
+      ]},
+    ],
+  },
+  {
+    name: "September",
+    icon: "nest_eco_leaf",
+    season: "autumn",
+    tasks: [
+      { cat: "Stauden & Blumen", icon: "local_florist", items: [
+        "Umkippgefährdete Stauden aufbinden (Rittersporn, Eisenhut, Gräser)",
+        "Frühjahrsblüher-Zwiebeln pflanzen (Tulpen, Narzissen, Krokusse etc.)",
+        "Lupine, Mohn und Rittersporn aussäen",
+      ]},
+      { cat: "Rosen", icon: "spa", items: [
+        "Rosen jetzt neu pflanzen",
+      ]},
+      { cat: "Gehölze", icon: "park", items: [
+        "Beste Pflanzzeit für Zierbäume und -sträucher",
+        "Gehölze pflanzen",
+      ]},
+      { cat: "Rasen", icon: "grass", items: [
+        "Vertikutieren und nachsäen",
+        "Herbstdüngung ausbringen",
+      ]},
+    ],
+  },
+  {
+    name: "Oktober",
+    icon: "nest_eco_leaf",
+    season: "autumn",
+    tasks: [
+      { cat: "Stauden & Blumen", icon: "local_florist", items: [
+        "Verblühte Stauden zurückschneiden – dekorative Fruchtstände für den Winter stehen lassen",
+        "Im Frühjahr und Sommer blühende Stauden teilen",
+        "Frühjahrsblüher-Zwiebeln spätestens jetzt pflanzen",
+        "Nicht winterharte Knollen kühl, dunkel und luftig einlagern",
+      ]},
+      { cat: "Rosen", icon: "spa", items: [
+        "Rosen anhäufeln",
+        "Hochstammrosen umlegen",
+      ]},
+      { cat: "Gehölze", icon: "park", items: [
+        "In Frühjahr blühende Stauden und Gehölze pflanzen",
+        "Mulchdecke erneuern",
+      ]},
+      { cat: "Kübelpflanzen", icon: "potted_plant", items: [
+        "Empfindliche Kübelpflanzen einwintern",
+        "Nicht zu nass einlagern",
+      ]},
+      { cat: "Rasen", icon: "grass", items: [
+        "Laub regelmäßig entfernen",
+      ]},
+    ],
+  },
+  {
+    name: "November",
+    icon: "nest_eco_leaf",
+    season: "autumn",
+    tasks: [
+      { cat: "Gehölze", icon: "park", items: [
+        "Ziersträucher und -bäume umpflanzen und neu pflanzen",
+        "Auslichten oder ausholzen",
+        "Immergrüne bei Trockenheit wässern",
+      ]},
+      { cat: "Stauden & Blumen", icon: "local_florist", items: [
+        "Stauden zurückschneiden – Fruchtstände und Gräser als Winterschmuck stehen lassen",
+        "Stauden teilen und bei Bedarf neu pflanzen",
+        "Überalterte Pflanzen herausnehmen, teilen und ersetzen",
+      ]},
+      { cat: "Rosen", icon: "spa", items: [
+        "Letzte Rosen neu pflanzen",
+        "Beetrosen zurückschneiden und anhäufeln",
+      ]},
+      { cat: "Kübelpflanzen", icon: "potted_plant", items: [
+        "Übrige Kübelpflanzen einwintern",
+        "Auf Schädlinge kontrollieren",
+      ]},
+    ],
+  },
+  {
+    name: "Dezember",
+    icon: "ac_unit",
+    season: "winter",
+    tasks: [
+      { cat: "Allgemein", icon: "tips_and_updates", items: [
+        "Winterschutz kontrollieren – Reisigabdeckung für empfindliche Pflanzen",
+        "Am 4. Dezember Barbarazweige schneiden",
+        "Abgeblühte Pflanzen entfernen, Beete bei Bedarf umgraben",
+      ]},
+      { cat: "Gehölze", icon: "park", items: [
+        "Immergrüne bei Frost und Sonnenschein gießen – Verdunstungsschutz",
+        "Später blühende Blütensträucher ausholzen",
+      ]},
+      { cat: "Stauden & Blumen", icon: "local_florist", items: [
+        "Hyazinthen im Wasserglas oder Narzissen auf Kieselsteingemisch als Zimmerschmuck treiben",
+        "Mehrjährige Pflanzen für den Winter vorbereiten",
+      ]},
+    ],
+  },
+];
+
+const seasons = [
+  { key: "spring", label: "Frühling", icon: "eco", color: "text-green-600", bg: "bg-green-50", border: "border-green-200", months: [2, 3, 4] },
+  { key: "summer", label: "Sommer", icon: "wb_sunny", color: "text-amber-600", bg: "bg-amber-50", border: "border-amber-200", months: [5, 6, 7] },
+  { key: "autumn", label: "Herbst", icon: "nest_eco_leaf", color: "text-orange-600", bg: "bg-orange-50", border: "border-orange-200", months: [8, 9, 10] },
+  { key: "winter", label: "Winter", icon: "ac_unit", color: "text-sky-600", bg: "bg-sky-50", border: "border-sky-200", months: [11, 0, 1] },
+];
+---
+
+<BaseLayout
+  title="Pflegekalender – Gartentipps für jede Jahreszeit | Plantoclean"
+  description="Unser Gartenkalender zeigt Ihnen Monat für Monat die wichtigsten Pflegearbeiten für Gehölze, Stauden, Rasen, Rosen und Hecken."
+>
+  <!-- Intro Section -->
+  <section class="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <span class="material-icons text-primary text-xl">calendar_month</span>
+        <span class="text-primary text-sm font-semibold uppercase tracking-wider">Gartentipps</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-anthracite mb-6">
+        Pflegekalender
+      </h1>
+      <p class="text-lg md:text-xl text-anthracite/70 max-w-3xl mx-auto leading-relaxed">
+        Ein schöner Garten will gut gepflegt sein. Mit der richtigen Pflege zur richtigen Zeit halten Sie den Aufwand gering und holen das Maximum aus Ihrem grünen Paradies heraus.
+      </p>
+    </div>
+  </section>
+
+  <!-- Season Quick Navigation -->
+  <section class="max-w-5xl mx-auto px-6 -mt-6 mb-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {seasons.map((s) => (
+        <a
+          href={`#${s.key}`}
+          class={`flex flex-col items-center gap-2 py-5 rounded-2xl ${s.bg} ${s.border} border hover:shadow-md transition-shadow`}
+        >
+          <span class={`material-icons text-3xl ${s.color}`}>{s.icon}</span>
+          <span class={`font-semibold ${s.color}`}>{s.label}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Calendar Sections -->
+  <div class="max-w-5xl mx-auto px-6 pb-24 space-y-20">
+    {seasons.map((season) => (
+      <section id={season.key} class="scroll-mt-24">
+        <!-- Season Header -->
+        <div class="flex items-center gap-3 mb-8">
+          <div class={`w-12 h-12 rounded-xl ${season.bg} flex items-center justify-center`}>
+            <span class={`material-icons text-2xl ${season.color}`}>{season.icon}</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-anthracite">{season.label}</h2>
+        </div>
+
+        <!-- Month Cards -->
+        <div class="space-y-4">
+          {season.months.map((monthIdx) => {
+            const month = months[monthIdx];
+            return (
+              <details class="group rounded-2xl border border-primary/10 bg-white overflow-hidden">
+                <summary class="flex items-center gap-4 px-6 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-primary/5 transition-colors">
+                  <div class={`w-10 h-10 rounded-lg ${season.bg} flex items-center justify-center shrink-0`}>
+                    <span class={`material-icons ${season.color}`}>{month.icon}</span>
+                  </div>
+                  <span class="text-xl font-bold text-anthracite flex-grow">{month.name}</span>
+                  <span class="text-sm text-anthracite/50 hidden sm:inline">
+                    {month.tasks.reduce((sum, t) => sum + t.items.length, 0)} Aufgaben
+                  </span>
+                  <span class="material-icons text-primary transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                </summary>
+
+                <div class="gallery-content px-6 pb-6">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                    {month.tasks.map((task) => (
+                      <div class="space-y-3">
+                        <div class="flex items-center gap-2">
+                          <span class="material-icons text-primary text-lg">{task.icon}</span>
+                          <h3 class="font-semibold text-anthracite">{task.cat}</h3>
+                        </div>
+                        <ul class="space-y-2 ml-7">
+                          {task.items.map((item) => (
+                            <li class="flex items-start gap-2 text-anthracite/80 text-sm leading-relaxed">
+                              <span class="material-icons text-primary/60 text-sm mt-0.5 shrink-0">chevron_right</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </details>
+            );
+          })}
+        </div>
+      </section>
+    ))}
+
+    <!-- Pro Tip Section -->
+    <section class="rounded-2xl bg-primary/5 border border-primary/10 p-8 md:p-10">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+          <span class="material-icons text-primary text-2xl">lightbulb</span>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-anthracite mb-4">Profi-Tipp</h2>
+          <div class="space-y-3 text-anthracite/80 leading-relaxed">
+            <p>
+              <strong>Schnittzeitpunkt:</strong> Sträucher, die am einjährigen Holz blühen (z.&nbsp;B. Schmetterlingsflieder, Rispenhortensie), werden im Spätwinter geschnitten. Frühjahrsblüher (z.&nbsp;B. Forsythie, Flieder) erst nach der Blüte schneiden.
+            </p>
+            <p>
+              <strong>Winterzierde:</strong> Lassen Sie dekorative Fruchtstände von Fetthenne, Schafgarbe und Gräsern über den Winter stehen. Sie bieten Insekten Schutz und sehen bei Raureif wunderschön aus.
+            </p>
+            <p>
+              <strong>Düngung:</strong> Gräser nicht düngen – sie kippen sonst um! Gehölze nur alle 2–4 Jahre düngen. Keinen Dünger direkt auf Blattwerk geben und nach dem Düngen wässern.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CTA Banner -->
+  <CTABanner />
+</BaseLayout>
