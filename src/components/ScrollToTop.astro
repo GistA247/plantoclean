@@ -10,7 +10,7 @@ const { locale = "de" } = Astro.props;
 
 <button
   id="scroll-to-top"
-  class="fixed bottom-8 left-8 z-50 bg-primary text-white p-3 rounded-full shadow-2xl opacity-0 translate-y-4 pointer-events-none transition-all duration-300 hover:bg-primary-light hover:scale-110 cursor-pointer"
+  class="fixed bottom-8 left-8 z-50 w-12 h-12 flex items-center justify-center rounded-full shadow-2xl opacity-0 translate-y-4 pointer-events-none transition-all duration-300 hover:scale-110 cursor-pointer bg-primary text-white"
   aria-label={t(locale, "scrollTop.ariaLabel")}
 >
   <span class="material-icons text-2xl leading-none">keyboard_arrow_up</span>
@@ -19,7 +19,9 @@ const { locale = "de" } = Astro.props;
 <script>
   const btn = document.getElementById("scroll-to-top");
   if (btn) {
-    window.addEventListener("scroll", () => {
+    const footer = document.querySelector("footer");
+
+    function updateButton() {
       if (window.scrollY > 400) {
         btn.classList.remove("opacity-0", "translate-y-4", "pointer-events-none");
         btn.classList.add("opacity-100", "translate-y-0", "pointer-events-auto");
@@ -27,7 +29,22 @@ const { locale = "de" } = Astro.props;
         btn.classList.add("opacity-0", "translate-y-4", "pointer-events-none");
         btn.classList.remove("opacity-100", "translate-y-0", "pointer-events-auto");
       }
-    });
+
+      // Switch colors when overlapping the dark footer
+      if (footer) {
+        const footerTop = footer.getBoundingClientRect().top;
+        const btnBottom = btn.getBoundingClientRect().bottom;
+        if (btnBottom > footerTop) {
+          btn.classList.remove("bg-primary", "text-white");
+          btn.classList.add("bg-white", "text-primary");
+        } else {
+          btn.classList.remove("bg-white", "text-primary");
+          btn.classList.add("bg-primary", "text-white");
+        }
+      }
+    }
+
+    window.addEventListener("scroll", updateButton);
     btn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
