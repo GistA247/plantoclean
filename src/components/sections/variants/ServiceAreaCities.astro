@@ -1,0 +1,135 @@
+---
+import { type Locale, t } from "../../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "de" } = Astro.props;
+const isEN = locale === "en";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const cityGroups = [
+  {
+    label: isEN ? "Up to 15 km" : "Bis 15 km",
+    icon: "directions_walk",
+    cities: [
+      { name: "Neuss", km: 10 },
+      { name: "Dormagen", km: 0, isHome: true },
+      { name: "Rommerskirchen", km: 8 },
+      { name: "Monheim am Rhein", km: 12 },
+      { name: "Grevenbroich", km: 14 },
+    ],
+  },
+  {
+    label: isEN ? "15 – 30 km" : "15 – 30 km",
+    icon: "directions_car",
+    cities: [
+      { name: "Köln", km: 25 },
+      { name: "Düsseldorf", km: 25 },
+      { name: "Leverkusen", km: 18 },
+      { name: "Krefeld", km: 28 },
+      { name: "Langenfeld", km: 16 },
+      { name: "Meerbusch", km: 18 },
+    ],
+  },
+  {
+    label: isEN ? "30 – 60 km" : "30 – 60 km",
+    icon: "speed",
+    cities: [
+      { name: "Mönchengladbach", km: 32 },
+      { name: "Duisburg", km: 40 },
+      { name: "Wuppertal", km: 48 },
+      { name: "Bonn", km: 55 },
+      { name: "Essen", km: 50 },
+      { name: "Bergisch Gladbach", km: 38 },
+    ],
+  },
+  {
+    label: isEN ? "60 – 80 km" : "60 – 80 km",
+    icon: "explore",
+    cities: [
+      { name: "Dortmund", km: 75 },
+      { name: "Aachen", km: 80 },
+      { name: "Bochum", km: 65 },
+      { name: "Oberhausen", km: 55 },
+      { name: "Siegen", km: 80 },
+    ],
+  },
+];
+---
+
+<section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-neutral-green">
+  <div class="max-w-6xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <span class="text-accent uppercase tracking-widest text-sm font-semibold">
+        {isEN ? "Service area" : "Einsatzgebiet"}
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-primary mt-3 mb-4">
+        {t(locale, "map.headline")}
+      </h2>
+      <p class="text-lg text-anthracite/70 max-w-2xl mx-auto">
+        {isEN
+          ? "From our base in Dormagen, we serve the entire Rhine-Ruhr region. Here you can see which cities we regularly work in."
+          : "Von unserem Standort in Dormagen aus betreuen wir die gesamte Rhein-Ruhr-Region. Hier sehen Sie, in welchen Städten wir regelmäßig im Einsatz sind."}
+      </p>
+    </div>
+
+    <!-- Dormagen Highlight -->
+    <div class="bg-primary text-white rounded-2xl p-6 mb-8 flex items-center gap-4 max-w-lg mx-auto">
+      <span class="material-icons text-4xl">home</span>
+      <div>
+        <p class="font-bold text-lg">Dormagen-Delhoven</p>
+        <p class="text-white/70 text-sm">
+          {isEN ? "Our headquarters – Wertherstraße 30" : "Unser Standort – Wertherstraße 30"}
+        </p>
+      </div>
+    </div>
+
+    <!-- City Groups Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      {cityGroups.map((group) => (
+        <div class="bg-white rounded-2xl p-6 border border-primary/10">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="material-icons text-primary">{group.icon}</span>
+            <h3 class="font-bold text-anthracite">{group.label}</h3>
+          </div>
+          <ul class="space-y-2">
+            {group.cities.map((city) => (
+              <li class={`flex items-center justify-between text-sm ${city.isHome ? "font-bold text-primary" : "text-anthracite/80"}`}>
+                <span class="flex items-center gap-2">
+                  {city.isHome && <span class="material-icons text-xs text-primary">location_on</span>}
+                  {city.name}
+                </span>
+                <span class="text-anthracite/40 text-xs">
+                  {city.isHome ? (isEN ? "HQ" : "Standort") : `~${city.km} km`}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Stats + Badges -->
+    <div class="flex flex-wrap gap-3 justify-center">
+      <span class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+        <span class="material-icons text-base">check_circle</span>
+        {isEN ? "22+ cities" : "22+ Städte"}
+      </span>
+      <span class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+        <span class="material-icons text-base">radio_button_checked</span>
+        {isEN ? "80 km radius" : "80 km Radius"}
+      </span>
+      <span class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+        <span class="material-icons text-base">schedule</span>
+        {isEN ? "Flexible scheduling" : "Flexible Terminplanung"}
+      </span>
+      <span class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+        <span class="material-icons text-base">local_shipping</span>
+        {isEN ? "On-site service" : "Vor-Ort-Service"}
+      </span>
+    </div>
+  </div>
+</section>
