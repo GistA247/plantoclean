@@ -1,0 +1,75 @@
+---
+import PreviewLayout from "../../layouts/PreviewLayout.astro";
+import Hero from "../../components/sections/Hero.astro";
+import USPGrid from "../../components/sections/USPGrid.astro";
+import ServiceAreaMap from "../../components/sections/ServiceAreaMap.astro";
+import ServicesPreview from "../../components/sections/ServicesPreview.astro";
+import Testimonials from "../../components/sections/Testimonials.astro";
+import SeasonalTip from "../../components/sections/SeasonalTip.astro";
+import CTABanner from "../../components/sections/CTABanner.astro";
+---
+
+<PreviewLayout title="Farbschema">
+  <div class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <h1 class="text-2xl font-bold text-primary mb-1">Farbschema-Varianten</h1>
+    <p class="text-anthracite/60 text-sm mb-8">Gesamte Startseite in verschiedenen Farbpaletten</p>
+  </div>
+
+  <!-- Variante A: Aktuelles Farbschema -->
+  <div class="border-t-4 border-primary">
+    <div class="bg-primary/5 px-4 sm:px-6 lg:px-8 py-3">
+      <div class="max-w-7xl mx-auto flex items-center gap-3">
+        <span class="bg-primary text-white text-xs font-bold px-2.5 py-1 rounded">A</span>
+        <span class="font-semibold text-sm text-anthracite">Aktuell – Waldgrün</span>
+        <div class="flex gap-1.5 ml-2">
+          <span class="w-5 h-5 rounded-full border border-black/10" style="background:#2d5016"></span>
+          <span class="w-5 h-5 rounded-full border border-black/10" style="background:#4a7c29"></span>
+          <span class="w-5 h-5 rounded-full border border-black/10" style="background:#8b6914"></span>
+        </div>
+      </div>
+    </div>
+    <Hero />
+    <USPGrid />
+    <ServiceAreaMap />
+    <ServicesPreview />
+    <Testimonials />
+    <SeasonalTip />
+    <CTABanner />
+  </div>
+
+  <!-- Variante B: Kleeblatt-Farbschema -->
+  <div class="border-t-4 mt-16" style="border-color:#088252">
+    <div class="px-4 sm:px-6 lg:px-8 py-3" style="background:rgba(8,130,82,0.05)">
+      <div class="max-w-7xl mx-auto flex items-center gap-3">
+        <span class="text-white text-xs font-bold px-2.5 py-1 rounded" style="background:#088252">B</span>
+        <span class="font-semibold text-sm text-anthracite">Kleeblatt-Farben</span>
+        <div class="flex gap-1.5 ml-2">
+          <span class="w-5 h-5 rounded-full border border-black/10" style="background:#088252"></span>
+          <span class="w-5 h-5 rounded-full border border-black/10" style="background:#82c98f"></span>
+          <span class="w-5 h-5 rounded-full border border-black/10" style="background:#8b6914"></span>
+        </div>
+      </div>
+    </div>
+    <div class="clover-theme">
+      <Hero />
+      <USPGrid />
+      <ServiceAreaMap />
+      <ServicesPreview />
+      <Testimonials />
+      <SeasonalTip />
+      <CTABanner />
+    </div>
+  </div>
+</PreviewLayout>
+
+<style is:global>
+  .clover-theme {
+    --color-primary: #088252;
+    --color-primary-light: #0a9e64;
+    --color-primary-dark: #06613d;
+    --color-background-dark: #0a2318;
+    --color-forest-green: #063d28;
+    --color-neutral-green: #eef5f1;
+    --color-background-light: #f5faf7;
+  }
+</style>
