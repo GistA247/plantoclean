@@ -1,0 +1,45 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<!doctype html>
+<html lang="de" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} – Plantoclean Versionen</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/images/logo/kleeblatt.svg`} />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  </head>
+  <body class="font-[Inter] bg-background-light text-anthracite antialiased">
+    <!-- Top Bar -->
+    <nav class="bg-anthracite text-white py-3 px-4 sm:px-6 lg:px-8 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src={`${base}/images/logo/kleeblatt.svg`} alt="" class="w-6 h-6" />
+          <span class="font-bold text-sm tracking-wide">PLANTOCLEAN VERSIONEN</span>
+        </div>
+        <div class="flex items-center gap-4 text-sm">
+          <a href={`${base}/versionen/`} class="hover:text-accent transition-colors flex items-center gap-1">
+            <span class="material-icons text-base">grid_view</span>
+            Übersicht
+          </a>
+          <a href={`${base}/`} class="hover:text-accent transition-colors flex items-center gap-1">
+            <span class="material-icons text-base">language</span>
+            Live-Seite
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <slot />
+  </body>
+</html>

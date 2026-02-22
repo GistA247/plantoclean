@@ -1,0 +1,22 @@
+---
+import PreviewLayout from "../../layouts/PreviewLayout.astro";
+import CTABanner from "../../components/sections/CTABanner.astro";
+---
+
+<PreviewLayout title="CTA Banner">
+  <div class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <h1 class="text-2xl font-bold text-primary mb-1">CTA Banner</h1>
+    <p class="text-anthracite/60 text-sm mb-8">Call-to-Action mit Kontakt-Buttons und Badges</p>
+  </div>
+
+  <!-- Variante A -->
+  <div class="border-t-4 border-primary">
+    <div class="bg-primary/5 px-4 sm:px-6 lg:px-8 py-3">
+      <div class="max-w-7xl mx-auto flex items-center gap-2">
+        <span class="bg-primary text-white text-xs font-bold px-2.5 py-1 rounded">A</span>
+        <span class="font-semibold text-sm text-anthracite">Aktuell</span>
+      </div>
+    </div>
+    <CTABanner />
+  </div>
+</PreviewLayout>
