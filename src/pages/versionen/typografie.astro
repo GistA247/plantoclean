@@ -1,0 +1,66 @@
+---
+import PreviewLayout from "../../layouts/PreviewLayout.astro";
+import Hero from "../../components/sections/Hero.astro";
+import USPGrid from "../../components/sections/USPGrid.astro";
+import ServiceAreaMap from "../../components/sections/ServiceAreaMap.astro";
+import ServicesPreview from "../../components/sections/ServicesPreview.astro";
+import Testimonials from "../../components/sections/Testimonials.astro";
+import SeasonalTip from "../../components/sections/SeasonalTip.astro";
+import CTABanner from "../../components/sections/CTABanner.astro";
+---
+
+<PreviewLayout title="Typografie">
+  <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <div class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <h1 class="text-2xl font-bold text-primary mb-1">Typografie-Varianten</h1>
+    <p class="text-anthracite/60 text-sm mb-8">Gesamte Startseite mit alternativen Headline-Schriftarten</p>
+  </div>
+
+  <!-- Variante A: Aktuell (Inter) -->
+  <div class="border-t-4 border-primary">
+    <div class="bg-primary/5 px-4 sm:px-6 lg:px-8 py-3">
+      <div class="max-w-7xl mx-auto flex items-center gap-3">
+        <span class="bg-primary text-white text-xs font-bold px-2.5 py-1 rounded">A</span>
+        <span class="font-semibold text-sm text-anthracite">Aktuell – Inter (alle Texte)</span>
+        <span class="text-xs text-anthracite/40 ml-1" style="font-family:Inter,sans-serif">Aa Bb Cc</span>
+      </div>
+    </div>
+    <Hero />
+    <USPGrid />
+    <ServiceAreaMap />
+    <ServicesPreview />
+    <Testimonials />
+    <SeasonalTip />
+    <CTABanner />
+  </div>
+
+  <!-- Variante B: Alkatra Headlines -->
+  <div class="border-t-4 border-accent mt-16">
+    <div class="bg-accent/5 px-4 sm:px-6 lg:px-8 py-3">
+      <div class="max-w-7xl mx-auto flex items-center gap-3">
+        <span class="bg-accent text-white text-xs font-bold px-2.5 py-1 rounded">B</span>
+        <span class="font-semibold text-sm text-anthracite">Alkatra (nur Überschriften)</span>
+        <span class="text-xs text-anthracite/40 ml-1" style="font-family:Alkatra,cursive">Aa Bb Cc</span>
+      </div>
+    </div>
+    <div class="alkatra-headlines">
+      <Hero />
+      <USPGrid />
+      <ServiceAreaMap />
+      <ServicesPreview />
+      <Testimonials />
+      <SeasonalTip />
+      <CTABanner />
+    </div>
+  </div>
+</PreviewLayout>
+
+<style is:global>
+  .alkatra-headlines h1,
+  .alkatra-headlines h2,
+  .alkatra-headlines h3,
+  .alkatra-headlines h4 {
+    font-family: "Alkatra", cursive !important;
+  }
+</style>
