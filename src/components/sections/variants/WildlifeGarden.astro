@@ -1,0 +1,369 @@
+---
+import { type Locale, t } from "../../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "de" } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const isEN = locale === "en";
+
+const seasons = [
+  {
+    id: "fruehling",
+    name: isEN ? "Spring" : "Frühling",
+    months: isEN ? "March – May" : "März – Mai",
+    icon: "local_florist",
+    color: "bg-green-50 border-green-200",
+    iconColor: "text-green-600",
+    badgeColor: "bg-green-100 text-green-700",
+    intro: isEN
+      ? "Migratory birds return, bumblebee queens awaken, and the first wild bees fly – all urgently need food and nesting sites."
+      : "Zugvögel kehren zurück, Hummelköniginnen erwachen und die ersten Wildbienen fliegen – alle dringend auf Nahrung und Nistplätze angewiesen.",
+    tips: [
+      {
+        title: isEN ? "Hang nesting boxes" : "Nistkästen aufhängen",
+        icon: "house",
+        text: isEN
+          ? "By early March at 2.5–3 m height, entrance facing southeast. 26–28 mm for blue tits, 32 mm for great tits, half-open boxes for grey flycatchers."
+          : "Spätestens Anfang März in 2,5–3 m Höhe, Einflugloch nach Südosten. 26–28 mm für Blaumeisen, 32 mm für Kohlmeisen, Halbhöhlen für Grauschnäpper.",
+      },
+      {
+        title: isEN ? "Wild bee nesting aids" : "Wildbienen-Nisthilfen",
+        icon: "bug_report",
+        text: isEN
+          ? "75–80% of wild bees nest in the ground! Open, sandy, sunny spots are more important than any insect hotel. Supplement with hardwood blocks (holes 2–8 mm, drilled across the grain)."
+          : "75–80 % der Wildbienen nisten im Boden! Offene, sandige, besonnte Stellen sind wichtiger als jedes Insektenhotel. Ergänzend Hartholzblöcke (Löcher 2–8 mm, quer zur Faser).",
+      },
+      {
+        title: isEN ? "Plant early bloomers" : "Frühblüher pflanzen",
+        icon: "spa",
+        text: isEN
+          ? "Winterling, snowdrops, crocuses and lungwort are lifesavers for bumblebee queens and the brimstone butterfly after hibernation."
+          : "Winterling, Schneeglöckchen, Krokusse und Lungenkraut sind Lebensretter für Hummelköniginnen und den Zitronenfalter nach der Überwinterung.",
+      },
+      {
+        title: isEN ? "Native shrubs" : "Heimische Gehölze",
+        icon: "park",
+        text: isEN
+          ? "Goat willow (213 insect species!), cornelian cherry, blackthorn (137 species) and hawthorn (163 insect + 32 bird species) are ecological powerhouses."
+          : "Sal-Weide (213 Insektenarten!), Kornelkirsche, Schlehe (137 Arten) und Weißdorn (163 Insekten- + 32 Vogelarten) sind ökologische Kraftpakete.",
+      },
+    ],
+    plants: isEN
+      ? ["Goat willow", "Cornelian cherry", "Blackthorn", "Hawthorn", "Crocus", "Lungwort", "Snowdrop"]
+      : ["Sal-Weide", "Kornelkirsche", "Schlehe", "Weißdorn", "Krokus", "Lungenkraut", "Schneeglöckchen"],
+    animals: isEN
+      ? ["Bumblebee queens", "Brimstone butterfly", "Blue tit", "Mason bee", "Peacock butterfly"]
+      : ["Hummelköniginnen", "Zitronenfalter", "Blaumeise", "Mauerbiene", "Tagpfauenauge"],
+  },
+  {
+    id: "sommer",
+    name: isEN ? "Summer" : "Sommer",
+    months: isEN ? "June – August" : "Juni – August",
+    icon: "wb_sunny",
+    color: "bg-amber-50 border-amber-200",
+    iconColor: "text-amber-600",
+    badgeColor: "bg-amber-100 text-amber-700",
+    intro: isEN
+      ? "In summer, continuous food supply is critical. At the same time, it's breeding season – minimise disturbance."
+      : "Im Sommer entscheidet sich, ob der Garten ein durchgehendes Nahrungsangebot bietet. Gleichzeitig ist Brutzeit – Störungen minimieren.",
+    tips: [
+      {
+        title: isEN ? "Summer wildflowers" : "Sommer-Wildstauden",
+        icon: "local_florist",
+        text: isEN
+          ? "Viper's bugloss (top wild bee magnet), wild oregano (the butterfly plant of high summer), and water hemp attract peacock, red admiral and comma butterflies."
+          : "Natternkopf (Top-Wildbienenmagnet), Wilder Dost (die Schmetterlingspflanze des Hochsommers) und Wasserdost ziehen Tagpfauenauge, Admiral und C-Falter an.",
+      },
+      {
+        title: isEN ? "Nettle corner" : "Brennnesselecke",
+        icon: "eco",
+        text: isEN
+          ? "The stinging nettle is the sole caterpillar food plant for 25 butterfly species including peacock, red admiral and painted lady. Just 2–4 m² in a sunny spot suffice."
+          : "Die Brennnessel ist die einzige Raupenfutterpflanze für 25 Schmetterlingsarten, darunter Tagpfauenauge, Admiral und Distelfalter. 2–4 m² sonnig genügen.",
+      },
+      {
+        title: isEN ? "Mow correctly" : "Richtig mähen",
+        icon: "grass",
+        text: isEN
+          ? "Wildflower meadows only 1–2× per year. Always mow in stages, leaving 'safety islands'. No robotic mowers – they kill hedgehogs, toads and slow worms."
+          : "Wildblumenwiese nur 1–2× jährlich. Immer zeitversetzt mähen, 'Sicherheitsinseln' stehen lassen. Keine Mähroboter – sie töten Igel, Kröten und Blindschleichen.",
+      },
+      {
+        title: isEN ? "Water stations" : "Wasserstellen",
+        icon: "water_drop",
+        text: isEN
+          ? "Shallow dish (3–5 cm) with stones as insect exits. Change water daily to prevent salmonella. No artificial lighting near the pond."
+          : "Flache Schale (3–5 cm) mit Steinen als Insektenausstieg. Täglich frisches Wasser gegen Salmonellen. Keine künstliche Beleuchtung am Teich.",
+      },
+    ],
+    plants: isEN
+      ? ["Viper's bugloss", "Wild oregano", "Water hemp", "Stinging nettle", "Wild teasel", "Evening primrose"]
+      : ["Natternkopf", "Wilder Dost", "Wasserdost", "Brennnessel", "Wilde Karde", "Nachtkerze"],
+    animals: isEN
+      ? ["Peacock butterfly", "Red admiral", "Painted lady", "Sand lizard", "Hedgehog", "Common toad"]
+      : ["Tagpfauenauge", "Admiral", "Distelfalter", "Zauneidechse", "Igel", "Erdkröte"],
+  },
+  {
+    id: "herbst",
+    name: isEN ? "Autumn" : "Herbst",
+    months: isEN ? "September – November" : "September – November",
+    icon: "park",
+    color: "bg-orange-50 border-orange-200",
+    iconColor: "text-orange-600",
+    badgeColor: "bg-orange-100 text-orange-700",
+    intro: isEN
+      ? "The most important rule in autumn: Don't tidy up! Dead wood, leaves and withered stalks are vital winter quarters."
+      : "Der wichtigste Grundsatz im Herbst: Nicht aufräumen! Totholz, Laub und abgestorbene Stängel sind lebenswichtige Winterquartiere.",
+    tips: [
+      {
+        title: isEN ? "Leave seed heads" : "Samenstände stehen lassen",
+        icon: "grain",
+        text: isEN
+          ? "Seeds of teasel, coneflower and knapweed are winter food for goldfinches and finches. Hollow stems serve as insect winter quarters."
+          : "Samen von Karde, Sonnenhut und Flockenblume sind Winternahrung für Stieglitze und Finken. Hohle Stängel dienen Insekten als Winterquartier.",
+      },
+      {
+        title: isEN ? "Use fallen leaves" : "Laub gezielt nutzen",
+        icon: "eco",
+        text: isEN
+          ? "Distribute on beds, pile up large leaf heaps in quiet spots for hedgehogs, moth larvae and toads. Never use leaf blowers – they kill small animals."
+          : "Auf Beeten verteilen, große Laubhaufen an ruhigen Stellen aufschichten für Igel, Schmetterlingslarven und Kröten. Niemals Laubsauger einsetzen.",
+      },
+      {
+        title: isEN ? "Hedgehog winter quarters" : "Igel-Winterquartier",
+        icon: "nights_stay",
+        text: isEN
+          ? "Brush and leaf pile (min. 1 m high) or hedgehog house with dry leaves. Fence openings of 13×13 cm between gardens create connected habitats."
+          : "Reisig- und Laubhaufen (mind. 1 m hoch) oder Igelhaus mit trockenem Laub. Zaunöffnungen von 13×13 cm zwischen Gärten schaffen verbundene Lebensräume.",
+      },
+      {
+        title: isEN ? "Plant native hedges" : "Heimische Hecken pflanzen",
+        icon: "nature",
+        text: isEN
+          ? "Best planting time! Black elder (60+ bird species), rowan (63 bird species), spindle tree and dog rose form the ideal mixed hedge."
+          : "Beste Pflanzzeit! Schwarzer Holunder (60+ Vogelarten), Eberesche (63 Vogelarten), Pfaffenhütchen und Hundsrose bilden die ideale Mischhecke.",
+      },
+    ],
+    plants: isEN
+      ? ["Black elder", "Rowan", "Spindle tree", "Dog rose", "Common ivy", "Guelder rose"]
+      : ["Schwarzer Holunder", "Eberesche", "Pfaffenhütchen", "Hundsrose", "Efeu", "Gewöhnlicher Schneeball"],
+    animals: isEN
+      ? ["Hedgehog", "Goldfinch", "Common toad", "Newts", "Sand lizard", "Brimstone butterfly"]
+      : ["Igel", "Stieglitz", "Erdkröte", "Molche", "Zauneidechse", "Zitronenfalter"],
+  },
+  {
+    id: "winter",
+    name: isEN ? "Winter" : "Winter",
+    months: isEN ? "December – February" : "Dezember – Februar",
+    icon: "ac_unit",
+    color: "bg-sky-50 border-sky-200",
+    iconColor: "text-sky-600",
+    badgeColor: "bg-sky-100 text-sky-700",
+    intro: isEN
+      ? "Winter is the time of rest. The most important principle: Don't tidy up, don't disturb. Brush piles, leaf heaps and hollow stems stay untouched."
+      : "Winter ist die Zeit der Ruhe. Das wichtigste Prinzip: Nicht aufräumen, nicht stören. Reisighaufen, Laubhaufen und hohle Stängel bleiben unangetastet.",
+    tips: [
+      {
+        title: isEN ? "Feed birds correctly" : "Vögel richtig füttern",
+        icon: "rss_feed",
+        text: isEN
+          ? "Tube feeders are more hygienic than open houses. Sunflower seeds as base, fat balls without plastic nets. Never: salt, bread or kitchen scraps."
+          : "Futtersilos sind hygienischer als offene Häuschen. Sonnenblumenkerne als Basis, Meisenknödel ohne Plastiknetz. Niemals: Salz, Brot oder Speisereste.",
+      },
+      {
+        title: isEN ? "Respect winter quarters" : "Winterquartiere respektieren",
+        icon: "do_not_disturb",
+        text: isEN
+          ? "Hedgehog hibernates in brush piles, common toad in compost heaps, peacock butterfly in dark sheds. Leave cellar windows slightly open for overwintering butterflies."
+          : "Igel im Reisighaufen, Erdkröte im Kompost, Tagpfauenauge in dunklen Schuppen. Kellerfenster für überwinternde Falter einen Spalt offen lassen.",
+      },
+      {
+        title: isEN ? "Pruning rules" : "Schnittregeln",
+        icon: "content_cut",
+        text: isEN
+          ? "Heavy pruning only Oct–Feb allowed (§ 39 BNatSchG). Always check for hibernating animals first. Fines up to €50,000 for damaging protected habitats."
+          : "Starker Rückschnitt nur Okt–Feb erlaubt (§ 39 BNatSchG). Vorher immer auf überwinternde Tiere prüfen. Bußgelder bis 50.000 € bei Beschädigung geschützter Lebensstätten.",
+      },
+      {
+        title: isEN ? "Plan the new year" : "Neues Gartenjahr planen",
+        icon: "event_note",
+        text: isEN
+          ? "Order regional wildflower seeds, plan areas for meadow, dry wall and pond. Use peat-free soil. Build or order nesting boxes."
+          : "Regionales Wildblumen-Saatgut bestellen, Flächen für Wiese, Trockenmauer und Teich planen. Torffreie Erde verwenden. Nistkästen bauen oder bestellen.",
+      },
+    ],
+    plants: isEN
+      ? ["Hawthorn berries", "Rosehips", "Elder berries", "Rowan berries", "Ivy berries"]
+      : ["Weißdorn-Beeren", "Hagebutten", "Holunderbeeren", "Vogelbeeren", "Efeu-Beeren"],
+    animals: isEN
+      ? ["Robin", "Great tit", "Hedgehog (hibernating)", "Bumblebee queen (underground)", "Peacock butterfly (in sheds)"]
+      : ["Rotkehlchen", "Kohlmeise", "Igel (Winterschlaf)", "Hummelkönigin (im Boden)", "Tagpfauenauge (im Schuppen)"],
+  },
+];
+
+const donts = [
+  {
+    icon: "precision_manufacturing",
+    title: isEN ? "Robotic mowers" : "Mähroboter",
+    text: isEN
+      ? "The biggest single threat to hedgehogs. They also kill toads, lizards and caterpillars."
+      : "Die größte Einzelgefahr für Igel. Töten auch Kröten, Eidechsen und Schmetterlingsraupen.",
+  },
+  {
+    icon: "science",
+    title: isEN ? "Pesticides" : "Pestizide",
+    text: isEN
+      ? "Poison the entire food chain. Slug pellets are directly toxic to hedgehogs."
+      : "Vergiften die gesamte Nahrungskette. Schneckenkorn ist direkt giftig für Igel.",
+  },
+  {
+    icon: "block",
+    title: isEN ? "Cherry laurel & Co." : "Kirschlorbeer & Co.",
+    text: isEN
+      ? "Zero ecological value. Hawthorn feeds 163 insect species – cherry laurel feeds none."
+      : "Null ökologischer Wert. Weißdorn ernährt 163 Insektenarten – Kirschlorbeer keine einzige.",
+  },
+  {
+    icon: "air",
+    title: isEN ? "Leaf blowers" : "Laubsauger",
+    text: isEN
+      ? "Suction power of 10 m³/min kills beetles, spiders, millipedes and small amphibians."
+      : "Saugleistung von 10 m³/min tötet Käfer, Spinnen, Tausendfüßer und kleine Amphibien.",
+  },
+];
+---
+
+<section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <span class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
+        <span class="material-icons text-base">pets</span>
+        {isEN ? "Nature-Friendly Gardening" : "Naturnahes Gärtnern"}
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-4">
+        {isEN ? "The Wildlife-Friendly Garden" : "Der tierfreundliche Garten"}
+      </h2>
+      <p class="text-lg text-anthracite/70 max-w-2xl mx-auto">
+        {isEN
+          ? "Your garden can become a refuge for dozens of endangered species – with native plants, structural diversity and the courage to leave things a little wild."
+          : "Ihr Garten kann zum Refugium für Dutzende bedrohter Arten werden – mit heimischen Pflanzen, Strukturvielfalt und Mut zur Unordnung."}
+      </p>
+    </div>
+
+    <!-- Key stats -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
+      <div class="bg-white rounded-xl border border-primary/10 p-4 text-center">
+        <div class="text-2xl font-bold text-primary">364</div>
+        <div class="text-xs text-anthracite/60 mt-1">{isEN ? "Wild bee species in NRW" : "Wildbienenarten in NRW"}</div>
+      </div>
+      <div class="bg-white rounded-xl border border-primary/10 p-4 text-center">
+        <div class="text-2xl font-bold text-primary">163</div>
+        <div class="text-xs text-anthracite/60 mt-1">{isEN ? "Insect species on hawthorn" : "Insektenarten am Weißdorn"}</div>
+      </div>
+      <div class="bg-white rounded-xl border border-primary/10 p-4 text-center">
+        <div class="text-2xl font-bold text-primary">25</div>
+        <div class="text-xs text-anthracite/60 mt-1">{isEN ? "Butterflies need nettles" : "Falterarten brauchen Brennnesseln"}</div>
+      </div>
+      <div class="bg-white rounded-xl border border-primary/10 p-4 text-center">
+        <div class="text-2xl font-bold text-primary">1.000+</div>
+        <div class="text-xs text-anthracite/60 mt-1">{isEN ? "Species in a wildlife garden" : "Arten im Naturgarten möglich"}</div>
+      </div>
+    </div>
+
+    <!-- Seasons -->
+    <div class="space-y-12">
+      {seasons.map((season) => (
+        <div id={season.id} class={`rounded-2xl border ${season.color} overflow-hidden`}>
+          <!-- Season Header -->
+          <div class="p-6 sm:p-8">
+            <div class="flex items-center gap-3 mb-3">
+              <span class={`material-icons text-3xl ${season.iconColor}`}>{season.icon}</span>
+              <div>
+                <h3 class="text-2xl font-bold text-anthracite">{season.name}</h3>
+                <span class="text-sm text-anthracite/50">{season.months}</span>
+              </div>
+            </div>
+            <p class="text-anthracite/70 max-w-3xl">{season.intro}</p>
+          </div>
+
+          <!-- Tips Grid -->
+          <div class="grid sm:grid-cols-2 gap-4 px-6 sm:px-8 pb-4">
+            {season.tips.map((tip) => (
+              <div class="bg-white/80 rounded-xl p-5 border border-white">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class={`material-icons text-lg ${season.iconColor}`}>{tip.icon}</span>
+                  <h4 class="font-semibold text-anthracite">{tip.title}</h4>
+                </div>
+                <p class="text-sm text-anthracite/70 leading-relaxed">{tip.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <!-- Badges -->
+          <div class="px-6 sm:px-8 pb-6 sm:pb-8 flex flex-col sm:flex-row gap-4">
+            <div class="flex-1">
+              <span class="text-xs font-semibold text-anthracite/40 uppercase tracking-wider mb-2 block">
+                {isEN ? "Key Plants" : "Wichtige Pflanzen"}
+              </span>
+              <div class="flex flex-wrap gap-1.5">
+                {season.plants.map((p) => (
+                  <span class={`text-xs px-2.5 py-1 rounded-full ${season.badgeColor}`}>{p}</span>
+                ))}
+              </div>
+            </div>
+            <div class="flex-1">
+              <span class="text-xs font-semibold text-anthracite/40 uppercase tracking-wider mb-2 block">
+                {isEN ? "Animals That Benefit" : "Profittierende Tierarten"}
+              </span>
+              <div class="flex flex-wrap gap-1.5">
+                {season.animals.map((a) => (
+                  <span class="text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary">{a}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- What NOT to do -->
+    <div class="mt-16 bg-red-50 border border-red-200 rounded-2xl p-6 sm:p-8">
+      <h3 class="text-xl font-bold text-red-800 mb-6 flex items-center gap-2">
+        <span class="material-icons">warning</span>
+        {isEN ? "What to Avoid" : "Was man vermeiden sollte"}
+      </h3>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {donts.map((d) => (
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-red-400 mt-0.5">{d.icon}</span>
+            <div>
+              <h4 class="font-semibold text-red-800 text-sm">{d.title}</h4>
+              <p class="text-sm text-red-700/70">{d.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="mt-12 text-center">
+      <p class="text-anthracite/60 mb-4 max-w-xl mx-auto">
+        {isEN
+          ? "We help you make your garden wildlife-friendly – professionally and with care for detail."
+          : "Wir helfen Ihnen, Ihren Garten tierfreundlich zu gestalten – professionell und mit Liebe zum Detail."}
+      </p>
+      <a
+        href={`${base}${isEN ? "/en/contact" : "/kontakt"}`}
+        class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all shadow-md"
+      >
+        {isEN ? "Get Expert Advice" : "Jetzt beraten lassen"}
+        <span class="material-icons text-lg">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>

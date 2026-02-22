@@ -1,0 +1,22 @@
+---
+import PreviewLayout from "../../layouts/PreviewLayout.astro";
+import WildlifeGarden from "../../components/sections/variants/WildlifeGarden.astro";
+---
+
+<PreviewLayout title="Tierfreundlicher Garten">
+  <div class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <h1 class="text-2xl font-bold text-primary mb-1">Tierfreundlicher Garten</h1>
+    <p class="text-anthracite/60 text-sm mb-8">Neue Content-Sektion basierend auf der Recherche "Tiere im heimischen Garten"</p>
+  </div>
+
+  <!-- Variante A -->
+  <div class="border-t-4 border-primary">
+    <div class="bg-primary/5 px-4 sm:px-6 lg:px-8 py-3">
+      <div class="max-w-7xl mx-auto flex items-center gap-2">
+        <span class="bg-primary text-white text-xs font-bold px-2.5 py-1 rounded">A</span>
+        <span class="font-semibold text-sm text-anthracite">Ausführliche Sektion mit 4 Jahreszeiten</span>
+      </div>
+    </div>
+    <WildlifeGarden />
+  </div>
+</PreviewLayout>
