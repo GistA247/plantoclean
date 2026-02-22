@@ -1,0 +1,144 @@
+---
+import { type Locale, t } from "../../../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "de" } = Astro.props;
+const isEN = locale === "en";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<section class="py-24 px-6 bg-white">
+  <div class="max-w-5xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="text-accent uppercase tracking-widest text-sm font-semibold">
+        {isEN ? "Customer voices" : "Kundenstimmen"}
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-anthracite mt-3">
+        {isEN ? "What our customers say" : "Was unsere Kunden sagen"}
+      </h2>
+      <p class="text-anthracite/60 mt-4 max-w-2xl mx-auto">
+        {isEN
+          ? "As a small, owner-operated business in Dormagen, we primarily work through personal recommendations. Here you'll find our real customer reviews."
+          : "Als kleiner, inhabergeführter Betrieb in Dormagen arbeiten wir vor allem über persönliche Empfehlung. Hier finden Sie unsere echten Kundenbewertungen."}
+      </p>
+    </div>
+
+    <!-- Real Reviews -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      <!-- Cylex Review (2012) -->
+      <div class="bg-background-light p-8 rounded-2xl border border-primary/10 relative">
+        <div class="absolute -top-3 left-6">
+          <span class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+            Cylex.de
+          </span>
+        </div>
+        <!-- Star Rating -->
+        <div class="flex gap-1 mb-4 mt-1">
+          {[...Array(5)].map(() => (
+            <span class="material-icons text-primary text-xl">star</span>
+          ))}
+        </div>
+        <!-- Quote -->
+        <p class="text-anthracite/80 italic leading-relaxed text-lg mb-4">
+          &ldquo;alles superordentlich, top gartenpflege! ein wohl für die pflanzen.&rdquo;
+        </p>
+        <!-- Meta -->
+        <div class="flex items-center justify-between text-sm text-anthracite/50">
+          <span>{isEN ? "Verified review" : "Verifizierte Bewertung"}</span>
+          <span>Februar 2012</span>
+        </div>
+      </div>
+
+      <!-- Google Review -->
+      <div class="bg-background-light p-8 rounded-2xl border border-primary/10 relative">
+        <div class="absolute -top-3 left-6">
+          <span class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+            Google
+          </span>
+        </div>
+        <!-- Star Rating -->
+        <div class="flex gap-1 mb-4 mt-1">
+          {[...Array(5)].map(() => (
+            <span class="material-icons text-primary text-xl">star</span>
+          ))}
+        </div>
+        <!-- No text, just rating -->
+        <p class="text-anthracite/50 italic leading-relaxed mb-4">
+          {isEN
+            ? "5-star rating without text comment."
+            : "5-Sterne-Bewertung ohne Textkommentar."}
+        </p>
+        <!-- Meta -->
+        <div class="flex items-center justify-between text-sm text-anthracite/50">
+          <span>{isEN ? "Google Maps rating" : "Google Maps Bewertung"}</span>
+          <span>5,0 / 5</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust Signals -->
+    <div class="bg-primary/5 rounded-2xl p-8 md:p-10 mb-12">
+      <h3 class="font-bold text-lg text-anthracite mb-6 text-center">
+        {isEN ? "Why trust us" : "Warum Sie uns vertrauen können"}
+      </h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="material-icons text-primary text-3xl mb-2">verified</span>
+          <p class="font-bold text-anthracite text-lg">14+</p>
+          <p class="text-sm text-anthracite/60">{isEN ? "Years active" : "Jahre aktiv"}</p>
+        </div>
+        <div>
+          <span class="material-icons text-primary text-3xl mb-2">person</span>
+          <p class="font-bold text-anthracite text-lg">{isEN ? "Owner-operated" : "Inhabergeführt"}</p>
+          <p class="text-sm text-anthracite/60">Daniel Schoknecht</p>
+        </div>
+        <div>
+          <span class="material-icons text-primary text-3xl mb-2">thumb_up</span>
+          <p class="font-bold text-anthracite text-lg">5,0 / 5</p>
+          <p class="text-sm text-anthracite/60">{isEN ? "Average rating" : "Durchschnittsnote"}</p>
+        </div>
+        <div>
+          <span class="material-icons text-primary text-3xl mb-2">block</span>
+          <p class="font-bold text-anthracite text-lg">0</p>
+          <p class="text-sm text-anthracite/60">{isEN ? "Negative reviews" : "Negative Bewertungen"}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transparency Note + CTA -->
+    <div class="text-center max-w-2xl mx-auto">
+      <div class="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-6">
+        <span class="material-icons text-lg">info</span>
+        {isEN ? "Full transparency" : "Volle Transparenz"}
+      </div>
+      <p class="text-anthracite/70 leading-relaxed mb-8">
+        {isEN
+          ? "We currently have only two online reviews - both with the highest rating. As a small local business, most of our customers come through personal recommendations. We'd be happy if you also share your experience online."
+          : "Wir haben aktuell nur zwei Online-Bewertungen - beide mit Höchstnote. Als kleiner lokaler Betrieb kommen die meisten unserer Kunden über persönliche Empfehlung. Wir freuen uns, wenn auch Sie Ihre Erfahrung online teilen."}
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://www.google.com/maps/place/Daniel+Schoknecht+Garten-+und+Landschaftspflege"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark transition-colors"
+        >
+          <span class="material-icons">rate_review</span>
+          {isEN ? "Leave a Google review" : "Google-Bewertung schreiben"}
+        </a>
+        <a
+          href={`${base}/${isEN ? "en/contact" : "kontakt"}/`}
+          class="inline-flex items-center gap-2 border-2 border-primary text-primary px-6 py-3 rounded-xl font-semibold hover:bg-primary/5 transition-colors"
+        >
+          <span class="material-icons">chat</span>
+          {isEN ? "Contact us directly" : "Direkt Kontakt aufnehmen"}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
