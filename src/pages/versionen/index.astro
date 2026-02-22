@@ -33,7 +33,7 @@ const sections = [
           </div>
           <p class="text-sm text-anthracite/60 mb-4">{s.desc}</p>
           <div class="flex items-center justify-between">
-            <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">
+            <span class={`text-xs px-3 py-1 rounded-full font-medium ${s.variants > 1 ? "bg-primary text-white" : "bg-primary/10 text-primary"}`}>
               {s.variants} {s.variants === 1 ? "Variante" : "Varianten"}
             </span>
             {s.isNew && <span class="text-xs bg-accent text-white px-2 py-0.5 rounded font-bold">NEU</span>}
