@@ -1,0 +1,218 @@
+---
+import PreviewLayout from "../../layouts/PreviewLayout.astro";
+import Hero from "../../components/sections/Hero.astro";
+import USPGrid from "../../components/sections/USPGrid.astro";
+import ServiceAreaMap from "../../components/sections/ServiceAreaMap.astro";
+import ServicesPreview from "../../components/sections/ServicesPreview.astro";
+import Testimonials from "../../components/sections/Testimonials.astro";
+import SeasonalTip from "../../components/sections/SeasonalTip.astro";
+import CTABanner from "../../components/sections/CTABanner.astro";
+import AccessibilityToolbar from "../../components/AccessibilityToolbar.tsx";
+---
+
+<PreviewLayout title="Barrierefreiheit">
+  <div class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <h1 class="text-2xl font-bold text-primary mb-1">Barrierefreiheit-Toolbar</h1>
+    <p class="text-anthracite/60 text-sm mb-4">
+      Schwebendes Widget zur Anpassung von Schriftgrosse, Kontrast, Link-Hervorhebung und Abstanden.
+      Einstellungen werden im Browser gespeichert.
+    </p>
+    <div class="flex flex-wrap gap-2 mb-8">
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">text_fields</span>
+        3 Schriftgrossen
+      </span>
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">contrast</span>
+        3 Kontrast-Modi
+      </span>
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">link</span>
+        Links hervorheben
+      </span>
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">format_line_spacing</span>
+        Grosse Abstande
+      </span>
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">save</span>
+        localStorage
+      </span>
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">shield</span>
+        DSGVO-konform
+      </span>
+    </div>
+  </div>
+
+  <div class="border-t-4 border-primary">
+    <div class="bg-primary/5 px-4 sm:px-6 lg:px-8 py-3">
+      <div class="max-w-7xl mx-auto flex items-center gap-3">
+        <span class="bg-primary text-white text-xs font-bold px-2.5 py-1 rounded">DEMO</span>
+        <span class="font-semibold text-sm text-anthracite">Klicke auf das
+          <span class="material-icons text-primary text-base align-middle mx-0.5">accessibility_new</span>
+          Icon unten rechts</span>
+      </div>
+    </div>
+    <Hero />
+    <USPGrid />
+    <ServiceAreaMap />
+    <ServicesPreview />
+    <Testimonials />
+    <SeasonalTip />
+    <CTABanner />
+  </div>
+
+  <AccessibilityToolbar client:load />
+</PreviewLayout>
+
+<style is:global>
+  /* ── Font Size ─────────────────────────────────── */
+  .a11y-font-large {
+    font-size: 118%;
+  }
+  .a11y-font-x-large {
+    font-size: 140%;
+  }
+
+  /* ── High Contrast ─────────────────────────────── */
+  .a11y-high-contrast body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .a11y-high-contrast section,
+  .a11y-high-contrast div,
+  .a11y-high-contrast p,
+  .a11y-high-contrast span,
+  .a11y-high-contrast li {
+    color: #000 !important;
+  }
+  .a11y-high-contrast h1,
+  .a11y-high-contrast h2,
+  .a11y-high-contrast h3,
+  .a11y-high-contrast h4 {
+    color: #000 !important;
+  }
+  .a11y-high-contrast a {
+    color: #0000ee !important;
+  }
+  .a11y-high-contrast .bg-primary,
+  .a11y-high-contrast .bg-forest-green,
+  .a11y-high-contrast .bg-background-dark {
+    background: #000 !important;
+    color: #fff !important;
+  }
+  .a11y-high-contrast .bg-primary a,
+  .a11y-high-contrast .bg-primary p,
+  .a11y-high-contrast .bg-primary span,
+  .a11y-high-contrast .bg-primary h1,
+  .a11y-high-contrast .bg-primary h2,
+  .a11y-high-contrast .bg-primary h3,
+  .a11y-high-contrast .bg-forest-green a,
+  .a11y-high-contrast .bg-forest-green p,
+  .a11y-high-contrast .bg-forest-green span,
+  .a11y-high-contrast .bg-forest-green h1,
+  .a11y-high-contrast .bg-forest-green h2,
+  .a11y-high-contrast .bg-background-dark a,
+  .a11y-high-contrast .bg-background-dark p,
+  .a11y-high-contrast .bg-background-dark span,
+  .a11y-high-contrast .bg-background-dark h1,
+  .a11y-high-contrast .bg-background-dark h2 {
+    color: #fff !important;
+  }
+  .a11y-high-contrast .bg-neutral-green,
+  .a11y-high-contrast .bg-background-light {
+    background: #fff !important;
+  }
+  .a11y-high-contrast img {
+    filter: contrast(1.2);
+  }
+
+  /* ── Inverted ──────────────────────────────────── */
+  .a11y-inverted body {
+    background: #1a1a1a !important;
+    color: #e0e0e0 !important;
+  }
+  .a11y-inverted section,
+  .a11y-inverted div,
+  .a11y-inverted p,
+  .a11y-inverted span,
+  .a11y-inverted li {
+    color: #e0e0e0 !important;
+  }
+  .a11y-inverted h1,
+  .a11y-inverted h2,
+  .a11y-inverted h3,
+  .a11y-inverted h4 {
+    color: #90ee90 !important;
+  }
+  .a11y-inverted a {
+    color: #90caf9 !important;
+  }
+  .a11y-inverted .bg-white,
+  .a11y-inverted .bg-neutral-green,
+  .a11y-inverted .bg-background-light {
+    background: #2a2a2a !important;
+  }
+  .a11y-inverted .bg-primary {
+    background: #1a5e0a !important;
+  }
+  .a11y-inverted .bg-primary a,
+  .a11y-inverted .bg-primary p,
+  .a11y-inverted .bg-primary span,
+  .a11y-inverted .bg-primary h1,
+  .a11y-inverted .bg-primary h2,
+  .a11y-inverted .bg-primary h3 {
+    color: #fff !important;
+  }
+  .a11y-inverted .bg-forest-green,
+  .a11y-inverted .bg-background-dark {
+    background: #111 !important;
+  }
+  .a11y-inverted .bg-forest-green a,
+  .a11y-inverted .bg-forest-green p,
+  .a11y-inverted .bg-forest-green span,
+  .a11y-inverted .bg-background-dark a,
+  .a11y-inverted .bg-background-dark p,
+  .a11y-inverted .bg-background-dark span {
+    color: #e0e0e0 !important;
+  }
+  .a11y-inverted .border-primary\/10 {
+    border-color: rgba(144, 238, 144, 0.2) !important;
+  }
+  .a11y-inverted img {
+    filter: brightness(0.85);
+  }
+
+  /* ── Highlight Links ───────────────────────────── */
+  .a11y-highlight-links a:not([class*="bg-"]) {
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 3px !important;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  .a11y-highlight-links a:not([class*="bg-"]):focus,
+  .a11y-highlight-links a:not([class*="bg-"]):hover {
+    outline-color: currentColor !important;
+  }
+
+  /* ── Wide Spacing ──────────────────────────────── */
+  .a11y-wide-spacing body {
+    line-height: 2 !important;
+    letter-spacing: 0.05em !important;
+    word-spacing: 0.15em !important;
+  }
+  .a11y-wide-spacing p,
+  .a11y-wide-spacing li {
+    margin-bottom: 1em !important;
+  }
+
+  /* ── Toolbar itself should not be affected ─────── */
+  .a11y-high-contrast [role="dialog"],
+  .a11y-inverted [role="dialog"],
+  .a11y-high-contrast [aria-label="Barrierefreiheit-Einstellungen"],
+  .a11y-inverted [aria-label="Barrierefreiheit-Einstellungen"] {
+    filter: none !important;
+  }
+</style>
