@@ -1,0 +1,116 @@
+---
+import PreviewLayout from "../../layouts/PreviewLayout.astro";
+import KleeblattParallax from "../../components/KleeblattParallax.tsx";
+---
+
+<PreviewLayout title="Kleeblatt Parallax">
+  <div class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <h1 class="text-2xl font-bold text-primary mb-1">Kleeblatt Parallax</h1>
+    <p class="text-anthracite/60 text-sm mb-4">
+      GSAP ScrollTrigger Parallax-Effekt mit den SVG-Ebenen des Kleeblatt-Logos.
+      Scrolle nach unten, um den Effekt zu sehen.
+    </p>
+    <div class="flex flex-wrap gap-2 mb-8">
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">animation</span>
+        GSAP ScrollTrigger
+      </span>
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">layers</span>
+        5 SVG-Ebenen
+      </span>
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">swap_vert</span>
+        data-depth Parallax
+      </span>
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">zoom_out</span>
+        Scale 3x → 0.3x
+      </span>
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">compress</span>
+        Flatten-Effekt
+      </span>
+    </div>
+  </div>
+
+  <div class="border-t-4 border-primary">
+    <div class="bg-primary/5 px-4 sm:px-6 lg:px-8 py-3">
+      <div class="max-w-7xl mx-auto flex items-center gap-3">
+        <span class="bg-primary text-white text-xs font-bold px-2.5 py-1 rounded">DEMO</span>
+        <span class="font-semibold text-sm text-anthracite">Scrolle langsam nach unten — das Kleeblatt schrumpft und die Ebenen bewegen sich unterschiedlich schnell</span>
+      </div>
+    </div>
+
+    <div class="bg-neutral-green">
+      <KleeblattParallax client:load />
+
+      <!-- Content sections that appear as you scroll -->
+      <div class="relative z-10">
+        <section class="py-24 px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-primary mb-6">Ebenen-Tiefe</h2>
+            <div class="grid grid-cols-5 gap-4">
+              <div class="bg-white rounded-xl p-4 border border-primary/10">
+                <div class="text-2xl font-bold text-primary/30">0.1</div>
+                <p class="text-xs text-anthracite/50 mt-1">Schatten-Stiel</p>
+                <p class="text-xs text-anthracite/30">Langsamste Ebene</p>
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-primary/10">
+                <div class="text-2xl font-bold text-primary/40">0.2</div>
+                <p class="text-xs text-anthracite/50 mt-1">Schatten-Blatter</p>
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-primary/10">
+                <div class="text-2xl font-bold text-primary/55">0.3</div>
+                <p class="text-xs text-anthracite/50 mt-1">Stiel</p>
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-primary/10">
+                <div class="text-2xl font-bold text-primary/75">0.5</div>
+                <p class="text-xs text-anthracite/50 mt-1">Hintere Blatter</p>
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-primary/10">
+                <div class="text-2xl font-bold text-primary">0.8</div>
+                <p class="text-xs text-anthracite/50 mt-1">Vordere Blatter</p>
+                <p class="text-xs text-anthracite/30">Schnellste Ebene</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+          <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-primary mb-4">Animation</h2>
+            <p class="text-anthracite/60 leading-relaxed">
+              Das Kleeblatt startet mit <strong>3-facher Grosse</strong> und schrumpft beim Scrollen auf <strong>0.3x</strong>.
+              Ab 60% Scrollfortschritt wird es zusatzlich in der Y-Achse gestaucht (<strong>Flatten-Effekt</strong>),
+              sodass es am Ende flach und klein erscheint.
+            </p>
+          </div>
+        </section>
+
+        <section class="py-24 px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-primary mb-4">Technik</h2>
+            <div class="grid sm:grid-cols-3 gap-6 text-left">
+              <div class="bg-white rounded-xl p-6 border border-primary/10">
+                <span class="material-icons text-primary text-2xl mb-3">code</span>
+                <h3 class="font-bold text-anthracite mb-2">GSAP ScrollTrigger</h3>
+                <p class="text-sm text-anthracite/60">Scroll-Position steuert die Animation. Scrub-Modus fur stufenlose Kontrolle.</p>
+              </div>
+              <div class="bg-white rounded-xl p-6 border border-primary/10">
+                <span class="material-icons text-primary text-2xl mb-3">layers</span>
+                <h3 class="font-bold text-anthracite mb-2">data-depth</h3>
+                <p class="text-sm text-anthracite/60">Jede SVG-Gruppe hat ein Tiefenattribut. Tiefere Ebenen bewegen sich langsamer.</p>
+              </div>
+              <div class="bg-white rounded-xl p-6 border border-primary/10">
+                <span class="material-icons text-primary text-2xl mb-3">push_pin</span>
+                <h3 class="font-bold text-anthracite mb-2">Pinning</h3>
+                <p class="text-sm text-anthracite/60">Das Kleeblatt bleibt fixiert im Viewport, wahrend der Inhalt darunter scrollt.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</PreviewLayout>
