@@ -7,8 +7,8 @@ import KleeblattParallax from "../../components/KleeblattParallax.tsx";
   <div class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
     <h1 class="text-2xl font-bold text-primary mb-1">Kleeblatt Parallax</h1>
     <p class="text-anthracite/60 text-sm mb-4">
-      GSAP ScrollTrigger Parallax-Effekt mit den SVG-Ebenen des Kleeblatt-Logos.
-      Scrolle nach unten, um den Effekt zu sehen.
+      Das Kleeblatt startet in einer Seitenansicht mit getrennten Ebenen (Exploded View).
+      Beim Scrollen schrumpft es, die Ebenen kommen zusammen und es dreht sich zur Draufsicht.
     </p>
     <div class="flex flex-wrap gap-2 mb-8">
       <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
@@ -20,16 +20,16 @@ import KleeblattParallax from "../../components/KleeblattParallax.tsx";
         5 SVG-Ebenen
       </span>
       <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
-        <span class="material-icons text-sm">swap_vert</span>
-        data-depth Parallax
+        <span class="material-icons text-sm">3d_rotation</span>
+        Perspektive &amp; rotateX
+      </span>
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">unfold_less</span>
+        Exploded → Zusammen
       </span>
       <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
         <span class="material-icons text-sm">zoom_out</span>
-        Scale 3x → 0.3x
-      </span>
-      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
-        <span class="material-icons text-sm">compress</span>
-        Flatten-Effekt
+        Scale 2.5x → 0.3x
       </span>
     </div>
   </div>
@@ -38,7 +38,7 @@ import KleeblattParallax from "../../components/KleeblattParallax.tsx";
     <div class="bg-primary/5 px-4 sm:px-6 lg:px-8 py-3">
       <div class="max-w-7xl mx-auto flex items-center gap-3">
         <span class="bg-primary text-white text-xs font-bold px-2.5 py-1 rounded">DEMO</span>
-        <span class="font-semibold text-sm text-anthracite">Scrolle langsam nach unten — das Kleeblatt schrumpft und die Ebenen bewegen sich unterschiedlich schnell</span>
+        <span class="font-semibold text-sm text-anthracite">Scrolle langsam nach unten — das Kleeblatt dreht sich von der Seite zur Draufsicht, die Ebenen kommen zusammen</span>
       </div>
     </div>
 
@@ -81,9 +81,9 @@ import KleeblattParallax from "../../components/KleeblattParallax.tsx";
           <div class="max-w-3xl mx-auto text-center">
             <h2 class="text-3xl font-bold text-primary mb-4">Animation</h2>
             <p class="text-anthracite/60 leading-relaxed">
-              Das Kleeblatt startet mit <strong>3-facher Grosse</strong> und schrumpft beim Scrollen auf <strong>0.3x</strong>.
-              Ab 60% Scrollfortschritt wird es zusatzlich in der Y-Achse gestaucht (<strong>Flatten-Effekt</strong>),
-              sodass es am Ende flach und klein erscheint.
+              Das Kleeblatt startet in einer <strong>Seitenansicht</strong> (rotateX 68°) mit <strong>getrennten Ebenen</strong>.
+              Beim Scrollen dreht es sich zur <strong>Draufsicht</strong> (rotateX 0°), die Ebenen kommen zusammen
+              und es schrumpft von <strong>2.5x</strong> auf <strong>0.3x</strong>.
             </p>
           </div>
         </section>
@@ -98,9 +98,9 @@ import KleeblattParallax from "../../components/KleeblattParallax.tsx";
                 <p class="text-sm text-anthracite/60">Scroll-Position steuert die Animation. Scrub-Modus fur stufenlose Kontrolle.</p>
               </div>
               <div class="bg-white rounded-xl p-6 border border-primary/10">
-                <span class="material-icons text-primary text-2xl mb-3">layers</span>
-                <h3 class="font-bold text-anthracite mb-2">data-depth</h3>
-                <p class="text-sm text-anthracite/60">Jede SVG-Gruppe hat ein Tiefenattribut. Tiefere Ebenen bewegen sich langsamer.</p>
+                <span class="material-icons text-primary text-2xl mb-3">3d_rotation</span>
+                <h3 class="font-bold text-anthracite mb-2">CSS Perspective</h3>
+                <p class="text-sm text-anthracite/60">perspective: 1200px + rotateX erzeugt die 3D-Seitenansicht. Ebenen werden per translateY getrennt.</p>
               </div>
               <div class="bg-white rounded-xl p-6 border border-primary/10">
                 <span class="material-icons text-primary text-2xl mb-3">push_pin</span>

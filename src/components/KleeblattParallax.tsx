@@ -13,14 +13,16 @@ export default function KleeblattParallax() {
 
     const ctx = gsap.context(() => {
       const layers = svgRef.current!.querySelectorAll("[data-depth]");
+      const spreadAmount = 280;
 
-      // Main scale + opacity animation
+      // Main animation: rotateX (side view → top view) + scale (large → small)
       gsap.fromTo(
         svgRef.current!,
-        { scale: 3, opacity: 1 },
+        { rotateX: 68, scale: 2.5, opacity: 1 },
         {
+          rotateX: 0,
           scale: 0.3,
-          opacity: 0.5,
+          opacity: 0.6,
           ease: "power2.out",
           scrollTrigger: {
             trigger: containerRef.current!,
@@ -33,42 +35,27 @@ export default function KleeblattParallax() {
         },
       );
 
-      // Per-layer parallax
+      // Per-layer: spread apart initially (exploded view), come together during scroll
       layers.forEach((layer) => {
         const depth = parseFloat(layer.getAttribute("data-depth") || "0.5");
-        const yOffset = (1 - depth) * 150;
+        // Front layers (high depth) pushed down, back layers (low depth) pushed up
+        const startY = (depth - 0.45) * spreadAmount;
 
         gsap.fromTo(
           layer,
-          { y: 0 },
+          { y: startY },
           {
-            y: yOffset,
-            ease: "none",
+            y: 0,
+            ease: "power2.inOut",
             scrollTrigger: {
               trigger: containerRef.current!,
               start: "top top",
-              end: "bottom bottom",
+              end: "75% bottom",
               scrub: 1,
             },
           },
         );
       });
-
-      // Flatten effect (scaleY compression toward the end)
-      gsap.fromTo(
-        svgRef.current!,
-        { scaleY: 1 },
-        {
-          scaleY: 0.6,
-          ease: "power3.in",
-          scrollTrigger: {
-            trigger: containerRef.current!,
-            start: "60% top",
-            end: "bottom bottom",
-            scrub: 1,
-          },
-        },
-      );
     }, containerRef);
 
     return () => ctx.revert();
@@ -77,7 +64,10 @@ export default function KleeblattParallax() {
   return (
     <div ref={containerRef} className="relative" style={{ height: "400vh" }}>
       {/* Pinned clover container */}
-      <div className="kleeblatt-pin h-screen w-full flex items-center justify-center overflow-hidden pointer-events-none">
+      <div
+        className="kleeblatt-pin h-screen w-full flex items-center justify-center overflow-hidden pointer-events-none"
+        style={{ perspective: "1200px" }}
+      >
         <svg
           ref={svgRef}
           width="184"
