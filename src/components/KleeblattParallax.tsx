@@ -4,29 +4,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Predetermined scatter positions for each of the 10 SVG pieces
-const scatterConfig = [
-  // Shadow stem
-  { x: 220, y: -160, rotation: 145, scale: 2.5 },
-  // Shadow leaf: top
-  { x: -280, y: -100, rotation: -65, scale: 2.8 },
-  // Shadow leaf: left
-  { x: -150, y: 250, rotation: 88, scale: 2.3 },
-  // Shadow leaf: bottom
-  { x: 260, y: 200, rotation: -120, scale: 2.6 },
-  // Shadow leaf: right
-  { x: 180, y: -240, rotation: 55, scale: 2.4 },
-  // Main stem
-  { x: -200, y: 180, rotation: -155, scale: 2.7 },
-  // Back leaf: top
-  { x: 300, y: -80, rotation: 75, scale: 2.5 },
-  // Back leaf: left
-  { x: -320, y: 40, rotation: -45, scale: 2.2 },
-  // Front leaf: bottom
-  { x: 50, y: 280, rotation: 110, scale: 2.4 },
-  // Front leaf: right
-  { x: -240, y: -200, rotation: -95, scale: 2.6 },
-];
+// Generate random scatter values for a single piece
+function randomScatter() {
+  const angle = Math.random() * Math.PI * 2;
+  const distance = 180 + Math.random() * 160;
+  return {
+    x: Math.cos(angle) * distance,
+    y: Math.sin(angle) * distance,
+    rotation: (Math.random() - 0.5) * 320,
+    scale: 2.0 + Math.random() * 1.0,
+  };
+}
 
 export default function KleeblattParallax() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -50,7 +38,7 @@ export default function KleeblattParallax() {
       });
 
       pieces.forEach((piece, i) => {
-        const cfg = scatterConfig[i];
+        const cfg = randomScatter();
         tl.fromTo(
           piece,
           {
@@ -58,7 +46,7 @@ export default function KleeblattParallax() {
             y: cfg.y,
             rotation: cfg.rotation,
             scale: cfg.scale,
-            opacity: 0.6,
+            opacity: 0.15,
           },
           {
             x: 0,
