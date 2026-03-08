@@ -7,29 +7,29 @@ import KleeblattParallax from "../../components/KleeblattParallax.tsx";
   <div class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
     <h1 class="text-2xl font-bold text-primary mb-1">Kleeblatt Parallax</h1>
     <p class="text-anthracite/60 text-sm mb-4">
-      Das Kleeblatt startet in einer Seitenansicht mit getrennten Ebenen (Exploded View).
-      Beim Scrollen schrumpft es, die Ebenen kommen zusammen und es dreht sich zur Draufsicht.
+      Alle 10 SVG-Elemente starten vergrossert, gedreht und verstreut.
+      Beim Scrollen fliegen sie nach und nach an ihren Platz und formen das Kleeblatt.
     </p>
     <div class="flex flex-wrap gap-2 mb-8">
       <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
         <span class="material-icons text-sm">animation</span>
-        GSAP ScrollTrigger
+        GSAP Timeline
       </span>
       <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
-        <span class="material-icons text-sm">layers</span>
-        5 SVG-Ebenen
+        <span class="material-icons text-sm">scatter_plot</span>
+        10 SVG-Pfade
       </span>
       <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
-        <span class="material-icons text-sm">3d_rotation</span>
-        Perspektive &amp; rotateX
+        <span class="material-icons text-sm">shuffle</span>
+        Scatter → Assemble
       </span>
       <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
-        <span class="material-icons text-sm">unfold_less</span>
-        Exploded → Zusammen
+        <span class="material-icons text-sm">timer</span>
+        Stagger-Effekt
       </span>
       <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
-        <span class="material-icons text-sm">zoom_out</span>
-        Scale 2.5x → 0.3x
+        <span class="material-icons text-sm">push_pin</span>
+        ScrollTrigger Pin
       </span>
     </div>
   </div>
@@ -38,7 +38,7 @@ import KleeblattParallax from "../../components/KleeblattParallax.tsx";
     <div class="bg-primary/5 px-4 sm:px-6 lg:px-8 py-3">
       <div class="max-w-7xl mx-auto flex items-center gap-3">
         <span class="bg-primary text-white text-xs font-bold px-2.5 py-1 rounded">DEMO</span>
-        <span class="font-semibold text-sm text-anthracite">Scrolle langsam nach unten — das Kleeblatt dreht sich von der Seite zur Draufsicht, die Ebenen kommen zusammen</span>
+        <span class="font-semibold text-sm text-anthracite">Scrolle langsam nach unten — die verstreuten Elemente fliegen zusammen und formen das Kleeblatt</span>
       </div>
     </div>
 
@@ -49,29 +49,27 @@ import KleeblattParallax from "../../components/KleeblattParallax.tsx";
       <div class="relative z-10">
         <section class="py-24 px-4 sm:px-6 lg:px-8">
           <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl font-bold text-primary mb-6">Ebenen-Tiefe</h2>
-            <div class="grid grid-cols-5 gap-4">
+            <h2 class="text-3xl font-bold text-primary mb-6">10 Einzelteile</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
               <div class="bg-white rounded-xl p-4 border border-primary/10">
-                <div class="text-2xl font-bold text-primary/30">0.1</div>
+                <div class="text-lg font-bold text-anthracite/30">1</div>
                 <p class="text-xs text-anthracite/50 mt-1">Schatten-Stiel</p>
-                <p class="text-xs text-anthracite/30">Langsamste Ebene</p>
               </div>
               <div class="bg-white rounded-xl p-4 border border-primary/10">
-                <div class="text-2xl font-bold text-primary/40">0.2</div>
+                <div class="text-lg font-bold text-anthracite/30">2–5</div>
                 <p class="text-xs text-anthracite/50 mt-1">Schatten-Blatter</p>
               </div>
               <div class="bg-white rounded-xl p-4 border border-primary/10">
-                <div class="text-2xl font-bold text-primary/55">0.3</div>
+                <div class="text-lg font-bold text-primary/55">6</div>
                 <p class="text-xs text-anthracite/50 mt-1">Stiel</p>
               </div>
               <div class="bg-white rounded-xl p-4 border border-primary/10">
-                <div class="text-2xl font-bold text-primary/75">0.5</div>
+                <div class="text-lg font-bold text-primary/75">7–8</div>
                 <p class="text-xs text-anthracite/50 mt-1">Hintere Blatter</p>
               </div>
               <div class="bg-white rounded-xl p-4 border border-primary/10">
-                <div class="text-2xl font-bold text-primary">0.8</div>
+                <div class="text-lg font-bold text-primary">9–10</div>
                 <p class="text-xs text-anthracite/50 mt-1">Vordere Blatter</p>
-                <p class="text-xs text-anthracite/30">Schnellste Ebene</p>
               </div>
             </div>
           </div>
@@ -81,9 +79,10 @@ import KleeblattParallax from "../../components/KleeblattParallax.tsx";
           <div class="max-w-3xl mx-auto text-center">
             <h2 class="text-3xl font-bold text-primary mb-4">Animation</h2>
             <p class="text-anthracite/60 leading-relaxed">
-              Das Kleeblatt startet in einer <strong>Seitenansicht</strong> (rotateX 68°) mit <strong>getrennten Ebenen</strong>.
-              Beim Scrollen dreht es sich zur <strong>Draufsicht</strong> (rotateX 0°), die Ebenen kommen zusammen
-              und es schrumpft von <strong>2.5x</strong> auf <strong>0.3x</strong>.
+              Jedes der 10 SVG-Elemente startet <strong>vergrossert</strong> (2.2–2.8x),
+              <strong>gedreht</strong> (±45°–155°) und <strong>verstreut</strong> uber den Viewport.
+              Beim Scrollen fliegen sie mit leichtem <strong>Stagger-Effekt</strong> nacheinander
+              an ihren Platz und formen das fertige Kleeblatt-Logo.
             </p>
           </div>
         </section>
@@ -94,18 +93,18 @@ import KleeblattParallax from "../../components/KleeblattParallax.tsx";
             <div class="grid sm:grid-cols-3 gap-6 text-left">
               <div class="bg-white rounded-xl p-6 border border-primary/10">
                 <span class="material-icons text-primary text-2xl mb-3">code</span>
-                <h3 class="font-bold text-anthracite mb-2">GSAP ScrollTrigger</h3>
-                <p class="text-sm text-anthracite/60">Scroll-Position steuert die Animation. Scrub-Modus fur stufenlose Kontrolle.</p>
+                <h3 class="font-bold text-anthracite mb-2">GSAP Timeline</h3>
+                <p class="text-sm text-anthracite/60">Eine ScrollTrigger-Timeline steuert alle 10 Pfade mit Scrub-Modus fur stufenlose Kontrolle.</p>
               </div>
               <div class="bg-white rounded-xl p-6 border border-primary/10">
-                <span class="material-icons text-primary text-2xl mb-3">3d_rotation</span>
-                <h3 class="font-bold text-anthracite mb-2">CSS Perspective</h3>
-                <p class="text-sm text-anthracite/60">perspective: 1200px + rotateX erzeugt die 3D-Seitenansicht. Ebenen werden per translateY getrennt.</p>
+                <span class="material-icons text-primary text-2xl mb-3">shuffle</span>
+                <h3 class="font-bold text-anthracite mb-2">Scatter-Config</h3>
+                <p class="text-sm text-anthracite/60">Jeder Pfad hat feste Start-Position, Rotation und Skalierung — deterministisch, aber chaotisch wirkend.</p>
               </div>
               <div class="bg-white rounded-xl p-6 border border-primary/10">
                 <span class="material-icons text-primary text-2xl mb-3">push_pin</span>
                 <h3 class="font-bold text-anthracite mb-2">Pinning</h3>
-                <p class="text-sm text-anthracite/60">Das Kleeblatt bleibt fixiert im Viewport, wahrend der Inhalt darunter scrollt.</p>
+                <p class="text-sm text-anthracite/60">Das SVG bleibt fixiert im Viewport, wahrend die Scroll-Position die Assembly-Animation steuert.</p>
               </div>
             </div>
           </div>
