@@ -1,0 +1,122 @@
+---
+import PreviewLayout from "../../layouts/PreviewLayout.astro";
+import PflegekalenderAnimated from "../../components/PflegekalenderAnimated.tsx";
+---
+
+<PreviewLayout title="Pflegekalender Icons">
+  <div class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <h1 class="text-2xl font-bold text-primary mb-1">Pflegekalender Icons</h1>
+    <p class="text-anthracite/60 text-sm mb-4">
+      Alle Material Icons durch animierte Lucide-Icons ersetzt.
+      Hover ueber die Icons, um die Animationen zu sehen.
+    </p>
+    <div class="flex flex-wrap gap-2 mb-4">
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">swap_horiz</span>
+        15 Icon-Mappings
+      </span>
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">animation</span>
+        Hover-Animationen
+      </span>
+      <span class="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium">
+        <span class="material-icons text-sm">code</span>
+        Lucide Animated + Motion
+      </span>
+    </div>
+
+    <!-- Icon Mapping Table -->
+    <details class="mb-8 bg-white rounded-xl border border-primary/10 overflow-hidden">
+      <summary class="px-6 py-3 cursor-pointer text-sm font-semibold text-anthracite hover:bg-primary/5 transition-colors">
+        Icon-Mapping anzeigen (Material Icons → Lucide Animated)
+      </summary>
+      <div class="px-6 py-4 border-t border-primary/5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+          <div class="flex items-center gap-2 p-2 rounded bg-sky-50">
+            <span class="material-icons text-sm text-sky-600">ac_unit</span>
+            <span class="text-anthracite/40">→</span>
+            <span class="font-mono text-sky-700">snowflake</span>
+            <span class="text-anthracite/40 ml-auto">Winter</span>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded bg-green-50">
+            <span class="material-icons text-sm text-green-600">eco</span>
+            <span class="text-anthracite/40">→</span>
+            <span class="font-mono text-green-700">feather</span>
+            <span class="text-anthracite/40 ml-auto">Fruehling</span>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded bg-amber-50">
+            <span class="material-icons text-sm text-amber-600">wb_sunny</span>
+            <span class="text-anthracite/40">→</span>
+            <span class="font-mono text-amber-700">sun</span>
+            <span class="text-anthracite/40 ml-auto">Sommer</span>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded bg-orange-50">
+            <span class="material-icons text-sm text-orange-600">nest_eco_leaf</span>
+            <span class="text-anthracite/40">→</span>
+            <span class="font-mono text-orange-700">wind</span>
+            <span class="text-anthracite/40 ml-auto">Herbst</span>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded bg-primary/5">
+            <span class="material-icons text-sm text-primary">park</span>
+            <span class="text-anthracite/40">→</span>
+            <span class="font-mono text-primary">git-fork</span>
+            <span class="text-anthracite/40 ml-auto">Gehoelze</span>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded bg-red-50">
+            <span class="material-icons text-sm text-red-500">spa</span>
+            <span class="text-anthracite/40">→</span>
+            <span class="font-mono text-red-600">heart</span>
+            <span class="text-anthracite/40 ml-auto">Rosen</span>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded bg-yellow-50">
+            <span class="material-icons text-sm text-yellow-600">local_florist</span>
+            <span class="text-anthracite/40">→</span>
+            <span class="font-mono text-yellow-700">sparkles</span>
+            <span class="text-anthracite/40 ml-auto">Stauden</span>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded bg-teal-50">
+            <span class="material-icons text-sm text-teal-600">grass</span>
+            <span class="text-anthracite/40">→</span>
+            <span class="font-mono text-teal-700">waves</span>
+            <span class="text-anthracite/40 ml-auto">Rasen</span>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded bg-purple-50">
+            <span class="material-icons text-sm text-purple-600">fence</span>
+            <span class="text-anthracite/40">→</span>
+            <span class="font-mono text-purple-700">layers</span>
+            <span class="text-anthracite/40 ml-auto">Hecken</span>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded bg-indigo-50">
+            <span class="material-icons text-sm text-indigo-600">potted_plant</span>
+            <span class="text-anthracite/40">→</span>
+            <span class="font-mono text-indigo-700">home</span>
+            <span class="text-anthracite/40 ml-auto">Kuebel</span>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded bg-amber-50">
+            <span class="material-icons text-sm text-amber-600">tips_and_updates</span>
+            <span class="text-anthracite/40">→</span>
+            <span class="font-mono text-amber-700">zap</span>
+            <span class="text-anthracite/40 ml-auto">Allgemein</span>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded bg-rose-50">
+            <span class="material-icons text-sm text-rose-600">lightbulb</span>
+            <span class="text-anthracite/40">→</span>
+            <span class="font-mono text-rose-700">flame</span>
+            <span class="text-anthracite/40 ml-auto">Pro-Tipp</span>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="border-t-4 border-primary">
+    <div class="bg-primary/5 px-4 sm:px-6 lg:px-8 py-3">
+      <div class="max-w-7xl mx-auto flex items-center gap-3">
+        <span class="bg-primary text-white text-xs font-bold px-2.5 py-1 rounded">A</span>
+        <span class="font-semibold text-sm text-anthracite">Lucide Animated Icons — Hover ueber die Icons fuer Animationen</span>
+      </div>
+    </div>
+
+    <PflegekalenderAnimated client:load />
+  </div>
+</PreviewLayout>
