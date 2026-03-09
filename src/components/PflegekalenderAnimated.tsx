@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, forwardRef } from "react";
 import { SnowflakeIcon } from "./icons/animated/Snowflake";
 import { FeatherIcon } from "./icons/animated/Feather";
 import { SunIcon } from "./icons/animated/Sun";
@@ -15,8 +15,13 @@ import { ChevronDownIcon } from "./icons/animated/ChevronDown";
 import { FlameIcon } from "./icons/animated/Flame";
 import { ChevronRightIcon } from "./icons/animated/ChevronRight";
 
+interface IconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
+
 // Icon mapping: Material Icon name → Lucide Animated component
-const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string; ref?: React.Ref<IconHandle> }>> = {
   ac_unit: SnowflakeIcon,
   eco: FeatherIcon,
   wb_sunny: SunIcon,
@@ -34,10 +39,39 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
   chevron_right: ChevronRightIcon,
 };
 
+// Simple icon without hover extension (for bullets etc.)
 function AnimIcon({ name, size = 24, className = "" }: { name: string; size?: number; className?: string }) {
   const Icon = iconMap[name];
   if (!Icon) return <span className={className}>{name}</span>;
   return <Icon size={size} className={`inline-flex ${className}`} />;
+}
+
+// Icon + children wrapped in a hover zone that triggers the icon animation
+function HoverIcon({ name, size = 24, className = "", children, as: Tag = "div", tagClassName = "", tagProps }: {
+  name: string;
+  size?: number;
+  className?: string;
+  children?: React.ReactNode;
+  as?: "div" | "button" | "a";
+  tagClassName?: string;
+  tagProps?: Record<string, unknown>;
+}) {
+  const iconRef = useRef<IconHandle>(null);
+  const Icon = iconMap[name];
+
+  if (!Icon) return <Tag className={tagClassName} {...tagProps}><span className={className}>{name}</span>{children}</Tag>;
+
+  return (
+    <Tag
+      className={tagClassName}
+      onMouseEnter={() => iconRef.current?.startAnimation()}
+      onMouseLeave={() => iconRef.current?.stopAnimation()}
+      {...tagProps}
+    >
+      <Icon ref={iconRef} size={size} className={`inline-flex ${className}`} />
+      {children}
+    </Tag>
+  );
 }
 
 interface Task {
@@ -123,6 +157,73 @@ const seasons = [
   { key: "winter", label: "Winter", icon: "ac_unit", color: "text-sky-600", bg: "bg-sky-50", border: "border-sky-200", months: [11, 0, 1] },
 ];
 
+// Sub-component for task category with hover-triggered icon animation
+function TaskCategory({ task, seasonColor }: { task: Task; seasonColor: string }) {
+  const iconRef = useRef<IconHandle>(null);
+  const Icon = iconMap[task.icon];
+
+  return (
+    <div
+      onMouseEnter={() => iconRef.current?.startAnimation()}
+      onMouseLeave={() => iconRef.current?.stopAnimation()}
+    >
+      <div className="flex items-center gap-2 mb-2">
+        {Icon ? (
+          <Icon ref={iconRef} size={20} className={`inline-flex ${seasonColor}`} />
+        ) : (
+          <span className={seasonColor}>{task.icon}</span>
+        )}
+        <h4 className="font-semibold text-anthracite">{task.cat}</h4>
+      </div>
+      <ul className="space-y-1.5 ml-7">
+        {task.items.map((item, ii) => (
+          <li key={ii} className="flex items-start gap-2 text-sm text-anthracite/70">
+            <AnimIcon name="chevron_right" size={14} className="text-primary/40 mt-0.5 shrink-0" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+// Sub-component for month header button with hover-triggered icon animation
+function MonthHeader({ month, season, isOpen, onToggle }: {
+  month: Month;
+  season: typeof seasons[number];
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  const iconRef = useRef<IconHandle>(null);
+  const chevronRef = useRef<IconHandle>(null);
+  const MonthIcon = iconMap[month.icon];
+  const ChevronIcon = iconMap["expand_more"];
+
+  return (
+    <button
+      onClick={onToggle}
+      onMouseEnter={() => { iconRef.current?.startAnimation(); chevronRef.current?.startAnimation(); }}
+      onMouseLeave={() => { iconRef.current?.stopAnimation(); chevronRef.current?.stopAnimation(); }}
+      className={`w-full flex items-center gap-3 px-6 py-4 ${season.bg} hover:brightness-95 transition-all cursor-pointer`}
+    >
+      {MonthIcon ? (
+        <MonthIcon ref={iconRef} size={24} className={`inline-flex ${season.color}`} />
+      ) : (
+        <span className={season.color}>{month.icon}</span>
+      )}
+      <span className={`font-bold text-lg ${season.color} flex-1 text-left`}>{month.name}</span>
+      <span className="text-xs text-anthracite/40">{month.tasks.length} Kategorien</span>
+      <div className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>
+        {ChevronIcon ? (
+          <ChevronIcon ref={chevronRef} size={20} className="inline-flex text-anthracite/40" />
+        ) : (
+          <span className="text-anthracite/40">expand_more</span>
+        )}
+      </div>
+    </button>
+  );
+}
+
 export default function PflegekalenderAnimated() {
   const [openMonth, setOpenMonth] = useState<number | null>(null);
 
@@ -143,24 +244,26 @@ export default function PflegekalenderAnimated() {
       {/* Season Navigation */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
         {seasons.map((s) => (
-          <a
+          <HoverIcon
             key={s.key}
-            href={`#${s.key}`}
-            className={`flex flex-col items-center gap-2 py-5 rounded-2xl ${s.bg} ${s.border} border hover:shadow-md transition-shadow`}
+            name={s.icon}
+            size={32}
+            className={s.color}
+            as="a"
+            tagClassName={`flex flex-col items-center gap-2 py-5 rounded-2xl ${s.bg} ${s.border} border hover:shadow-md transition-shadow`}
+            tagProps={{ href: `#${s.key}` }}
           >
-            <AnimIcon name={s.icon} size={32} className={s.color} />
             <span className={`font-semibold ${s.color}`}>{s.label}</span>
-          </a>
+          </HoverIcon>
         ))}
       </div>
 
       {/* Calendar Sections */}
       {seasons.map((season) => (
         <section key={season.key} id={season.key} className="mb-16 scroll-mt-8">
-          <div className="flex items-center gap-3 mb-6">
-            <AnimIcon name={season.icon} size={28} className={season.color} />
+          <HoverIcon name={season.icon} size={28} className={season.color} tagClassName="flex items-center gap-3 mb-6">
             <h3 className={`text-2xl font-bold ${season.color}`}>{season.label}</h3>
-          </div>
+          </HoverIcon>
 
           <div className="space-y-4">
             {season.months.map((monthIdx) => {
@@ -169,37 +272,18 @@ export default function PflegekalenderAnimated() {
 
               return (
                 <div key={monthIdx} className={`rounded-2xl border ${season.border} overflow-hidden`}>
-                  {/* Month Header */}
-                  <button
-                    onClick={() => setOpenMonth(isOpen ? null : monthIdx)}
-                    className={`w-full flex items-center gap-3 px-6 py-4 ${season.bg} hover:brightness-95 transition-all cursor-pointer`}
-                  >
-                    <AnimIcon name={month.icon} size={24} className={season.color} />
-                    <span className={`font-bold text-lg ${season.color} flex-1 text-left`}>{month.name}</span>
-                    <span className="text-xs text-anthracite/40">{month.tasks.length} Kategorien</span>
-                    <div className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>
-                      <AnimIcon name="expand_more" size={20} className="text-anthracite/40" />
-                    </div>
-                  </button>
+                  <MonthHeader
+                    month={month}
+                    season={season}
+                    isOpen={isOpen}
+                    onToggle={() => setOpenMonth(isOpen ? null : monthIdx)}
+                  />
 
                   {/* Month Content */}
                   {isOpen && (
                     <div className="px-6 py-5 space-y-5 bg-white">
                       {month.tasks.map((task, ti) => (
-                        <div key={ti} className="group">
-                          <div className="flex items-center gap-2 mb-2">
-                            <AnimIcon name={task.icon} size={20} className={season.color} />
-                            <h4 className="font-semibold text-anthracite">{task.cat}</h4>
-                          </div>
-                          <ul className="space-y-1.5 ml-7">
-                            {task.items.map((item, ii) => (
-                              <li key={ii} className="flex items-start gap-2 text-sm text-anthracite/70">
-                                <AnimIcon name="chevron_right" size={14} className="text-primary/40 mt-0.5 shrink-0" />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                        <TaskCategory key={ti} task={task} seasonColor={season.color} />
                       ))}
                     </div>
                   )}
@@ -211,8 +295,7 @@ export default function PflegekalenderAnimated() {
       ))}
 
       {/* Pro Tip */}
-      <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl p-8 flex items-start gap-4">
-        <AnimIcon name="lightbulb" size={28} className="text-primary shrink-0" />
+      <HoverIcon name="lightbulb" size={28} className="text-primary shrink-0" tagClassName="bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl p-8 flex items-start gap-4">
         <div>
           <h4 className="font-bold text-anthracite mb-2">Profi-Tipp</h4>
           <p className="text-sm text-anthracite/70 leading-relaxed">
@@ -221,7 +304,7 @@ export default function PflegekalenderAnimated() {
             und die Pflanzen koennen im Fruehjahr kraeftig austreiben.
           </p>
         </div>
-      </div>
+      </HoverIcon>
     </div>
   );
 }
