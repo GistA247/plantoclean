@@ -1,0 +1,272 @@
+---
+import PreviewLayout from "../../layouts/PreviewLayout.astro";
+---
+
+<PreviewLayout title="Typewriter Effekt">
+  <div class="py-8 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <h1 class="text-2xl font-bold text-primary mb-1">Typewriter Effekt</h1>
+    <p class="text-anthracite/60 text-sm mb-8">
+      Der Slogan "Plantoclean - alles sauber?!" in verschiedenen Typewriter-Variationen.
+    </p>
+
+    <!-- Variante A: Klassisch -->
+    <section class="mb-16">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="bg-primary text-white text-xs font-bold px-2 py-0.5 rounded">A</span>
+        <h2 class="font-semibold text-anthracite">Klassisch - einmaliges Tippen</h2>
+      </div>
+      <div class="bg-background-light rounded-2xl border border-primary/10 p-10 flex items-center justify-center min-h-[160px]">
+        <h3 class="tw-a text-3xl md:text-5xl font-bold text-primary">
+          Plantoclean - alles sauber?!
+        </h3>
+      </div>
+    </section>
+
+    <!-- Variante B: Mit Loeschung und Loop -->
+    <section class="mb-16">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="bg-primary text-white text-xs font-bold px-2 py-0.5 rounded">B</span>
+        <h2 class="font-semibold text-anthracite">Endlosschleife - Tippen, Pause, Loeschen, Wiederholen</h2>
+      </div>
+      <div class="bg-background-light rounded-2xl border border-primary/10 p-10 flex items-center justify-center min-h-[160px]">
+        <h3 class="tw-b text-3xl md:text-5xl font-bold text-primary">
+          Plantoclean - alles sauber?!
+        </h3>
+      </div>
+    </section>
+
+    <!-- Variante C: Zwei Zeilen nacheinander -->
+    <section class="mb-16">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="bg-primary text-white text-xs font-bold px-2 py-0.5 rounded">C</span>
+        <h2 class="font-semibold text-anthracite">Zweizeilig - erst Firmenname, dann Slogan</h2>
+      </div>
+      <div class="bg-background-light rounded-2xl border border-primary/10 p-10 flex flex-col items-center justify-center min-h-[200px] gap-2">
+        <h3 class="tw-c1 text-3xl md:text-5xl font-bold text-primary">
+          Plantoclean
+        </h3>
+        <p class="tw-c2 text-xl md:text-3xl font-medium text-accent">
+          alles sauber?!
+        </p>
+      </div>
+    </section>
+
+    <!-- Variante D: Wechselnde Woerter -->
+    <section class="mb-16">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="bg-primary text-white text-xs font-bold px-2 py-0.5 rounded">D</span>
+        <h2 class="font-semibold text-anthracite">Wechselnd - verschiedene Adjektive durchtippen</h2>
+      </div>
+      <div class="bg-background-light rounded-2xl border border-primary/10 p-10 flex items-center justify-center min-h-[160px]">
+        <h3 class="text-3xl md:text-5xl font-bold text-primary">
+          Plantoclean - alles <span class="tw-d" id="tw-d-word"></span>
+        </h3>
+      </div>
+    </section>
+
+    <!-- Variante E: Langsam, Schreibmaschinen-Font -->
+    <section class="mb-16">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="bg-primary text-white text-xs font-bold px-2 py-0.5 rounded">E</span>
+        <h2 class="font-semibold text-anthracite">Retro-Schreibmaschine - langsam, Monospace</h2>
+      </div>
+      <div class="bg-anthracite rounded-2xl border border-primary/10 p-10 flex items-center justify-center min-h-[160px]">
+        <h3 class="tw-e text-2xl md:text-4xl text-green-400" style="font-family: 'Courier New', monospace;">
+          Plantoclean - alles sauber?!
+        </h3>
+      </div>
+    </section>
+
+    <!-- Variante F: Fade-in pro Buchstabe -->
+    <section class="mb-16">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="bg-primary text-white text-xs font-bold px-2 py-0.5 rounded">F</span>
+        <h2 class="font-semibold text-anthracite">Fade-in - Buchstaben erscheinen sanft</h2>
+      </div>
+      <div class="bg-background-light rounded-2xl border border-primary/10 p-10 flex items-center justify-center min-h-[160px]">
+        <h3 class="tw-f text-3xl md:text-5xl font-bold text-primary" id="tw-fade"></h3>
+      </div>
+    </section>
+  </div>
+</PreviewLayout>
+
+<style>
+  /* === Variante A: Klassisch === */
+  .tw-a {
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--color-primary);
+    animation:
+      tw-type-a 2.5s steps(30, end) 0.5s forwards,
+      tw-blink 0.7s step-end infinite;
+  }
+
+  @keyframes tw-type-a {
+    to { width: 100%; }
+  }
+
+  @keyframes tw-blink {
+    50% { border-color: transparent; }
+  }
+
+  /* === Variante B: Loop mit Loeschen === */
+  .tw-b {
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--color-primary);
+    animation:
+      tw-type-b 8s steps(30, end) infinite,
+      tw-blink 0.7s step-end infinite;
+  }
+
+  @keyframes tw-type-b {
+    0%   { width: 0; }
+    30%  { width: 100%; }
+    70%  { width: 100%; }
+    85%  { width: 0; }
+    100% { width: 0; }
+  }
+
+  /* === Variante C: Zweizeilig === */
+  .tw-c1 {
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--color-primary);
+    animation:
+      tw-type-c1 1.5s steps(12, end) 0.5s forwards,
+      tw-blink-c1 0.7s step-end 3;
+  }
+
+  .tw-c2 {
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--color-accent);
+    opacity: 0;
+    animation:
+      tw-appear 0.01s 2.5s forwards,
+      tw-type-c2 1.2s steps(14, end) 2.5s forwards,
+      tw-blink-c2 0.7s step-end 2.5s infinite;
+  }
+
+  @keyframes tw-type-c1 {
+    to { width: 100%; }
+  }
+
+  @keyframes tw-blink-c1 {
+    50% { border-color: transparent; }
+  }
+
+  @keyframes tw-type-c1 {
+    to {
+      width: 100%;
+      border-color: transparent;
+    }
+  }
+
+  @keyframes tw-appear {
+    to { opacity: 1; }
+  }
+
+  @keyframes tw-type-c2 {
+    to { width: 100%; }
+  }
+
+  @keyframes tw-blink-c2 {
+    50% { border-color: transparent; }
+  }
+
+  /* === Variante E: Retro === */
+  .tw-e {
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #4ade80;
+    animation:
+      tw-type-e 4s steps(30, end) 0.5s forwards,
+      tw-blink-e 0.5s step-end infinite;
+    text-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+  }
+
+  @keyframes tw-type-e {
+    to { width: 100%; }
+  }
+
+  @keyframes tw-blink-e {
+    50% { border-color: transparent; }
+  }
+
+  /* === Variante F: Fade-in Buchstaben === */
+  .tw-f .char {
+    opacity: 0;
+    animation: tw-char-fade 0.3s forwards;
+  }
+
+  @keyframes tw-char-fade {
+    to { opacity: 1; }
+  }
+</style>
+
+<script>
+  // === Variante D: Wechselnde Woerter ===
+  const words = ["sauber?!", "gruen?!", "gepflegt?!", "natuerlich?!", "sauber?!"];
+  const target = document.getElementById("tw-d-word");
+
+  if (target) {
+    let wordIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    let timeout: ReturnType<typeof setTimeout>;
+
+    function tick() {
+      const word = words[wordIdx];
+
+      if (!isDeleting) {
+        charIdx++;
+        target!.textContent = word.slice(0, charIdx);
+
+        if (charIdx === word.length) {
+          timeout = setTimeout(() => { isDeleting = true; tick(); }, 1800);
+          return;
+        }
+        timeout = setTimeout(tick, 120);
+      } else {
+        charIdx--;
+        target!.textContent = word.slice(0, charIdx);
+
+        if (charIdx === 0) {
+          isDeleting = false;
+          wordIdx = (wordIdx + 1) % words.length;
+          timeout = setTimeout(tick, 400);
+          return;
+        }
+        timeout = setTimeout(tick, 60);
+      }
+    }
+
+    // Cursor-Blink via CSS
+    target.style.borderRight = "3px solid var(--color-primary)";
+    target.style.paddingRight = "2px";
+    target.style.animation = "tw-blink 0.7s step-end infinite";
+
+    setTimeout(tick, 800);
+  }
+
+  // === Variante F: Fade-in pro Buchstabe ===
+  const fadeTarget = document.getElementById("tw-fade");
+  if (fadeTarget) {
+    const text = "Plantoclean - alles sauber?!";
+    fadeTarget.innerHTML = "";
+
+    text.split("").forEach((char, i) => {
+      const span = document.createElement("span");
+      span.className = "char";
+      span.textContent = char === " " ? "\u00A0" : char;
+      span.style.animationDelay = `${0.5 + i * 0.08}s`;
+      fadeTarget.appendChild(span);
+    });
+  }
+</script>
